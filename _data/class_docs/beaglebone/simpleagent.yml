@@ -5,9 +5,9 @@ description:
   namespace: "cubesat"
   files:
     - name: "SimpleAgent.h"
-      url: "blob/master/BeagleBone/include/utility/SimpleAgent.h"
+      url: "blob/master/software/software/BeagleBone/beaglebone/beaglebone/include/utility/SimpleAgent.h"
     - name: "SimpleAgent.cpp"
-      url: "blob/master/BeagleBone/source/utility/SimpleAgent.cpp"
+      url: "blob/master/software/software/BeagleBone/beaglebone/beaglebone/source/utility/SimpleAgent.cpp"
 
 # Member Table
 functions:

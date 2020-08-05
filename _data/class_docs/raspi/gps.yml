@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "gps.py"
-      url: "blob/master/Software/RaspberryPi/artemis/gps.py"
+      url: "blob/master/software/RaspberryPi/artemis/gps.py"
 
 
 # Property Table

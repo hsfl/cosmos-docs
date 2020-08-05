@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "heater.py"
-      url: "blob/master/Software/RaspberryPi/artemis/heater.py"
+      url: "blob/master/software/RaspberryPi/artemis/heater.py"
 
 
 functions:

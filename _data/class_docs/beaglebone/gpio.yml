@@ -5,9 +5,9 @@ description:
   namespace: "cubesat"
   files:
     - name: "GPIO.h"
-      url: "blob/master/BeagleBone/include/device/GPIO.h"
+      url: "blob/master/software/BeagleBone/beaglebone/include/device/GPIO.h"
     - name: "GPIO.cpp"
-      url: "blob/master/BeagleBone/source/device/GPIO.cpp"
+      url: "blob/master/software/BeagleBone/beaglebone/source/device/GPIO.cpp"
 
 # Member Table
 functions:

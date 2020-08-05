@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "imu.py"
-      url: "blob/master/Software/RaspberryPi/artemis/imu.py"
+      url: "blob/master/software/RaspberryPi/artemis/imu.py"
 
 
 # Property Table

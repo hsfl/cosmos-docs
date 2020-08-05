@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "beaglebone.py"
-      url: "blob/master/Software/RaspberryPi/artemis/beaglebone.py"
+      url: "blob/master/software/RaspberryPi/artemis/beaglebone.py"
 
 
 # Member Table

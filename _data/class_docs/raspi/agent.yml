@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "agent.py"
-      url: "blob/master/Software/RaspberryPi/artemis/agent.py"
+      url: "blob/master/software/RaspberryPi/artemis/agent.py"
 
 
 # Member Table

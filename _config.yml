@@ -8,13 +8,13 @@ title: Artemis CubeSat Kit
 #email: your-email@example.com
 
 # Site description, used by search engines
-description: "A low-cost cubesat kit for education. Created by Hawaii Space Flight Laboratory"
+description: "A low-cost cubesat kit for education, created by Hawaii Space Flight Laboratory"
 
 # The subpath of the website on the domain
-baseurl: "/artemis-docs" # the subpath of your site, e.g. /blog
+baseurl: "/artemis" # the subpath of your site, e.g. /blog
 
 # The hostname & protocol of the site
-url: "https://mtmk-ee.github.io"
+url: "https://hsfl.github.io"
 
 # The external project website
 project_website: "http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/"
@@ -29,30 +29,30 @@ project_website: "http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/
 # ===================================== Internal Paths =====================================
 agent_diagram_folder: "/resources/diagrams/agents"
 
-folder_resources: "/artemis-docs/resources"
-folder_diagrams: "/artemis-docs/resources/diagrams"
+folder_resources: "/artemis/resources"
+folder_diagrams: "/artemis/resources/diagrams"
 
 
-folder_docs: "/artemis-docs/pages/documentation"
-folder_docs_other: "/artemis-docs/pages/documentation/other"
-folder_docs_cosmos: "/artemis-docs/pages/documentation/cosmos"
-folder_docs_library: "/artemis-docs/pages/documentation/python-library"
-folder_docs_agents: "/artemis-docs/pages/documentation/agents"
-folder_docs_utility: "/artemis-docs/pages/documentation/utility-classes"
+folder_docs: "/artemis/pages/documentation"
+folder_docs_other: "/artemis/pages/documentation/other"
+folder_docs_cosmos: "/artemis/pages/documentation/cosmos"
+folder_docs_library: "/artemis/pages/documentation/python-library"
+folder_docs_agents: "/artemis/pages/documentation/agents"
+folder_docs_utility: "/artemis/pages/documentation/utility-classes"
 
-folder_tutorials: "/artemis-docs/pages/tutorials"
-folder_tutorials_cosmos: "/artemis-docs/pages/tutorials/cosmos"
-folder_tutorials_scripts: "/artemis-docs/pages/tutorials/scripts"
-folder_tutorials_setup: "/artemis-docs/pages/tutorials/setup"
-folder_tutorials_from_scratch: "/artemis-docs/pages/tutorials/setup-from-scratch"
+folder_tutorials: "/artemis/pages/tutorials"
+folder_tutorials_cosmos: "/artemis/pages/tutorials/cosmos"
+folder_tutorials_scripts: "/artemis/pages/tutorials/scripts"
+folder_tutorials_setup: "/artemis/pages/tutorials/setup"
+folder_tutorials_from_scratch: "/artemis/pages/tutorials/setup-from-scratch"
 
 # ===================================== GitHub Folders =====================================
 
 # The github repository URL
-gh_repo: "https://github.com/mtmk-ee/artemis-cubesat-kit"
+gh_repo: "https://github.com/hsfl/artemis"
 
 # The folder agent source files are used in (used in quick description)
-gh_agent_source_folder: "/blob/master/Software/BeagleBone/source/agents"
+gh_agent_source_folder: "/blob/master/software/BeagleBone/beaglebone/source/agents"
 
 # ===================================== Theme Configuration =====================================
 

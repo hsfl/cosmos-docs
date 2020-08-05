@@ -5,11 +5,11 @@ description:
   namespace: "cubesat"
   files:
     - name: "Device.h"
-      url: "blob/master/BeagleBone/include/utility/Device.h"
+      url: "blob/master/software/BeagleBone/beaglebone/include/utility/Device.h"
     - name: "DeviceDetail.h"
-      url: "blob/master/BeagleBone/include/utility/DeviceDetail.h"
+      url: "blob/master/software/BeagleBone/beaglebone/include/utility/DeviceDetail.h"
     - name: "Device.cpp"
-      url: "blob/master/BeagleBone/source/utility/Device.cpp"
+      url: "blob/master/software/BeagleBone/beaglebone/source/utility/Device.cpp"
 
 # Member Table
 functions:

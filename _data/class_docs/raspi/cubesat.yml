@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "cubesatclass.py"
-      url: "blob/master/Software/RaspberryPi/artemis/cubesatclass.py"
+      url: "blob/master/software/RaspberryPi/artemis/cubesatclass.py"
 
 
 # Member Table

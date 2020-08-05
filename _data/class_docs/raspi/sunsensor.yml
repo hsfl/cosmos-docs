@@ -7,7 +7,7 @@ description:
   namespace: "artemis"
   files:
     - name: "sunsensor.py"
-      url: "blob/master/Software/RaspberryPi/artemis/sunsensor.py"
+      url: "blob/master/software/RaspberryPi/artemis/sunsensor.py"
 
 
 # Property Table
