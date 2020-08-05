@@ -1,0 +1,2 @@
+
+<a {% if include.url %} href="{{site.baseurl}}{{include.url}}" {% elsif include.external_url %} href="{{include.external_url}}" target="_blank" rel="noopener" {% endif %}>{{ include.content }}</a>

@@ -1,0 +1,35 @@
+---
+layout: page
+---
+
+{{ content }}
+
+{% assign sections = site.data.faq[page.faq].sections %}
+{% assign element_number = 0 %}
+
+{% for section in sections %}
+
+<h2>{{section.name}}</h2>
+
+<div class="panel panel-default">
+{% for element in section.content %}
+{% capture element_number %}{% increment element_number %}{% endcapture %}
+
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{element_number}}">
+            {{element.question}}
+        </a>
+    </h4>
+</div>
+<div id="collapse{{element_number}}" class="panel-collapse collapse noCrossRef">
+    <div class="panel-body">
+        {{element.answer | markdownify}}
+    </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endfor %}

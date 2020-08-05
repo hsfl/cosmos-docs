@@ -1,0 +1,78 @@
+
+# Quick Description table
+description:
+  class: "SimpleAgent"
+  namespace: "cubesat"
+  files:
+    - name: "SimpleAgent.h"
+      url: "blob/master/BeagleBone/include/utility/SimpleAgent.h"
+    - name: "SimpleAgent.cpp"
+      url: "blob/master/BeagleBone/source/utility/SimpleAgent.cpp"
+
+# Member Table
+functions:
+  - name: "Constructor"
+    declaration: "SimpleAgent(string name, string node = \"cubesat\");"
+    description: >
+     Constructs a new SimpleAgent with the given name, running on the given node.
+     Will throw an exception if another agent has already been created in the same program.
+
+  - name: "GetInstance"
+    declaration: "static SimpleAgent* GetInstance();"
+    description: >
+     Returns the instance of the SimpleAgent, or `nullptr` if no agent was previously created
+
+  - name: "GetComplexAgent"
+    declaration: "Agent* GetComplexAgent();"
+    description: >
+     Returns the regular COSMOS agent
+     
+  - name: "IsRunning"
+    declaration: "bool IsRunning();"
+    description: >
+     Checks if the agent is running
+     
+  - name: "Shutdown"
+    declaration: "void Shutdown();"
+    description: >
+     Shuts down the agent
+     
+  - name: "SetLoopPeriod"
+    declaration: "void SetLoopPeriod(double period);"
+    description: >
+     Sets the interval in seconds between iterations of the main loop 
+     
+  - name: "StartLoop"
+    declaration: "bool StartLoop();"
+    description: >
+     Marks the start of a main loop iteration. Returns `true` if the loop should execute.
+     
+  - name: "DebugPrint"
+    declaration: "void DebugPrint();"
+    description: >
+     Prints a table containing all devices, requests, and posted properties
+     
+  - name: "NewDevice"
+    declaration: template <typename T> T* NewDevice(string name);
+    description: >
+     Creates a new device with the given type `T`, and with the given name.
+     Returns a pointer to the new device. Do not delete this pointer!
+
+  - name: "GetDevice"
+    declaration: template <typename T> T* GetDevice(string name);
+    description: >
+     Retrieves a previously-added device with the given name and type `T`.
+     If the device does not exist, `nullptr` is returned.
+
+  - name: "AddRequest (With Arguments)"
+    declaration: bool AddRequest(string name, ArgumentedRequest callback, string synopsis = \"\", string description = \"\");
+    description: >
+     Adds an argumented request to the agent with the given name and callback, using the given synopsis and
+     detailed description strings. Returns `true` upon success
+
+  - name: "AddRequest (Without Arguments)"
+    declaration: bool AddRequest(string name, NonArgumentedRequest callback, string synopsis = \"\", string description = \"\");
+    description: >
+     Adds a non-argumented request to the agent with the given name and callback, using the given synopsis and
+     detailed description strings. Returns `true` upon success
+

@@ -1,0 +1,35 @@
+
+# Quick Description table
+description:
+  class: "GPIO"
+  namespace: "cubesat"
+  files:
+    - name: "GPIO.h"
+      url: "blob/master/BeagleBone/include/device/GPIO.h"
+    - name: "GPIO.cpp"
+      url: "blob/master/BeagleBone/source/device/GPIO.cpp"
+
+# Member Table
+functions:
+  - name: "Constructor"
+    declaration: "GPIO(const char *key);"
+    description: >
+      Constructs a new GPIO object with the given key (e.g. P9_14).
+
+  - name: "Set Mode"
+    declaration: "GPIOMode SetMode(GPIOMode mode);"
+    description: >
+      Sets the GPIO pin as either input (GPIOMode::Input) or output
+      (GPIOMode::Output). Returns the new mode.
+
+  - name: "Digital Read"
+    declaration: "GPIOValue DigitalRead();"
+    description: >
+      Reads the value of the GPIO pin. Returns either GPIO::Low or
+      GPIO::High.
+
+  - name: "Digital Write"
+    declaration: "GPIOValue DigitalWrite(GPIOValue value);"
+    description: >
+      Sets the value of the GPIO pin to either GPIO::Low or
+      GPIO::High. Returns the actual value written.

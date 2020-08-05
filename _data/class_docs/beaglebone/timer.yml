@@ -1,0 +1,25 @@
+
+# Quick Description table
+description:
+  class: "Timer"
+  namespace: "cubesat"
+  files:
+    - name: "Time.h"
+      url: "blob/master/BeagleBone/include/utility/TimeTools.h"
+
+# Member Table
+functions:
+  - name: "Constructor"
+    declaration: "Timer();"
+    description: >
+      Constructs a new `Timer` object.
+
+  - name: "Start Timer"
+    declaration: "void Start();"
+    description: >
+      Starts the timer. Internally this stores the time this method is called.
+
+  - name: "Get Time"
+    declaration: "double Seconds();"
+    description: >
+      Returns the number of seconds since the timer was started.

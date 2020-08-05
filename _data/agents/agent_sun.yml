@@ -1,0 +1,161 @@
+
+# Quick Description table
+description:
+  program_name: agent_sun
+  agent_name: sun
+  files:
+    - name: "agent_sun.cpp"
+  hardware:
+    - name: "OPT3001 I<sup>2</sup>C Sun Sensor"
+      external_url: "https://www.ti.com/lit/ds/symlink/opt3001.pdf"
+
+# Diagram info
+diagram:
+  file: "agent_sun_diagram.png"
+  width: "600px"
+
+# Request table
+requests:
+  - name: "Sensor Status"
+    usage: "sensor <name>"
+    brief: Returns the status of a given sensor.
+    note: >
+      The argument `name` corresponds to the
+      [name of the sun sensor](#sensor-names).
+
+  - name: "List Sensors"
+    usage: "list"
+    brief: Lists all available sun sensors.
+    note: ""
+
+
+
+# Device table
+cosmos_devices:
+
+  # =================== +X ===================
+  - name: "Sun Sensor (+X)"
+    cosmos_device_name: "ssen"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Illuinance (lux)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The illuminance"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # =================== -X ===================
+  - name: "Sun Sensor (-X)"
+    cosmos_device_name: "ssen"
+    cosmos_device_number: "001"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Illuinance (lux)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The illuminance"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # =================== +Y ===================
+  - name: "Sun Sensor (+Y)"
+    cosmos_device_name: "ssen"
+    cosmos_device_number: "002"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Illuinance (lux)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The illuminance"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # =================== -Y ===================
+  - name: "Sun Sensor (-Y)"
+    cosmos_device_name: "ssen"
+    cosmos_device_number: "003"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Illuinance (lux)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The illuminance"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # =================== +Z ===================
+  - name: "Sun Sensor (+Z)"
+    cosmos_device_name: "ssen"
+    cosmos_device_number: "004"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Illuinance (lux)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The illuminance"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # =================== -Z ===================
+  - name: "Sun Sensor (-Z)"
+    cosmos_device_name: "ssen"
+    cosmos_device_number: "005"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Illuinance (lux)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The illuminance"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+# Node Property table
+# cosmos_node:
+#   - name: "Enabled"
+#     cosmos_name: "enabled"
+#     storage_type: "bool"
+#     description: "`true` if the device is enabled"

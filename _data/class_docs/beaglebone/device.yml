@@ -1,0 +1,33 @@
+
+# Quick Description table
+description:
+  class: "Device"
+  namespace: "cubesat"
+  files:
+    - name: "Device.h"
+      url: "blob/master/BeagleBone/include/utility/Device.h"
+    - name: "DeviceDetail.h"
+      url: "blob/master/BeagleBone/include/utility/DeviceDetail.h"
+    - name: "Device.cpp"
+      url: "blob/master/BeagleBone/source/utility/Device.cpp"
+
+# Member Table
+functions:
+  - name: "Post Property"
+    declaration: "template <typename T> void Post(T property);"
+    description: >
+      Posts the given property, making it viewable externally.
+      This must be one of the properties that is predefined by the device.
+
+  - name: "Set Custom Property"
+    declaration: "template <typename T> void SetCustomProperty(string name, T value);"
+    description: >
+      Stores a custom property with the given name and value.
+      The template parameter `T` corresponds to the storage type.
+
+  - name: "Get Custom Property"
+    declaration: "template <typename T> T& GetCustomProperty(string name);"
+    description: >
+      Retrieves a previously-set custom variable with the given name and type `T`.
+      If the type `T` does not match the one used to set the property,
+      or the property was not previously set, an exception will be thrown.

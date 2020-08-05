@@ -1,0 +1,41 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "GPS"
+  namespace: "artemis"
+  files:
+    - name: "gps.py"
+      url: "blob/master/Software/RaspberryPi/artemis/gps.py"
+
+
+# Property Table
+properties:
+  - name: "Timestamp"
+    declaration: "utc"
+    description: The UTC timestamp of the data, stored as a Modified Julian Date.
+    
+  - name: "Has Fix"
+    declaration: "has_fix"
+    description: "`True` if the GPS has a fix."
+
+  - name: "Latitude"
+    declaration: "latitude"
+    description: The latitude of the cubesat in degrees.
+
+  - name: "Longitude"
+    declaration: "longitude"
+    description: The longitude of the cubesat in degrees
+
+  - name: "Altitude"
+    declaration: "altitude"
+    description: The altitude of the cubesat in meters.
+
+  - name: "Speed"
+    declaration: "speed"
+    description: The speed of the cubesat in m/s.
+
+  - name: "Satellites Used"
+    declaration: "satellites_used"
+    description: The number of satellites used by the GPS.

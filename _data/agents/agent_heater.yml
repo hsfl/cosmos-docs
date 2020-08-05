@@ -1,0 +1,59 @@
+
+# Quick Description table
+description:
+  program_name: agent_heater
+  agent_name: heater
+  files:
+    - name: "agent_heater.cpp"
+  hardware:
+    - name: "Heater"
+    - name: "Power Distribution Unit (PDU)"
+
+# Diagram info
+diagram:
+  file: "agent_heater_diagram.png"
+  width: "700px"
+
+# Request table
+requests:
+  - name: "Heater Control"
+    usage: "state [on | off]"
+    aliases: ["state", "set", "get"]
+    brief: Enables, disables, or displays information for the heater device.
+    note: |
+      The argument is optional:
+      * If `on` is given, the agent will turn on the heater
+      * If `off` is given, the agent will turn off the heater.
+
+      If this argument is not supplied, the status of the heater will be returned.
+
+
+
+# Device table
+cosmos_devices:
+
+  - name: "Heater"
+    cosmos_device_name: "htr"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Enabled"
+        cosmos_name: "enabled"
+        storage_type: "bool"
+        description: "`true` if the device is enabled"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+# Node Property table
+# cosmos_node:
+#   - name: "Enabled"
+#     cosmos_name: "enabled"
+#     storage_type: "bool"
+#     description: "`true` if the device is enabled"

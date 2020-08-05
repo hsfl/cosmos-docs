@@ -1,0 +1,109 @@
+
+{% assign cosmos_devices = site.data.agents[page.agent_name].cosmos_devices %}
+{% assign cosmos_node = site.data.agents[page.agent_name].cosmos_node %}
+
+{% assign use_description = false %}
+
+<script>
+function CopyToClipboard(containerid) {
+    var range = document.createRange();
+    range.selectNode(document.getElementById(containerid));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
+}
+</script>
+
+{% assign button_count = 0 %}
+
+
+<h3>Devices</h3>
+<table width="100%">
+<thead>
+
+<tr>
+<th>Device</th>
+<th>Property</th>
+<th>Storage Type</th>
+<th>COSMOS Name</th>
+{% if use_description == true %} <th>Description</th> {% endif %}
+</tr>
+
+</thead>
+<tbody>
+
+{% for device in cosmos_devices %}
+<tr>
+<!-- Device Type -->
+<td rowspan={{ device.properties | size }} style="vertical-align: middle;"><strong>{{ device.name }}</strong></td>
+<!-- Property Name -->
+<td>{{ device.properties[0].name }}</td>
+<!-- Storage Type -->
+<td>{% for type in device.properties[0].storage_type %} <code>{{ type }}</code> {%unless forloop.last %} or {% endunless %}{% endfor %}</td>
+<!-- COSMOS Name -->
+<td style="text-align:left;">
+    <code id="copytext{{button_count}}">{{ device.properties[0].cosmos_name | prepend: "_" | prepend: device.cosmos_device_name | prepend: "device_" | append: "_" | append: device.cosmos_device_number }}</code>
+    <button class="btn" style="float:right;" onclick="CopyToClipboard('copytext{{button_count}}')"><i class="fa fa-files-o" aria-hidden="true"></i></button>
+</td>
+{% capture button_count %}{% increment button_count %}{% endcapture %}
+<!-- Description -->
+{%if use_description == true %}<td>{{ device.properties[0].description | markdownify | remove: '<p>' | remove: '</p>' }}</td>{% endif %}
+</tr>
+
+
+
+{% for property in device.properties offset:1%}
+<tr>
+<!-- Property Name -->
+<td>{{ property.name }}</td>
+<!-- Storage Type -->
+<td>{% for type in property.storage_type %} <code>{{ type }}</code> {%unless forloop.last %} or {% endunless %}{% endfor %}</td>
+<!-- COSMOS Name -->
+<td style="text-align:left;">
+    <code id="copytext{{button_count}}">{{ property.cosmos_name | prepend: "_" | prepend: device.cosmos_device_name | prepend: "device_" | append: "_" | append: device.cosmos_device_number }}</code>
+    <button class="btn" style="float:right;" onclick="CopyToClipboard('copytext{{button_count}}')"><i class="fa fa-files-o" aria-hidden="true"></i></button>
+</td>
+{% capture button_count %}{% increment button_count %}{% endcapture %}
+<!-- Description -->
+{%if use_description == true %}<td>{{ property.description | markdownif | remove: '<p>' | remove: '</p>' }}</td>{% endif %}
+</tr>
+{% endfor %}
+
+
+
+{% endfor %}
+</tbody>
+</table>
+
+{% if page.cosmos_node %}
+<h3>Node Properties</h3>
+{% if cosmos_node %}
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Storage Type</th>
+<th>COSMOS Name</th>
+{%if use_description == true %}<th>Description</th>{% endif %}
+</tr>
+
+</thead>
+<tbody>
+{% for property in cosmos_node offset:1%}
+<tr>
+    <!-- Property Name -->
+    <td>{{ property.name }}</td>
+    <!-- Storage Type -->
+    <td>{% for type in property.storage_type %} <code>{{ type }}</code> {%unless forloop.last %} or {% endunless %}{% endfor %}</td>
+    <!-- COSMOS Name -->
+    <td><code>{{ property.cosmos_name | prepend: "node_" }}</code></td>
+    <!-- Description -->
+{%if use_description == true %}<td>{{ property.description | markdownif | remove: '<p>' | remove: '</p>' }}</td>{% endif %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+{% endif %}

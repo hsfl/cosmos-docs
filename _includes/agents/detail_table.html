@@ -1,0 +1,62 @@
+
+{% assign description = site.data.agents[page.agent_name].description %}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Program Name</td>
+            <td><code>{{ description.program_name }}</code></td>
+        </tr>
+        <tr>
+            <td>Agent Name</td>
+            <td><code>{{ description.agent_name }}</code></td>
+        </tr>
+        <!-- ============================== Files ============================== -->
+        <tr>
+            <!-- For the first row, set the rowspan to however many hardware elements there are -->
+            <td rowspan={{ description.files | size }} style="vertical-align : middle;">
+                <!-- Check if "File" should be plural -->
+                {%if description.files.size == 1 %} File {% else %} Files{% endif %}
+            </td>
+            <td>
+                <!-- Add the first file -->
+                <a href="{{ site.gh_repo }}{{ site.gh_agent_source_folder }}/{{ description.files[0].name }}" target="_blank"
+                    rel="noopener">
+                    {{ description.files[0].name }}
+                </a>
+            </td>
+        </tr>{% for file in description.files offset:1 %}
+        <!-- Add all subsequent files -->
+        <tr>
+            <td>
+                <a href="{{ site.gh_repo }}{{ site.gh_agent_source_folder }}/{{file.name}}" target="_blank"
+                    rel="noopener">
+                    {{ file.name }}
+                </a>
+            </td>
+        </tr>{% endfor %}
+        <!-- ============================== Hardware ============================== -->
+        <tr>
+            <!-- For the first row, set the rowspan to however many hardware elements there are -->
+            <td rowspan={{ description.hardware | size }} style="vertical-align : middle;">Hardware</td>
+            <td>
+                {% if description.hardware[0].external_url %}<a href="{{description.hardware[0].external_url}}" target="_blank"
+                    rel="noopener">{{ description.hardware[0].name }}</a>{% else %}{{ description.hardware[0].name }}{% endif %}
+            </td>
+        </tr>{% for element in description.hardware offset:1 %}
+        <!-- Add all subsequent hardware elements -->
+        <tr>
+            <td>
+                {% if element.external_url %}<a href="{{element.external_url}}" target="_blank"
+                    rel="noopener">{{ element.name }}</a>{% else %}{{ element.name }}{% endif %}
+            </td>
+        </tr>{% endfor %}
+    </tbody>
+</table>

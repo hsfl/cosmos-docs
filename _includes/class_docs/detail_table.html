@@ -1,0 +1,54 @@
+
+
+
+{% if page.obc == "raspi" %}
+    {% assign description = site.data.class_docs.raspi[page.class_name].description %}
+{% elsif page.obc == "pycubed" %}
+    {% assign description = site.data.class_docs.pycubed[page.class_name].description %}
+{% else %}
+    {% assign description = site.data.class_docs.beaglebone[page.class_name].description %}
+{% endif %}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Class</td>
+            <td><code>{{ description.class }}</code></td>
+        </tr>
+        <tr>
+            <td>Namespace</td>
+            <td><code>{{ description.namespace }}</code></td>
+        </tr>
+        <!-- ============================== Files ============================== -->
+        <tr>
+            <!-- For the first row, set the rowspan to however many hardware elements there are -->
+            <td rowspan={{ description.files | size }} style="vertical-align : middle;">
+                <!-- Check if "File" should be plural -->
+                {%if description.files.size == 1 %} File {% else %} Files{% endif %}
+            </td>
+            <td>
+                <!-- Add the first file -->
+                <a href="{{ site.gh_repo }}/{{ description.files[0].url }}" target="_blank"
+                    rel="noopener">
+                    {{ description.files[0].name }}
+                </a>
+            </td>
+        </tr>{% for file in description.files offset:1 %}
+        <!-- Add all subsequent files -->
+        <tr>
+            <td>
+                <a href="{{ site.gh_repo }}/{{file.url}}" target="_blank"
+                    rel="noopener">
+                    {{ file.name }}
+                </a>
+            </td>
+        </tr>{% endfor %}
+    </tbody>
+</table>

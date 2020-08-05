@@ -1,0 +1,22 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: Project Website
+      external_url: http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/
+    - title: GitHub
+      external_url: https://github.com/mtmk-ee/artemis-cubesat-kit
+    - title: Submit an Issue
+      external_url: https://github.com/mtmk-ee/artemis-cubesat-kit/issues
+
+#Topnav dropdowns
+# topnav_dropdowns:
+# - title: GitHub
+#   folders:
+#     - title: GitHub
+#       folderitems:
+#         - title: Repository
+#           external_url: https://github.com/mtmk-ee/artemis-cubesat-kit
+#         - title: Submit an Issue
+#           external_url: https://github.com/mtmk-ee/artemis-cubesat-kit/issues

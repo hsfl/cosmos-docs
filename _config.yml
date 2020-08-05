@@ -1,0 +1,193 @@
+
+# ====================== Site Settings ======================
+
+# Site title
+title: Artemis CubeSat Kit
+
+# Email address to display
+#email: your-email@example.com
+
+# Site description, used by search engines
+description: "A low-cost cubesat kit for education. Created by Hawaii Space Flight Laboratory"
+
+# The subpath of the website on the domain
+baseurl: "/artemis-docs" # the subpath of your site, e.g. /blog
+
+# The hostname & protocol of the site
+url: "https://mtmk-ee.github.io"
+
+# The external project website
+project_website: "http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/"
+
+#twitter_username: jekyllrb
+#github_username: mtmk-ee
+
+# Plugins
+# plugins:
+#   - jekyll-
+    
+# ===================================== Internal Paths =====================================
+agent_diagram_folder: "/resources/diagrams/agents"
+
+folder_resources: "/artemis-docs/resources"
+folder_diagrams: "/artemis-docs/resources/diagrams"
+
+
+folder_docs: "/artemis-docs/pages/documentation"
+folder_docs_other: "/artemis-docs/pages/documentation/other"
+folder_docs_cosmos: "/artemis-docs/pages/documentation/cosmos"
+folder_docs_library: "/artemis-docs/pages/documentation/python-library"
+folder_docs_agents: "/artemis-docs/pages/documentation/agents"
+folder_docs_utility: "/artemis-docs/pages/documentation/utility-classes"
+
+folder_tutorials: "/artemis-docs/pages/tutorials"
+folder_tutorials_cosmos: "/artemis-docs/pages/tutorials/cosmos"
+folder_tutorials_scripts: "/artemis-docs/pages/tutorials/scripts"
+folder_tutorials_setup: "/artemis-docs/pages/tutorials/setup"
+folder_tutorials_from_scratch: "/artemis-docs/pages/tutorials/setup-from-scratch"
+
+# ===================================== GitHub Folders =====================================
+
+# The github repository URL
+gh_repo: "https://github.com/mtmk-ee/artemis-cubesat-kit"
+
+# The folder agent source files are used in (used in quick description)
+gh_agent_source_folder: "/blob/master/Software/BeagleBone/source/agents"
+
+# ===================================== Theme Configuration =====================================
+
+# # Footer "Edit this page on GitHub" link text
+# gh_edit_link: true # show or hide edit this page link
+# gh_edit_link_text: "Edit this page on GitHub."
+# gh_edit_repository: "https://github.com/mtmk-ee/artemis-docs" # the github URL for your repo
+# gh_edit_branch: "master/docs" # the branch that your docs is served from
+# gh_edit_view_mode: "edit" # "tree" or "edit" if you want the user to jump into the editor immediately
+
+
+# Color scheme supports "light" (default) and "dark"
+color_scheme: light
+
+# Determines whether the output should be for web or PDF. Accepts "web" and/or "pdf"
+output: web
+
+# This appears on the top navigation bar next to the home button
+topnav_title: "Artemis Cubesat Kit"
+
+# This appears in the html browser tab for the site title (seen mostly by search engines, not users)
+site_title: "Artemis Cubesat Kit"
+
+# This appears in the footer
+company_name: "Hawaii Space Flight Laboratory"
+
+
+# If you're using Github, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
+github_editme_path:
+
+# If you're using GitLab, provide the basepath to the branch you've created for reviews, following the sample here. if not, leave this value blank.
+# gitlab_editme_path: tomjoht/documentation-theme-jekyll/blob/gh-pages/
+
+# If you have google-analytics ID, put it in. if not, edit this value to blank.
+google_analytics:
+
+# The preview server used. Leave as is.
+host: 127.0.0.1
+
+# The port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
+port: 4000
+
+
+# These are the files and directories that jekyll will exclude from the build
+exclude:
+  - .idea/
+  - .gitignore
+  - vendor
+
+
+
+# ====================== Feedback ======================
+
+# Default subject line for feedback
+feedback_subject_line: 
+
+# Used as a contact email for the Feedback link in the top navigation bar
+feedback_email:
+
+# If you uncomment the next line, the Feedback link gets removed
+feedback_disable: true
+
+# If you uncomment the next line, it changes the Feedback text
+# feedback_text: "Need help?"
+
+# if you uncomment the next line, it changes where the feedback link points to
+# feedback_link: "http://helpy.io/"
+
+# ====================== Markdown / Syntax Highlighting ======================
+
+highlighter: rouge
+# library used for syntax highlighting
+
+markdown: GFM
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    block:
+      line_numbers: true
+      start_line: 1
+
+# filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
+
+collections:
+  tooltips:
+    output: false
+# collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
+
+
+# ====================== Default Styles ======================
+# These are defaults used for the frontmatter for these file types
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: false # Change to false if you don't want to use Commento.io
+      
+      search: true
+      sidebar: home_sidebar
+      topnav: topnav
+
+  - # Agent layout defaults
+    scope:
+      path: "pages/documentation/agents"
+      type: "pages"
+    values:
+      layout: "agent"
+      comments: false # Change to false if you don't want to use Commento.io
+      search: true
+      sidebar: home_sidebar
+      topnav: topnav
+
+
+# ====================== Sidebars ======================
+sidebars:
+- home_sidebar
+- mydoc_sidebar
+- product1_sidebar
+- product2_sidebar
+- other
+
+
+# ====================== feed.xml File ======================
+description: "A low-cost cubesat kit for educational purposes, created by Hawaii Space Flight Laboratory"
+# the description is used in the feed.xml file
+
+# needed for sitemap.xml file only
+# url: http://idratherbewriting.com
+# baseurl: /documentation-theme-jekyll
+
+github: [metadata]

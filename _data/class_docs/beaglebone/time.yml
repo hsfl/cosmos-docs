@@ -1,0 +1,56 @@
+
+# Quick Description table
+description:
+  class: "Time"
+  namespace: "cubesat"
+  files:
+    - name: "Time.h"
+      url: "blob/master/BeagleBone/include/utility/TimeTools.h"
+
+# Member Table
+functions:
+  - name: "Constructor"
+    declaration: "Time();"
+    description: >
+      Constructs a new `Time` object representing the current time.
+
+  - name: "Get Current Time"
+    declaration: "static Time Now();"
+    description: >
+      Constructs a new `Time` object representing the current time.
+
+  - name: "Get Year, Month, and Day"
+    declaration: "void GetYMD(int &year, int &month, double &day);"
+    description: >
+      Converts the `Time` to a year, month, and fractional day.
+     
+  - name: "Format Time"
+    declaration: "string ToString();"
+    description: >
+      Converts the `Time` to an ISO 8601 formatted string representation.
+     
+  - name: "Get Modified Julian Day"
+    declaration: "double GetModifiedJulianDay();"
+    description: >
+      Returns the UTC time as a Modified Julian Day number.
+     
+  - name: "Get Unix Seconds"
+    declaration: "double Seconds();"
+    description: >
+      Returns the number of Unix seconds represented by this time.
+
+  - name: "Get Unix Minutes"
+    declaration: "double Seconds();"
+    description: >
+      Returns the number of Unix minutes represented by this time.
+
+  - name: "Get Unix Hours"
+    declaration: "double Hours();"
+    description: >
+      Returns the number of Unix hours represented by this time.
+
+  - name: "Get Unix Days"
+    declaration: "double Days();"
+    description: >
+      Returns the number of Unix days represented by this time.
+     

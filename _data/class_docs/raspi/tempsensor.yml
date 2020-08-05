@@ -1,0 +1,25 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "TempSensor"
+  namespace: "artemis"
+  files:
+    - name: "tempsensor.py"
+      url: "blob/master/Software/RaspberryPi/artemis/tempsensor.py"
+
+
+# Property Table
+properties:
+  - name: "Timestamp"
+    declaration: "utc"
+    description: The UTC timestamp of the data, stored as a Modified Julian Date.
+
+  - name: "Sensor Name"
+    declaration: "name"
+    description: "The abbreviated sensor name."
+
+  - name: "Temperature"
+    declaration: "temp"
+    description: "The temperature reading of the sensor in Kelvin."

@@ -1,0 +1,34 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "BeagleBone"
+  namespace: "artemis"
+  files:
+    - name: "beaglebone.py"
+      url: "blob/master/Software/RaspberryPi/artemis/beaglebone.py"
+
+
+# Member Table
+functions:
+  - name: "Copy File to BeagleBone"
+    declaration: "def copy_to(source_file, destination_file = None)"
+    description: >
+      Copies `source_file` from the Raspberry Pi to `destination_file` on the BeagleBone.
+      If the destination file is `None`, then it will be placed into the incoming
+      folder on the BeagleBone, and the file name will be the same as the source file.
+
+  - name: "Copy File From BeagleBone"
+    declaration: "def copy_from(source_file, destination_file)"
+    description: Copies `source_file` on the BeagleBone to `destination_file` on the Raspberry Pi.
+
+  - name: "Transmit File"
+    declaration: "def transmit_file(source_file, outgoing_file_name=None)"
+    description: >
+      Marks the file `source_file` for transmission, renaming it to `outgoing_file_name`.
+      If `None` is provided for the second argument, then the file name is unchanged.
+
+  - name: "System Command"
+    declaration: "def system(sys_call)"
+    description: Runs a shell command on the BeagleBone and returns the output string.

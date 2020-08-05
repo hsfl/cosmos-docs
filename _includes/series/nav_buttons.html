@@ -1,0 +1,38 @@
+<div style="float: left;">
+{% if page.series.prev %}
+<a href="{{site.baseurl}}{{page.series.prev}}">
+    <button type="button" class="btn btn-primary">
+        Previous
+    </button>
+</a>
+{% else %}
+<button type="button" class="btn btn-primary" disabled >
+    Previous
+</button>
+{% endif %}
+</div>
+<div style="float:right;">
+{% if page.series.next %}
+<a href="{{site.baseurl}}{{page.series.next}}">
+    <button type="button" class="btn btn-primary">
+        Next
+    </button>
+</a>
+{% else %}
+<button type="button" class="btn btn-primary" disabled>
+    Next
+</button>
+{% endif %}
+</div>
+{% if page.series.language and include.bottom != true %}
+<div style="margin: 0 auto; width: fit-content;"><strong>Language: </strong>
+{% for language in page.series.language %}{{language}}{% unless forloop.last %}, {% endunless %}{% endfor %}
+</div>
+{% else %}
+<div style="margin: 0 auto; width: fit-content;">
+    &nbsp;
+</div>
+{% endif %}
+{% if include.bottom %}
+<br><br>
+{% endif %}

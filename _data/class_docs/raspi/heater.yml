@@ -1,0 +1,30 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "Heater"
+  namespace: "artemis"
+  files:
+    - name: "heater.py"
+      url: "blob/master/Software/RaspberryPi/artemis/heater.py"
+
+
+functions:
+  - name: "Enable Heater"
+    declaration: "def enable(self)"
+    description: Sends a request to `agent_heater` to enable the heater.
+
+  - name: "Disable Heater"
+    declaration: "def disable(self)"
+    description: Sends a request to `agent_heater` to disable the heater.
+
+# Property Table
+properties:
+  - name: "Timestamp"
+    declaration: "utc"
+    description: The UTC timestamp of the data, stored as a Modified Julian Date.
+
+  - name: "Get Heater State"
+    declaration: "enabled"
+    description: "`True` if the heater is enabled."

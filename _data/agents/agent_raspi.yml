@@ -1,0 +1,121 @@
+
+# Quick Description table
+description:
+  program_name: agent_raspi
+  agent_name: raspi
+  files:
+    - name: "agent_raspi.cpp"
+  hardware:
+    - name: "Raspberry Pi Zero"
+      external_url: "https://www.raspberrypi.org/products/raspberry-pi-zero/"
+
+# Diagram info
+diagram:
+  file: "agent_raspi_diagram.png"
+  width: "700px"
+
+# Requests
+requests:
+  - name: "Secure Shell Commanding"
+    usage: "ssh <command>"
+    aliases: "command"
+    brief: Executes a command on the Raspberry Pi through a SSH connection.
+    note: The argument `command` is a shell command to run on the Raspberry Pi.
+
+  - name: "Check Connection"
+    usage: "ping"
+    aliases: "is_up"
+    brief: Checks if the Raspberry Pi can be reached.
+    note: |
+      Internally this uses the Linux `ping` command to check if the Raspberry Pi is detected on the local network.
+
+      If the Raspberry Pi can be reached, the request will return `"UP`". Otherwise, the request will return `"DOWN"`.
+
+  - name: "Shut Down Raspberry Pi"
+    usage: "shutdown_raspi"
+    aliases: "end"
+    brief: Attempts to shut down the Raspberry Pi
+    note: |
+      Internally this executes `sudo shutdown now` on the Raspberry Pi.
+
+      > **_Note:_** the request name `shutdown` is not used, as this is reserved by COSMOS for a different purpose.
+
+  - name: "Get Agent Data"
+    usage: "get_data"
+    aliases: "agent_data"
+    brief: Returns agent information as a JSON-formatted string.
+    note: This request is primarily used by the Artemis CubeSat Library on the Raspberry Pi to fetch data.
+
+# Device table
+cosmos_devices:
+    # ================= CPU =================
+  - name: "CPU"
+    cosmos_device_name: "cpu"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature of the payload board"
+
+      - name: "Load"
+        cosmos_name: "load"
+        storage_type: "float"
+        description: "The CPU load"
+
+      - name: "Memory Used (GiB)"
+        cosmos_name: "gib"
+        storage_type: "float"
+        description: "The memory currently used"
+
+      - name: "Maximum Memory (GiB)"
+        cosmos_name: "maxgib"
+        storage_type: "float"
+        description: "The maximum memory available"
+
+      - name: "Up Time (s)"
+        cosmos_name: "uptime"
+        storage_type: "int"
+        description: "The time since the Raspberry Pi was last booted"
+
+      - name: "Boot Count"
+        cosmos_name: "boot_count"
+        storage_type: "int"
+        description: "The number of times the Raspberry Pi has been booted"
+
+    # ================= Camera =================
+  - name: "Camera"
+    cosmos_device_name: "cam"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+
+      - name: "Enabled"
+        cosmos_name: "enabled"
+        storage_type: "bool"
+        description: "`true` if the device is enabled"
+
+      - name: "Image Width (Pixels)"
+        cosmos_name: "pwidth"
+        storage_type: "int"
+        description: "The image width in pixels"
+
+      - name: "Image Height (Pixels)"
+        cosmos_name: "pheight"
+        storage_type: "int"
+        description: "The image height in pixels"
+
+# Node Property table
+# cosmos_node:
+#   - name: "Enabled"
+#     cosmos_name: "enabled"
+#     storage_type: "bool"
+#     description: "`true` if the device is enabled"
