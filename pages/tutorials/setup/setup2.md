@@ -65,7 +65,7 @@ This notation is used to indicate the input to a terminal." %}
 ### 2.1 Add the Box
 
 Download the Artemis box from
-[here]().
+[here](https://drive.google.com/file/d/1DE3rlG3X5IrTut54pok7zP7xZzsjPFm_/view?usp=sharing).
 From a command prompt or terminal window, enter the following command
 using the path you downloaded the Vagrant box to. An example location on Windows is
 `C:\Users\YOUR_USERNAME\Documents\Vagrant\artemis`.
