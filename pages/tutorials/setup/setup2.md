@@ -37,41 +37,53 @@ The supported operating systems are essentially those that VirtualBox and Vagran
 * Linux
 
 
-
 ## 1. Install Dependencies
 
 ### 1.1 VirtualBox
-VirtualBox is used to run the virtual machine used as the development environment. Get it [here](https://www.virtualbox.org/wiki/Downloads).
+VirtualBox is used to run the virtual machine used as the development environment. Get it [here](https://www.virtualbox.org/wiki/Downloads). The install wizard will help you.
 
 
 ### 1.2 Install Vagrant
 
-Vagrant is used to set up the virtual machine used as the development environment. Get it [here](https://www.vagrantup.com/downloads).
+Vagrant is used to set up the virtual machine used as the development environment. Get it [here](https://www.vagrantup.com/downloads). The install wizard will help you.
 
 ### 1.3 Install the Guest Additions Plugin
 
-The Vagrant guest additions plugin automatically installs VirtualBox guest additions into the virtual machine. Install it
-by opening up a command prompt (Windows) or a terminal (Linux/Mac) and running the following:
+The Vagrant guest additions plugin automatically installs VirtualBox guest additions into the virtual machine. 
+Install it by opening up a command prompt (Windows) or a terminal (Linux/Mac) and running the following:
 
 ```bash
 $ vagrant plugin install vagrant-vbguest
 ```
+
+{% include image.html file="/resources/tutorials/setup/part2/cmd.png" width="100%" %}
 
 {% include important.html content="Do not copy the `$` character or the following space when entering commands.
 This notation is used to indicate the input to a terminal." %}
 
 ## 2. Set up the Artemis Box
 
+Some of the commands you will need:
+- __cd__: changes directories. Use the command `cd {insert folder name here}` to move in to that folder. The command `cd ..` moves up one folder.
+- __dir__: shows what is in the current directory. Use this to check what folders/files are in your current directory to ensure everything is done properly.
+
 ### 2.1 Add the Box
 
+
 Download the Artemis box from
-[here](https://drive.google.com/file/d/1DE3rlG3X5IrTut54pok7zP7xZzsjPFm_/view?usp=sharing).
-From a command prompt or terminal window, enter the following command
-using the path you downloaded the Vagrant box to. An example location on Windows is
-`C:\Users\YOUR_USERNAME\Documents\Vagrant\artemis`.
+[here](https://drive.google.com/file/d/1DE3rlG3X5IrTut54pok7zP7xZzsjPFm_/view?usp=sharing). An example location of the file on Windows is
+`C:\Users\YOUR_USERNAME\Documents\Vagrant\artemis`. 
+
+
+
+{% include important.html content="You must be in the correct folder for the commands to work. The file may be in your Downloads folder if the download does not prompt a window for a save location. Below is an example Command window in the correct folder after the file has been moved to another location." %} {% include image.html file="/resources/tutorials/setup/part2/command_line2.png" width="100%" %}
+
+
+
+Once in the Command prompt is in the correct folder, Run the following commands.
 
 ```bash
-$ cd PATH/TO/VAGRANT/BOX
+$ cd "PATH/TO/VAGRANT/BOX"
 $ vagrant box add artemis artemis.box
 ```
 
@@ -79,7 +91,13 @@ You can now delete the `artemis.box` file you downloaded if you wish.
 
 ### 2.2 Create the Virtual Machine
 
-Enter the following commands, replacing `PATH/TO/VM` with the folder you chose.
+
+
+{% include note.html content="The previous command will create a new disk image, located in a different folder. Use the filepath and the contents in the folder below as a guide (your files may be in a folder called `.vagrant.d`). For the next command to work, you must be in the correct folder in your Command window. " %} {% include image.html file="/resources/tutorials/setup/part2/folder_location.png" width="100%" %}
+
+
+
+Enter the following commands, replacing `PATH/TO/VM` with the correct folder.
 
 ```bash
 $ cd PATH/TO/VM
@@ -100,10 +118,19 @@ Next run the command:
 $ vagrant up
 ```
 
-After a minute or so you should see the virtual machine boot. The default password is `vagrant`.
+After a minute or so should see the virtual machine boot. Login with the password below:
+
+    username: vagrant
+    password: vagrant
+
+
+
+{% include image.html file="/resources/tutorials/setup/part2/vagrant_login.png" width="100%" %}
+
+
 
 Open a terminal inside the virtual machine (<kbd>Control</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> or the
-black box icon on the dock) and enter the following command:
+black box icon on the left-hand dock) and enter the following command:
 
 ```bash
 $ sudo apt install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
@@ -124,8 +151,12 @@ $ vagrant up
 In the future you should be able to start the virtual machine directly from the VirtualBox GUI, or you can continue
 running `vagrant up` in the virtual machine folder.
 
+
+{% include image.html file="/resources/tutorials/setup/part2/virtual_box.png" width="100%" %}
+
+
 ### 2.5 Enable Useful Features
-Once you have logged into the `vagrant` user again (default password is `vagrant), you can enable some useful tools:
+Once you have logged into the `vagrant` user again (default password is `vagrant`), you can enable some useful tools:
 
 #### Automatic Display Resizing
 

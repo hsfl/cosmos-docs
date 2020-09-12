@@ -86,6 +86,9 @@ vagrant up
 
 After a minute or so you should see the virtual machine boot. The default password is `vagrant`.
 
+    username: vagrant
+    password: vagrant
+
 In the future you should be able to start the virtual machine directly from the VirtualBox GUI.
 
 ## 3. Update Software
