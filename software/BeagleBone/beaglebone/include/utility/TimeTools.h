@@ -69,6 +69,24 @@ namespace cubesat {
 			return ToString();
 		}
 		
+		inline bool operator ==(const Time &other) const {
+			return utc_mjd == other.utc_mjd;
+		}
+		
+		inline bool operator >(const Time &other) const {
+			return utc_mjd > other.utc_mjd;
+		}
+		inline bool operator >=(const Time &other) const {
+			return utc_mjd >= other.utc_mjd;
+		}
+		
+		inline bool operator <(const Time &other) const {
+			return utc_mjd < other.utc_mjd;
+		}
+		inline bool operator <=(const Time &other) const {
+			return utc_mjd <= other.utc_mjd;
+		}
+		
 	private:
 		double utc_mjd;
 	};

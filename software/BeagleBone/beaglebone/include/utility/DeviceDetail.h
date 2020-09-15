@@ -8,6 +8,8 @@
 #include "support/jsonclass.h"
 #include "utility/Types.h"
 
+#include "utility/StringTools.h"
+
 
 //! Use this to add support for a new property
 #define _RegisterProperty(simple_name_, device_struc, member)\
@@ -44,9 +46,11 @@ namespace cubesat {
 	template <typename device_struc, size_t offset>
 	struct PropertyMeta {};
 	
-	template <typename device_struc, size_t offset>
+	template <typename device_struc, size_t offset_>
 	struct Property {
 	public:
+		//! The offset in bytes of the property variable to the beginning of the device_struc
+		static constexpr size_t offset = offset_;
 		//! The PropertyMeta type for this property
 		using MetaData = PropertyMeta<device_struc, offset>;
 		//! The actual member type used in the device_struc declaration
@@ -316,7 +320,30 @@ namespace cubesat {
 	
 	const char* GetDeviceTypeString(DeviceType type);
 	
-
+	
+	
+	
+	
+	
+	class SerializedProperty {
+	public:
+		SerializedProperty(const std::string &value) : value(value) {}
+		
+		template <typename T>
+		T Get() const {
+			return FromString<T>(value);
+		}
+		
+		template <typename T>
+		inline explicit operator T() const {
+			return Get<T>();
+		}
+		
+	private:
+		std::string value;
+	};
+	
+	
 }
 
 #endif

@@ -61,7 +61,7 @@ void UpdatePyCubed();
 void Shutdown();
 
 string Request_IsUp();
-string Request_SendMessage(vector<string> args);
+string Request_SendMessage(string message);
 string Request_GetIMUData();
 string Request_GetGPSData();
 string Request_GetPowerData();
@@ -179,6 +179,8 @@ void InitPyCubed() {
 	battery->Post(battery->percentage = 100);
 	battery->Post(battery->voltage = 0);
 	battery->Post(battery->current = 0);
+	battery->AddRequest("charge", +[](Battery *battery) -> float { return battery->charge; }, "Returns the battery charge");
+	
 	
 	// Add the IMU
 	imu = agent->NewDevice<IMU>("imu");

@@ -1,11 +1,9 @@
-/*
- * agent_switch.cpp
- * 
- * Agent which handles switching of power lines
- */ 
 
 #include "utility/SimpleAgent.h"
-#include "device/switch.h"
+#include "device/GPIO.h"
+//#include "device/switch.h"
+
+#include "rapidjson/document.h"
 
 #include <iostream>
 #include <fstream>
@@ -16,85 +14,139 @@
 
 using namespace std;
 using namespace cubesat;
+using namespace rapidjson;
 
-// The agent object which allows for communication with COSMOS
-SimpleAgent *agent;
-Switch *switches[SWITCH_COUNT];
-PDUSwitch *handlers[SWITCH_COUNT];
 
-// =========== Function Prototypes ===========
-
-/**
- * @brief Sets up the agent. Prints a message and exits with code 1 if an error occurs during setup.
- */
-void InitAgent();
-/**
- * @brief Initializes a PDU switch
- * @param device The switch device
- */
-void InitSwitch(int switch_id);
-/**
- * @brief UpdateSwitch Updates a switch
- * @param device The switch device
- */
-void UpdateSwitch(int switch_id);
-
+// |----------------------------------------------|
+// |                  Prototypes                  |
+// |----------------------------------------------|
 
 /**
- * @brief Attempts to set the state of a switch (on/off)
- * @param switch_id The switch ID number. See the file device/switched_devices.h for more info
- * @param enabled True for on, false for off
+ * @brief (Device Request) Enables a switch
+ * @param sw The switch device
  */
-void SetSwitchState(int switch_id, bool enabled);
+void Request_Switch_On(Switch *sw);
 
+/**
+ * @brief (Device Request) Disables a switch
+ * @param sw The switch device
+ */
+void Request_Switch_Off(Switch *sw);
 
-// Request callbacks
+/**
+ * @brief (Device Request) Returns the state of a switch
+ * @param sw The switch device
+ */
+string Request_Switch_State(Switch *sw);
 
-string Request_Switch(vector<string> args);
+/**
+ * @brief (Agent Request) Returns a JSON-formatted list of switches
+ * @return The list as a JSON-formatted string
+ */
 string Request_List();
-// ===========================================
 
 
+// |----------------------------------------------|
+// |                   Variables                  |
+// |----------------------------------------------|
+
+//! The agent
+SimpleAgent *agent;
+
+//! Holds the parsed switch configuration
+Document switch_config;
+
+//! A map of switch names to Switch devices
+std::unordered_map<std::string, Switch*> switches;
 
 
+// Include the switch configuration
+const char *switch_config_json =
+#include "config/switches.json"
+;
 
+// |----------------------------------------------|
+// |                 Main Function                |
+// |----------------------------------------------|
 
 int main(int argc, char** argv) {
 	
+	
+	
+	
+	// Create the agent
 	agent = new SimpleAgent(CUBESAT_AGENT_SWITCH_NAME);
 	agent->SetLoopPeriod(SLEEP_TIME);
-	
-	switches[0] = agent->NewDevice<Switch>(SWITCH_HEATER_NAME);
-	switches[1] = agent->NewDevice<Switch>(SWITCH_TEMPSENSOR_NAME);
-	switches[2] = agent->NewDevice<Switch>(SWITCH_SUNSENSOR_NAME);
-	
-	for (int i = 0; i < SWITCH_COUNT; ++i) {
-		switches[i]->Post(switches[i]->utc = Time::Now());
-		switches[i]->Post(switches[i]->voltage = 0);
-		switches[i]->Post(switches[i]->enabled = false);
-		switches[i]->SetCustomProperty<int>("index", i);
-	}
-	
-	agent->Finalize();
-	
-	agent->AddRequest({"switch", "state", "set", "get"}, Request_Switch, "Gets or sets the status of a switch", "Usage: switch switch_name [on | off]");
 	agent->AddRequest("list", Request_List, "Lists available switches");
 	
+	
+	// Parse the switch configuration
+	switch_config.Parse(switch_config_json);
+	assert(switch_config.IsArray());
+	
+	
+	Switch *sw;
+	GPIO *gpio;
+	string switch_name, switch_pin;
+	bool default_state;
+	
+	// Loop over the JSON array of switch configurations
+	for (auto &switch_obj : switch_config.GetArray()) {
+		
+		// Grab the switch configuration
+		switch_name = switch_obj["name"].GetString();
+		switch_pin = switch_obj["pin"].GetString();
+		default_state = switch_obj["default_state"].GetBool();
+		
+		// Create the GPIO handler for the switch
+		gpio = new GPIO(switch_pin.c_str());
+		gpio->SetMode(GPIOMode::Output);
+		gpio->DigitalWrite(default_state ? GPIOValue::High : GPIOValue::Low);
+		
+		// Create the switch device
+		sw = agent->NewDevice<Switch>(switch_name);
+		
+		// Store the switch configuration
+		sw->SetCustomProperty<std::string>("pin", switch_pin);
+		sw->SetCustomProperty<GPIO*>("handler", gpio);
+		
+		// Post some properties
+		sw->Post(sw->utc = Time::Now());
+		sw->Post(sw->voltage = default_state ? 3.3 : 0.0);
+		sw->Post(sw->enabled = false);
+		
+		// Add device requests
+		sw->AddRequest("on", Request_Switch_On, "Turns on the switch");
+		sw->AddRequest("off", Request_Switch_Off, "Turns off the switch");
+		sw->AddRequest("state", Request_Switch_State, "Returns the state of the switch");
+		
+		// Store the switch device by name
+		switches[switch_name] = sw;
+	}
+	
+	
+	// Finish up the initialization
+	agent->Finalize();
 	agent->DebugPrint();
-	
-	
-	
-	// Initialize the switches
-	for (int i = 0; i < SWITCH_COUNT; ++i)
-		InitSwitch(i);
 	
 	// Run the main loop for this agent
 	while ( agent->StartLoop() ) {
 		
-		for (int i = 0; i < SWITCH_COUNT; ++i)
-		UpdateSwitch(i);
+		
+		// Update switch info
+		for (auto pair : switches) {
+			gpio = pair.second->GetCustomProperty<GPIO*>("handler");
+			
+			pair.second->utc = Time::Now();
+			pair.second->enabled = gpio->DigitalRead() == GPIOValue::High;
+			pair.second->voltage = pair.second->enabled ? 3.3 : 0;
+		}
 	}
 	
+	
+	// Delete GPIO handlers
+	for (auto pair : switches)
+		delete pair.second->GetCustomProperty<GPIO*>("handler");
 	
 	delete agent;
 	
@@ -103,114 +155,45 @@ int main(int argc, char** argv) {
 }
 
 
-void UpdateSwitch(int index) {
-	PDUSwitch *pdu_switch = handlers[index];
-	bool enabled = (pdu_switch->GetState() == SwitchState::On);
-	
-	switches[index]->utc = Time::Now();
-	switches[index]->enabled = enabled;
-	switches[index]->voltage = enabled ? 3.3 : 0;
+
+// |----------------------------------------------|
+// |                   Requests                   |
+// |----------------------------------------------|
+
+void Request_Switch_On(Switch *sw) {
+	GPIO *gpio = sw->GetCustomProperty<GPIO*>("handler");
+	gpio->DigitalWrite(GPIOValue::High);
+	sw->utc = Time::Now();
+	sw->enabled = true;
+	sw->voltage = 3.3;
 }
 
-void InitSwitch(int index) {
-	
-	PDUSwitch *pdu_switch = new PDUSwitch(PDUSwitch::GetSwitchName((SwitchID)index));
-	if ( !pdu_switch->IsValid() )
-		printf("Failed to add switch '%s'\n", switches[index]->GetName().c_str());
-	else
-		printf("Added switch '%s'\n", switches[index]->GetName().c_str());
-	
-	switches[index]->SetCustomProperty<PDUSwitch*>("handler", pdu_switch);
+void Request_Switch_Off(Switch *sw) {
+	GPIO *gpio = sw->GetCustomProperty<GPIO*>("handler");
+	gpio->DigitalWrite(GPIOValue::Low);
+	sw->utc = Time::Now();
+	sw->enabled = false;
+	sw->voltage = 0;
 }
 
-void SetSwitchState(int index, bool enabled) {
-	
-	PDUSwitch *pdu_switch = handlers[index];
-	
-	// Turn the switch on or off
-	bool old_state = pdu_switch->GetState() == SwitchState::On;
-	bool new_state = pdu_switch->SetState(enabled ? SwitchState::On : SwitchState::Off) == SwitchState::On;
-	
-	if ( new_state != enabled )
-		printf("Failed to set switch '%s' to '%s'\n",
-			   switches[index]->GetName().c_str(), enabled ? "ON" : "OFF");
-	else if ( new_state != old_state )
-		printf("Set switch '%s' to '%s'\n",
-			   switches[index]->GetName().c_str(), enabled ? "ON" : "OFF");
-	
-	// Update switch state
-	switches[index]->utc = Time::Now();
-	switches[index]->enabled = new_state;
-	switches[index]->voltage = (new_state ? 3.3 : 0);
-}
-
-string Request_Switch(vector<string> args) {
-	
-	bool change_state = false;
-	bool state = true;
-	
-	if ( args.size() == 1 );
-	else if ( args.size() == 2 ) {
-		change_state = true;
-		args[1] = ToLowercase(args[1]);
-		
-		if ( args[1] == "on" || args[1] == "yes" )
-			state = true;
-		else if ( args[1] == "off" || args[1] == "no" )
-			state = false;
-		else
-			return "Usage: switch switch_name [on | off]";
-	}
-	else
-		return "Usage: switch switch_name [on | off]";
-	
-	// Check if all switches should be set
-	if ( args[0] == "all" ) {
-		for (int i = 0; i < SWITCH_COUNT; ++i)
-			SetSwitchState(i, state);
-		
-		return "OK";
-	}
-	
-	Switch *device;
-	if ( (device = agent->GetDevice<Switch>(args[0])) == nullptr )
-		return "No matching switch";
-	
-	int index = device->GetCustomProperty<int>("index");
-	
-	if ( change_state ) {
-		SetSwitchState(index, state);
-		return "OK";
-	}
-	else {
-		PDUSwitch *pdu_switch = handlers[index];
-		
-		stringstream ss;
-		ss <<	"{";
-		ss <<		"\"enabled\": " << (device->enabled ? "true" : "false") << ", ";
-		ss <<		"\"gpio_pin_key\": \"" << pdu_switch->GetPinKey() << "\", ";
-		ss <<		"\"gpio_pin_number\": " << pdu_switch->GetPinNumber();
-		ss <<	"}";
-		
-		return ss.str();
-	}
+string Request_Switch_State(Switch *sw) {
+	return sw->enabled ? "on" : "off";
 }
 
 string Request_List() {
 	stringstream ss;
+	GPIO *handler;
 	
-	auto add_switch_info = [&ss](int index) {
-		PDUSwitch *pdu_switch = handlers[index];
-		Switch *device = switches[index];
-		ss <<	"\"" << device->GetName() << "\": {";
-		ss <<		"\"enabled\": " << (device->enabled ? "true" : "false") << ", ";
-		ss <<		"\"gpio_pin_key\": \"" << pdu_switch->GetPinKey() << "\", ";
-		ss <<		"\"gpio_pin_number\": " << pdu_switch->GetPinNumber();
-		ss <<	"}, ";
-	};
+	// Generate JSON-formatted switch info
 	ss << "{";
-	for (int i = 0; i < SWITCH_COUNT; ++i)
-		add_switch_info(i);
+	for (auto pair : switches) {
+		handler = pair.second->GetCustomProperty<GPIO*>("handler");
+		
+		ss << '"' << pair.first << "\": {" << std::endl;
+		ss <<	"\"enabled\": " << (pair.second->enabled ? "true" : "false") << ", " << std::endl;
+		ss <<	"\"pin\": \"" << handler->GetPinKey() << "\"" << std::endl;
+		ss << "},";
+	}
 	ss << "}";
 	
 	return ss.str();

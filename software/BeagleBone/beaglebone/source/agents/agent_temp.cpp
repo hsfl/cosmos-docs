@@ -3,7 +3,6 @@
 #include "utility/SimpleAgent.h"
 #include "device/ADT7311.h"
 #include "device/temp_sensors.h"
-#include "device/ChipSelect.h"
 
 #include <iostream>
 #include <fstream>
@@ -23,9 +22,6 @@ TemperatureSensor *temp_sensors[TEMPSENSOR_COUNT];
 //! The ADT7311 device handlers
 ADT7311 *handlers[TEMPSENSOR_COUNT];
 
-//! Handles chip selection
-ChipSelect chip_select({SPI_CS3_PIN_KEY, SPI_CS2_PIN_KEY, SPI_CS1_PIN_KEY, SPI_CS0_PIN_KEY});
-
 //! The sensor configuration
 ADT7311::Configuration default_sensor_config;
 bool should_enable_sensors = true; // Whether or not the temperature sensors should be enabled
@@ -43,31 +39,46 @@ DeviceAddress device_addresses[TEMPSENSOR_COUNT] =  {
 	{0x00, 0x00},
 };
 
+// |----------------------------------------------|
+// |                  Prototypes                  |
+// |----------------------------------------------|
+
 //! Initializes the sensor devices
 void InitSensors();
+
 //! Attempts to connect a sensor
 bool ConnectSensor(int index);
+
 //! Wraps up communication with the sensor devices.
 void DestroySensors();
+
 //! Updates the temperature readings for a non-pycubed-connected sensor
 void UpdateNormalTemperature(int index);
+
 //! Grabs the latest readings from the sensor devices
 void UpdateTemperatures();
+
 //! Enables/disables power to sensors via agent_switch
 void SetSensorPower(bool enabled);
 
-//! Request for display data of a sensor
-string Request_Sensor(vector<string> args);
+
+//! Request for displaying temperatures
+float Request_Sensor_Temperature(TemperatureSensor *sensor);
+
 //! Request for listing sensors
 string Request_List();
 
 
+// |----------------------------------------------|
+// |                 Main Function                |
+// |----------------------------------------------|
 
 int main(int argc, char** argv) {
 	
 	// Create the agent
 	agent = new SimpleAgent(CUBESAT_AGENT_TEMP_NAME);
 	agent->SetLoopPeriod(SLEEP_TIME);
+	agent->AddRequest("list", Request_List, "Returns a list of sensors");
 	
 	// Add the temperature sensor devices
 	temp_sensors[0] = agent->NewDevice<TemperatureSensor>(TEMPSENSOR_EPS_NAME);
@@ -76,25 +87,23 @@ int main(int argc, char** argv) {
 	temp_sensors[3] = agent->NewDevice<TemperatureSensor>(TEMPSENSOR_BATT_NAME);
 	temp_sensors[4] = agent->NewDevice<TemperatureSensor>(TEMPSENSOR_PYCUBED_NAME);
 	
+	// Initialize the temperature sensor devices
 	for (int i = 0; i < TEMPSENSOR_COUNT; ++i) {
 		temp_sensors[i]->Post(temp_sensors[i]->utc = Time::Now());
 		temp_sensors[i]->Post(temp_sensors[i]->temperature = 273.15);
 		temp_sensors[i]->Post(temp_sensors[i]->voltage = 0);
+		temp_sensors[i]->SetCustomProperty<ADT7311*>("handler", nullptr);
+		
+//		temp_sensors[i]->AddRequest({"temp", "temperature"}, Request_Sensor_Temperature, "Returns the latest temperature reading");
 	}
-	
-	agent->Finalize();
-	
-	// Add request callbacks
-	agent->AddRequest("sensor", Request_Sensor, "Returns the status of a sensor");
-	agent->AddRequest("list", Request_List, "Returns a list of sensors");
-	
-	
-	// Initialize the temperature sensors
 	InitSensors();
 	
 	
-	// Debug print
+	// Finish up
+	agent->Finalize();
 	agent->DebugPrint();
+	
+	
 	
 	// Start executing the agent
 	while ( agent->StartLoop() ) {
@@ -105,6 +114,8 @@ int main(int argc, char** argv) {
 		// Update sensor readings
 		UpdateTemperatures();
 	}
+	
+	
 	
 	// Free sensor devices
 	DestroySensors();
@@ -259,28 +270,8 @@ void SetSensorPower(bool enable) {
 	}
 }
 
-string Request_Sensor(vector<string> args) {
-	if ( args.size() != 1 )
-		return "Usage: sensor <device name>";
-	
-	// Check if the device name is valid
-	if ( !agent->DeviceExists(args[0]) )
-		return "No matching sensor";
-	
-	TemperatureSensor *device = agent->GetDevice<TemperatureSensor>(args[0]);
-	ADT7311 *handler = device->GetCustomProperty<ADT7311*>("handler");
-	
-	// Generate the response
-	stringstream ss;
-	ss << "{";
-	ss <<	"\"utc\": " << device->utc << ", ";
-	ss <<	"\"temp\": " << device->temperature << ", ";
-	ss <<	"\"spi_bus\": " << (handler != nullptr ? std::to_string(handler->GetBus()) : "N/A") << ", ";
-	ss <<	"\"address\": " << (handler != nullptr ? std::to_string(handler->GetDeviceAddr()) : "N/A") << ", ";
-	ss <<	"\"enabled\": " << (handler != nullptr ? std::to_string(handler->IsOpen()) : "true");
-	ss << "}";
-	
-	return ss.str();
+float Request_Sensor_Temperature(TemperatureSensor *sensor) {
+	return sensor->temperature;
 }
 
 string Request_List() {

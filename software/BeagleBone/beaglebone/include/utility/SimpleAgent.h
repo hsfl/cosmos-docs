@@ -33,6 +33,8 @@
 #include "utility/Device.h"
 #include "utility/StringTools.h"
 #include "utility/TimeTools.h"
+#include "utility/AgentRequest.h"
+#include "utility/DeviceRequest.h"
 
 #include <functional>
 #include <unordered_map>
@@ -48,14 +50,6 @@ namespace cubesat {
 	//=========================== SUPPORT ===========================
 	//===============================================================
 	
-	//! Represents a callback function for a requests with arguments.
-	//! The signature should look like: 'std::string RequestName(std::vector<std::string> args)'
-	using ArgumentedRequest = std::function<std::string(std::vector<std::string>)>;
-	
-	//! Represents a callback function for a request with no arguments.
-	//! The signature should look like: 'std::string RequestName()'
-	using NonArgumentedRequest = std::function<std::string(void)>;
-	
 	/**
 	 * @brief A request which redirects itself to requests added to a SimpleAgent
 	 * @param request The request string. This begins with the request name, so we can look up the callback
@@ -63,30 +57,17 @@ namespace cubesat {
 	 * @param agent_ The (complex) agent calling this request
 	 * @return 0 upon success, or a negative value on failure
 	 */
-	int32_t RequestProxy(char *request, char* response, Agent *agent_);
+	int32_t RequestProxy(std::string &request, std::string &response, Agent *agent_);
+	
+	
 	
 	//! A SimpleAgent request (added by default) which prints device properties
-	std::string _Request_DebugPrint(std::vector<std::string> args);
-	
-	//! A SimpleAgent request (added by default) which allows other agents
-	//! to grab properties
-	std::string _Request_GetProperty(std::vector<std::string> args);
-	
-	
+	std::string _Request_DebugPrint();
 	
 	
 	//! You guessed it -- it's a simple agent
 	class SimpleAgent : protected Agent {
 	protected:
-		//! Stores data for a request with arguments
-		struct ArgumentedRequestData {
-			ArgumentedRequest callback;
-		};
-		
-		//! Stores data for a request with no arguments
-		struct NonArgumentedRequestData {
-			NonArgumentedRequest callback;
-		};
 		
 		//! Represents a COSMOS node property
 		struct NodeProperty {
@@ -262,83 +243,87 @@ namespace cubesat {
 		 * @param crash_on_error If true, the program will crash if an error occurs
 		 * @return True if successful
 		 */
-		bool AddRequest(const std::string &request_name, ArgumentedRequest request_callback,
-						std::string synopsis = "", std::string description = "", bool crash_on_error = SIMPLEAGENT_STRICT_MODE);
-		
-		/**
-		 * @brief Adds a no-argument request to this agent.
-		 * @param request_name The name of the request
-		 * @param request_callback The callback function
-		 * @param synopsis A brief description of the request
-		 * @param description A detailed description of the request
-		 * @param crash_on_error If true, the program will crash if an error occurs
-		 * @return True if successful
-		 */
-		bool AddRequest(const std::string &request_name, NonArgumentedRequest request_callback,
-						std::string synopsis = "", std::string description = "", bool crash_on_error = SIMPLEAGENT_STRICT_MODE);
-		
-		/**
-		 * @brief Adds a request to this agent using alias names
-		 * @param request_names The alias names of this request
-		 * @param request_callback The callback function
-		 * @param synopsis A brief description of the request
-		 * @param description A detailed description of the request
-		 * @param crash_on_error If true, the program will crash if an error occurs
-		 * @return True if successful
-		 */
-		bool AddRequest(std::initializer_list<std::string> request_names, ArgumentedRequest request_callback, std::string synopsis = "", std::string description = "", bool crash_on_error = SIMPLEAGENT_STRICT_MODE);
-		
-		/**
-		 * @brief Adds a request to this agent using alias names
-		 * @param request_names The alias names of this request
-		 * @param request_callback The callback function
-		 * @param synopsis A brief description of the request
-		 * @param description A detailed description of the request
-		 * @param crash_on_error If true, the program will crash if an error occurs
-		 * @return True if successful
-		 */
-		bool AddRequest(std::initializer_list<std::string> request_names, NonArgumentedRequest request_callback,
-						std::string synopsis = "", std::string description = "", bool crash_on_error = SIMPLEAGENT_STRICT_MODE);
-		
-		
-		/**
-		 * @brief Returns an argumented request callback function
-		 * @param name The request name
-		 * @return The request callback, or nullptr if it does not exist
-		 */
-		inline ArgumentedRequest GetArgumentedRequest(const std::string &name) {
-#if SIMPLEAGENT_IGNORE_CASE
-			for (auto request_pair : argumented_requests) {
-				if ( CompareAndIgnoreCase(name, request_pair.first) )
-					return request_pair.second.callback;
-			}
-			return nullptr;
-#else
-			if ( argumented_requests.find(name) == argumented_requests.end() )
-				return nullptr;
+		template <typename R, typename... Args>
+		bool AddRequest(const std::string &request_name, R(*request_callback)(Args...),
+						std::string synopsis = "", std::string description = "", bool crash_on_error = SIMPLEAGENT_STRICT_MODE) {
 			
-			return argumented_requests[name].callback;
-#endif
+			// Check if a request with the same name was already added
+			if ( requests.find(request_name) != requests.end() ) {
+				printf("Failed to add request '%s': another request with this name already exists.\n", request_name.c_str());
+				
+				if ( crash_on_error )
+					exit(1);
+				
+				return false;
+			}
+			
+			
+			// Add the request proxy to the agent instead, using the given request name
+			int status = this->add_request(request_name, RequestProxy, synopsis, description);
+			
+			// Check for errors
+			if ( status < 0 ) {
+				printf("Failed to add request '%s': %s\n", request_name.c_str(), cosmos_error_string(status).c_str());
+				
+				if ( crash_on_error )
+					exit(status);
+				
+				return false;
+			}
+			else {
+				// Store the request
+				requests[request_name] = new AgentRequest(request_callback);
+				
+				return true;
+			}
 		}
 		
 		/**
-		 * @brief Returns a non-argumented request callback function
-		 * @param name The request name
-		 * @return The request callback, or nullptr if it does not exist
+		 * @brief Adds a request to this agent using alias names
+		 * @param request_names The alias names of this request
+		 * @param request_callback The callback function
+		 * @param synopsis A brief description of the request
+		 * @param description A detailed description of the request
+		 * @param crash_on_error If true, the program will crash if an error occurs
+		 * @return True if successful
 		 */
-		inline NonArgumentedRequest GetNonArgumentedRequest(const std::string &name) {
-#if SIMPLEAGENT_IGNORE_CASE
-			for (auto request_pair : non_argumented_requests) {
-				if ( CompareAndIgnoreCase(name, request_pair.first) )
-					return request_pair.second.callback;
-			}
-			return nullptr;
-#else
-			if ( non_argumented_requests.find(name) == non_argumented_requests.end() )
-				return nullptr;
+		template <typename R, typename... Args>
+		bool AddRequest(std::initializer_list<std::string> request_names, R(*request_callback)(Args...),
+						std::string synopsis = "", std::string description = "", bool crash_on_error = SIMPLEAGENT_STRICT_MODE) {
+			// Add aliases for the request
+			bool success = true;
 			
-			return non_argumented_requests[name].callback;
-#endif
+			// Add the requests
+			// Agh why doesn't std::initializer_list have a subscript operator??
+			int i = 0;
+			std::string first_name;
+			for (const std::string &name : request_names) {
+				// After the first request, set the synopsis as 'Alias of ...'
+				if ( i == 0 ) {
+					success = success && AddRequest(name, request_callback, synopsis, description, crash_on_error);
+					first_name = name;
+				}
+				else
+					success = success && AddRequest(name, request_callback, "Alias of " + first_name, "", crash_on_error);
+				
+				++i;
+			}
+			
+			return success;
+		}
+		
+		/**
+		 * @brief Retrieves a previously-added request
+		 * @param request_name The name of the request
+		 * @return The AgentRequest object, or nullptr if it does not exist
+		 */
+		inline AgentRequest* GetRequest(const std::string &request_name) {
+			auto it = requests.find(request_name);
+			
+			if ( it == requests.end() )
+				return nullptr;
+			else
+				return requests[request_name];
 		}
 		
 		/**
@@ -347,28 +332,10 @@ namespace cubesat {
 		 * @return True if the request already exists
 		 */
 		inline bool RequestExists(const std::string &request_name) const {
-#if SIMPLEAGENT_IGNORE_CASE
-			// First check the argumented requests
-			for (auto request_pair : argumented_requests) {
-				if ( CompareAndIgnoreCase(request_name, request_pair.first) )
-					return true;
-			}
-			// Then check the non-argumented requests
-			for (auto request_pair : non_argumented_requests) {
-				if ( CompareAndIgnoreCase(request_name, request_pair.first) )
-					return true;
-			}
-			// At this point, the request is not stored
-			return false;
-#else
-			// First check if the request exists as an argumented request
-			if ( argumented_requests.find(request_name) != argumented_requests.end() )
-				return true;
-			else
-				// Then check if the request exists as a non-argumented request
-				return non_argumented_requests.find(request_name) != non_argumented_requests.end();
-#endif
+			return requests.find(request_name) != requests.end();
 		}
+		
+		
 		
 		//===============================================================
 		//=========================== DEVICES ===========================
@@ -424,15 +391,7 @@ namespace cubesat {
 		 * @return True if the device already exists
 		 */
 		inline bool DeviceExists(const std::string &name) const {
-#if SIMPLEAGENT_IGNORE_CASE
-			for (auto device_pair : devices) {
-				if ( CompareAndIgnoreCase(name, device_pair.first) )
-					return true;
-			}
-			return false;
-#else
 			return devices.find(name) != devices.end();
-#endif
 		}
 		
 		template <typename DeviceType>
@@ -520,18 +479,35 @@ namespace cubesat {
 		std::string GetDebugString(bool print_all = false) const;
 		
 		
+		/**
+		 * @brief Used to signal an error from inside a request
+		 * @param message The error message
+		 */
+		inline void RaiseRequestError(const std::string &message) {
+			last_request_error = message;
+		}
+		/**
+		 * @brief Retrieves the last error message raised by a request
+		 * @return The error message
+		 */
+		inline const std::string& GetLastRequestError() {
+			return last_request_error;
+		}
 		
 	protected:
-		//! A table of user-defined request callbacks (those which have arguments)
-		std::unordered_map<std::string, ArgumentedRequestData> argumented_requests;
-		//! A table of user-defined request callbacks (this without arguments)
-		std::unordered_map<std::string, NonArgumentedRequestData> non_argumented_requests;
+		//! A table of user-defined request callbacks (those with vector arguments)
+		std::unordered_map<std::string, AgentRequest*> requests;
+		
+		std::unordered_map<std::string, DeviceRequest*> device_requests;
 		//! A table of user-defined devices
 		std::unordered_map<std::string, Device*> devices;
 		//! A table of user-defined node properties
 		std::unordered_map<PropertyID, NodeProperty> node_properties;
 		//! Indicates whether the first iteration of the main loop has occurred
 		bool loop_started;
+		
+		
+		std::string last_request_error;
 		
 		//! The singleton instance of the SimpleAgent class
 		static SimpleAgent *instance;

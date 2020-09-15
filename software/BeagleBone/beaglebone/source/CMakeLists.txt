@@ -8,7 +8,7 @@ project(beaglebone)
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
 
 # point to cosmos/source folder
-set(COSMOS_SOURCE   "../../../")
+set(COSMOS_SOURCE   "$ENV{HOME}/cosmos/source")
 set(USE_COSMOS_FROM "SOURCE")
 
 
@@ -39,22 +39,14 @@ set(COSMOS_LIBS
     CosmosDeviceSerial
     CosmosDeviceCpu
     CosmosDeviceDisk
-    CosmosMath
-    )
+    CosmosMath)
 
 
 
 
 # -----------------------------------------------
-# Windows specific
-if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-    set(COSMOS_LIBS ${COSMOS_LIBS} ws2_32)
-endif()
-
-
-
-
 include_directories("../include")
+include_directories("../thirdparty")
 
 
 set(CUBESAT_DEVICE_SRC	device/I2CDevice.cpp

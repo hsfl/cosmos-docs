@@ -2,7 +2,8 @@
 // Internal headers
 #include "utility/SimpleAgent.h"
 #include "device/OPT3001.h"
-#include "device/sun_sensors.h"
+
+#include "rapidjson/document.h"
 
 #include <iostream>
 #include <fstream>
@@ -11,36 +12,16 @@
 // The interval between iterations in the run_agent() function
 #define SLEEP_TIME 1
 
+
 using namespace std;
 using namespace cubesat;
+using namespace rapidjson;
 
 
-// The agent object which allows for communication with COSMOS
-SimpleAgent *agent;
 
-
-// A convenient struct for storing sun sensor information
-SunSensor *sun_sensor[SUNSENSOR_COUNT];
-OPT3001 *handlers[SUNSENSOR_COUNT];
-OPT3001::Configuration default_sensor_config;
-bool should_enable_sensors = true; // Whether or not the sensors should be enabled
-bool sensors_powered = false; // Whether or not the sensors are actually enabled
-
-struct DeviceAddress {
-	uint8_t i2c_bus;
-	uint8_t dev_addr;
-};
-
-DeviceAddress devices_addresses[SUNSENSOR_COUNT] =  {
-	{0x00, 0x00},
-	{0x00, 0x00},
-	{0x00, 0x00},
-	{0x00, 0x00},
-	{0x00, 0x00},
-	{0x00, 0x00},
-};
-
-// =========== Function Prototypes ===========
+// |----------------------------------------------|
+// |                  Prototypes                  |
+// |----------------------------------------------|
 
 
 //! Initializes the sensor devices
@@ -52,219 +33,211 @@ bool ConnectSensor(int index);
 //! Wraps up communication with the sensor devices
 void DestroySensors();
 //! Grabs the latest readings from a sensor device
-void UpdateSensor(int index);
+void UpdateSensor(const std::string &name);
 //! Enables/disables power to sensors via agent_switch
 void SetSensorPower(bool enabled);
 
 
 // Request callbacks
-int32_t request_sensor(char *request, char* response, Agent *agent);
-int32_t request_list(char *request, char* response, Agent *agent);
 
-string Request_Sensor(vector<string> args);
+float Request_Sensor_Lux(SunSensor *sensor);
+bool Request_Sensor_Connected(SunSensor *sensor);
+string Request_Sensor(string sensor_name);
 string Request_List();
 
 
-// ===========================================
+// |----------------------------------------------|
+// |                   Variables                  |
+// |----------------------------------------------|
+
+// The agent object which allows for communication with COSMOS
+SimpleAgent *agent;
+
+Document sensor_config;
+
+
+OPT3001::Configuration default_sensor_config;
+OPT3001::Configuration active_config;
+
+//! A map of sensor names to SunSensor devices
+unordered_map<string, SunSensor*> sensors;
 
 
 
+//! The sun sensor JSON configuration
+const char *sensor_config_json =
+#include "config/sun_sensors.json"
+;
 
+// |----------------------------------------------|
+// |                 Main Function                |
+// |----------------------------------------------|
 
-
-
-int main(int argc, char** argv) {
+int main() {
 	
 	// Create the agent
 	agent = new SimpleAgent(CUBESAT_AGENT_SUNSENSOR_NAME);
 	agent->SetLoopPeriod(SLEEP_TIME);
+	agent->AddRequest("sensor", Request_Sensor, "Returns the status of a sensor");
+	agent->AddRequest("list", Request_List, "Returns a list of sensors");
 	
-	// Add the sun sensor devices
-	sun_sensor[0] = agent->NewDevice<SunSensor>(SUNSENSOR_PLUSX_NAME);
-	sun_sensor[1] = agent->NewDevice<SunSensor>(SUNSENSOR_MINUSX_NAME);
-	sun_sensor[2] = agent->NewDevice<SunSensor>(SUNSENSOR_PLUSY_NAME);
-	sun_sensor[3] = agent->NewDevice<SunSensor>(SUNSENSOR_MINUSY_NAME);
-	sun_sensor[4] = agent->NewDevice<SunSensor>(SUNSENSOR_PLUSZ_NAME);
-	sun_sensor[5] = agent->NewDevice<SunSensor>(SUNSENSOR_MINUSZ_NAME);
 	
-	for (int i = 0; i < SUNSENSOR_COUNT; ++i) {
-		sun_sensor[i]->Post(sun_sensor[i]->utc = Time::Now());
-		sun_sensor[i]->Post(sun_sensor[i]->temperature = 0);
-		sun_sensor[i]->Post(sun_sensor[i]->voltage = 0);
+	// Parse the sensor configuration
+	sensor_config.Parse(sensor_config_json);
+	
+	string name;
+	int bus, address;
+	Vec3 orientation;
+	SunSensor *sensor;
+	
+	// Initialize the sun sensor devices using the parsed JSON
+	for (auto &sensor_obj : sensor_config.GetArray()) {
+		
+		// Grab the JSON fields for this sun sensor
+		name = sensor_obj["name"].GetString();
+		bus = sensor_obj["bus"].GetInt();
+		address = sensor_obj["address"].GetInt();
+		orientation = Vec3(sensor_obj["orientation"].GetArray()[0].GetInt(),
+						   sensor_obj["orientation"].GetArray()[1].GetInt(),
+						   sensor_obj["orientation"].GetArray()[2].GetInt());
+		
+		// Create a new sun sensor device
+		sensor = agent->NewDevice<SunSensor>(name);
+		sensor->SetCustomProperty<OPT3001*>("handler", new OPT3001(bus, address));
+		sensor->SetCustomProperty<Vec3>("orientation", orientation);
+		
+		sensor->Post(sensor->utc = Time::Now());
+		sensor->Post(sensor->enabled = false); // true = connected, false = not connected
+		sensor->Post(sensor->temperature = 0); // Represents the lux readings
+		
+		// Add device requests
+		sensor->AddRequest("connected", Request_Sensor_Connected, "Returns true if the sun sensor is connected");
+		sensor->AddRequest("lux", Request_Sensor_Lux, "Returns the lux of the sun sensor");
+		
 	}
 	
 	agent->Finalize();
 	
-	agent->AddRequest("sensor", Request_Sensor, "Returns the status of a sensor");
-	agent->AddRequest("list", Request_List, "Returns a list of sensors");
-	
-	// Initialize the sun sensors
-	InitSensors();
-	
 	// Run the main loop for this agent
 	while ( agent->StartLoop() ) {
 		
-		
-		// Ensure correct power mode
-		SetSensorPower(should_enable_sensors);
-		
-		// Update sensor readings
-		for (int i = 0; i < SUNSENSOR_COUNT; ++i)
-			UpdateSensor(i);
+		// Update the sensors
+		for (auto pair : sensors) {
+			UpdateSensor(pair.first);
+		}
 		
 	}
 	
-	DestroySensors();
+	// Finish up with the sensors
+	for (auto pair : sensors) {
+		OPT3001 *handler = pair.second->GetCustomProperty<OPT3001*>("handler");
+		handler->Close();
+		delete handler;
+	}
+	
+	// Delete the agent
 	delete agent;
 	
 	return 0;
 }
 
-void InitSensor(int index) {
-	DeviceAddress config = devices_addresses[index];
-	handlers[index] = new OPT3001(config.i2c_bus, config.dev_addr);
-	sun_sensor[index]->SetCustomProperty<OPT3001*>("handler", handlers[index]);
-}
 
-
-void InitSensors() {
-	// Set default configuration values
-	default_sensor_config.RangeNumber = 0b1100; // This is the only available mode
-	default_sensor_config.ConversionTime = 1; // 0 = 100ms, 1 = 800 ms
-	default_sensor_config.ModeOfConversionOperation = 0; // 00 = Shutdown, 01 = Single-shot, 10,11 = continuous conversion
-	default_sensor_config.Latch = 1;
-	default_sensor_config.Polarity = 0; // 0 = INT pin active low, 1 = INT pin active high
-	default_sensor_config.MaskExponent = 0;
-	default_sensor_config.FaultCount = 0; // 00 = One fault, 01 = two faults, 10 = four faults, 11 = eight faults
-	
-	// Initialize each sensor
-	for (int i = 0; i < SUNSENSOR_COUNT; ++i)
-		InitSensor(i);
-}
-
-bool ConnectSensor(int index) {
-	
-	SunSensor *sensor = sun_sensor[index];
-	OPT3001 *handler = handlers[index];
+void UpdateSensor(const std::string &name) {
+	SunSensor *sensor = sensors[name];
+	OPT3001 *opt3001 = sensor->GetCustomProperty<OPT3001*>("handler");
 	
 	sensor->utc = Time::Now();
 	
-	// Check if the sensor is already connected
-	if ( handler->IsOpen() )
-		return true;
-	
-	
-	// Attempt to open the device
-	if ( handler->Open() < 0 ) {
-		printf("Failed to open sun sensor '%s' on I2C Bus %d at address %02x\n",
-			   sensor->GetName().c_str(),
-			   handler->GetBusAddr(), handler->GetDeviceAddr());
+	// Make sure the sensor is open
+	if ( !opt3001->IsOpen() ) {
+		printf("Opening sensor '%s' on I2C-%d at address 0x%02x... ",
+			   name.c_str(), opt3001->GetBusAddr(), opt3001->GetDeviceAddr());
 		
-		handler->Close();
-		
-		sensor->voltage = 0;
-		
-		return false;
-	}
-	else {
-		
-		// Set sun sensor configuration
-		handler->SetConfiguration(default_sensor_config);
-		sensor->voltage = 0;
-		
-		printf("Successfully opened sun sensor '%s'\n", sensor->GetName().c_str());
-		
-		return true;
-	}
-}
-
-void DestroySensors() {
-	for (int i = 0; i < SUNSENSOR_COUNT; ++i) {
-		delete handlers[i];
-		handlers[i] = nullptr;
-	}
-}
-
-void UpdateSensor(int index) {
-	ConnectSensor(index);
-	
-	SunSensor *sensor = sun_sensor[index];
-	OPT3001 *handler = handlers[index];
-	
-	if ( handler->IsOpen() ) {
-		handler->ReadState();
-		
-		// Update the device properties
-		sensor->utc = Time::Now();
-		sensor->temperature = handler->GetLux();
-	}
-	
-}
-
-void SetSensorPower(bool enable) {
-	should_enable_sensors = enable;
-	
-	static RemoteAgent agent_switch = agent->FindAgent(CUBESAT_AGENT_SWITCH_NAME);
-	
-	if ( agent_switch.Connect() ) {
-		// Request to enable/disable power to sun sensor switch
-		string response = agent_switch.SendRequest("enable", "sw_ss");
-		
-		// Check if the request was successful
-		if ( response.find("NOK") == string::npos )
-			sensors_powered = enable;
-		
-		// If they are disabled, make sure the sensors are closed
-		if ( !sensors_powered ) {
-			for (int i = 0; i < SUNSENSOR_COUNT; ++i)
-				handlers[i]->Close();
+		if ( opt3001->Open() < 0 ) {
+			opt3001->Close();
+			sensor->enabled = false;
+			printf(" failed.\n");
+			return;
+		}
+		else {
+			sensor->enabled = true;
+			printf(" succeeded.\n");
 		}
 	}
+	
+	
+	// 1. Read from the sensor
+	opt3001->ReadState();
+	OPT3001::Configuration config = opt3001->GetConfiguration();
+	
+	
+	// 2. Check if the sensor is finished reading the lux
+	// (0 = not ready, 1 = ready)
+	if ( config.ConversionReady == 1 ) {
+		
+		// Use the temperature field since there's no built-in lux field
+		sensor->temperature = opt3001->GetLux();
+		
+		printf("Sensor '%s' finished converting: %.2f lx\n", name.c_str(), (float)sensor->voltage);
+	}
+	
+	
+	// 3. Wake up the sensor if it is idling
+	// (00 = idling, 01 = single-shot, 10/11 = continuous conversion)
+	if ( config.ModeOfConversionOperation == 0 ) {
+		
+		// Write "single-shot" mode to the configuration register
+		config.ModeOfConversionOperation = 1;
+		opt3001->SetConfiguration(config);
+		
+		printf("Waking up sensor '%s'\n", name.c_str());
+	}
 }
 
-string Request_Sensor(vector<string> args) {
-	// Check if the device name is valid
-	if ( !agent->DeviceExists(args[0]) )
-		return "No matching sensor";
-	
-	SunSensor *device = agent->GetDevice<SunSensor>(args[0]);
-	OPT3001 *handler = device->GetCustomProperty<OPT3001*>("handler");
+
+
+float Request_Sensor_Lux(SunSensor *sensor) {
+	return sensor->temperature;
+}
+bool Request_Sensor_Connected(SunSensor *sensor) {
+	OPT3001 *handler = sensor->GetCustomProperty<OPT3001*>("handler");
+	return handler != nullptr && handler->IsOpen();
+}
+
+string Request_Sensor(string sensor_name) {
+	SunSensor *sensor = sensors[sensor_name];
 	
 	// Generate the response
 	stringstream ss;
-	ss << "{";
-	ss <<	"\"utc\": " << device->utc << ", ";
-	ss <<	"\"lux\": " << device->temperature << ", ";
-	ss <<	"\"i2c_bus\": " << (handler != nullptr ? std::to_string(handler->GetBusAddr()) : "N/A") << ", ";
-	ss <<	"\"address\": " << (handler != nullptr ? std::to_string(handler->GetDeviceAddr()) : "N/A") << ", ";
-	ss <<	"\"enabled\": " << (handler != nullptr ? std::to_string(handler->IsOpen()) : "true");
-	ss << "}";
+	ss << "{" << std::endl;
+	ss << "\t\"name\": \"" << sensor_name << "\", " << std::endl;
+	ss << "\t\"utc\": " << (double)sensor->utc << ", " << std::endl;
+	ss << "\t\"lux\": " << (float)sensor->temperature << ", " << std::endl;
+	ss << "\t\"connected\": " << (sensor->enabled ? "true" : "false") << std::endl;
+	ss << "}" << std::endl;
 	
 	return ss.str();
 }
 
 string Request_List() {
 	
+	SunSensor *sensor;
+	
 	stringstream ss;
+	ss << "[";
 	
-	// Use a convenient lambda function to add sensor information
-	auto add_sensor_info = [&ss](SunSensor *sensor) {
-		OPT3001 *device = sensor->GetCustomProperty<OPT3001*>("handler");
+	for (auto pair : sensors) {
+		sensor = pair.second;
 		
-		ss <<	"\"" << sensor->GetName() << "\": {";
-		ss <<		"\"utc\": " << sensor->utc << ", ";
-		ss <<		"\"lux\": " << sensor->temperature << ",";
-		ss <<		"\"spi_bus\": " << (device != nullptr ? std::to_string(device->GetBusAddr()) : "N/A") << ", ";
-		ss <<		"\"address\": " << (device != nullptr ? std::to_string(device->GetDeviceAddr()) : "N/A") << ", ";
-		ss <<		"\"enabled\": " << (device != nullptr ? std::to_string(device->IsOpen()) : "true");
-		
-		ss <<	"},";
-	};
+		ss << "\t{" << std::endl;
+		ss << "\t\t\"name\": \"" << pair.first << "\", " << std::endl;
+		ss << "\t\t\"utc\": " << (double)sensor->utc << ", " << std::endl;
+		ss << "\t\t\"lux\": " << (float)sensor->temperature << ", " << std::endl;
+		ss << "\t\t\"connected\": " << (sensor->enabled ? "true" : "false") << std::endl;
+		ss << "\t}," << std::endl;
+	}
 	
-	ss << "{";
-	for (int i = 0; i < SUNSENSOR_COUNT; ++i)
-		add_sensor_info(sun_sensor[i]);
-	ss << "}";
+	ss << "]";
 	
 	return ss.str();
 }

@@ -37,9 +37,10 @@ void GrabSOHData();
 void SystemCall(const std::string &command, std::string &output);
 
 string Request_GetData();
-string Request_SSH(vector<string> args);
+string Request_SSH(CapturedInput command);
 string Request_Ping();
 string Request_Shutdown();
+string Request_SetSOH(std::string soh);
 // ===========================================
 
 
@@ -81,6 +82,7 @@ int main(int argc, char** argv) {
 	agent->AddRequest({"ssh", "command"}, Request_SSH, "Runs a command on the Raspberry Pi");
 	agent->AddRequest({"ping", "is_up"}, Request_Ping, "Checks if the Raspberry Pi is up");
 	agent->AddRequest({"shutdown_raspi", "end"}, Request_Shutdown, "Attempts to shut down the Raspberry Pi");
+	agent->AddRequest("set_soh", Request_SetSOH, "Sets the state of health for a payload script");
 	
 	agent->DebugPrint();
 	
@@ -416,16 +418,14 @@ string Request_GetData() {
 }
 
 
-string Request_SSH(vector<string> args) {
+string Request_SSH(CapturedInput input) {
 	
 	// Make sure we actually have arguments
-	if ( args.size() == 0 )
+	if ( input.input.empty() )
 		return "Usage: ssh command";
 	
 	// Create the command string
-	string command = "ssh pi@raspberrypi.local";
-	for (const std::string &arg : args)
-		command += " " + arg;
+	string command = "ssh pi@raspberrypi.local " + input.input;
 	
 	
 	// Call the command
@@ -458,5 +458,28 @@ string Request_Ping() {
 string Request_Shutdown() {
 	perform_shutdown = true;
 	return "OK";
+}
+string Request_SetSOH(std::string soh_json) {
+	
+	// Parse the output
+	Json jresult;
+	int status = jresult.extract_object(soh_json);
+	
+	if ( status > 0 ) {
+		for (Json::Member member : jresult.Members) {
+			if ( member.value.name.find("pixel_width") != string::npos ) {
+				camera->pixel_width = (int)member.value.nvalue;
+			}
+			else if ( member.value.name.find("pixel_height") != string::npos ) {
+				camera->pixel_height = (int)member.value.nvalue;
+			}
+		}
+		
+		return "OK";
+	}
+	else
+		return "";
+	
+	
 }
 

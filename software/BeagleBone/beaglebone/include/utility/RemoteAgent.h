@@ -9,11 +9,29 @@
 #include "support/jsonclass.h"
 
 #include "utility/DeviceDetail.h"
+#include "utility/StringTools.h"
 
 #include <unordered_map>
 #include <sstream>
 
 namespace cubesat {
+	
+	struct RemoteDeviceProperty {
+		std::string device_name;
+		size_t mem_offset;
+		
+		template <typename PropertyType>
+		RemoteDeviceProperty(const std::string &device_name, PropertyType)
+			: device_name(device_name), mem_offset(PropertyType::offset) {}
+	};
+	
+	template <typename... PropertyTypes>
+	struct RemoteDevicePropertyList {
+		
+		
+		std::tuple<typename PropertyTypes::ValueType...> values;
+		
+	};
 	
 	
 	/**
@@ -96,12 +114,15 @@ namespace cubesat {
 				return values;
 			}
 			
+			printf("%s\n", output.c_str());
+			
 			// Parse the output
 			Json jresult;
 			status = jresult.extract_object(output);
 			
-			if ( status > 0 ) {
+			if ( status >= 0 ) {
 				for (Json::Member member : jresult.Members) {
+					std::cout << member.value.name << std::endl;
 					values[member.value.name] = member.value;
 				}
 			}
@@ -147,6 +168,7 @@ namespace cubesat {
 		}
 		
 		
+		
 		/**
 		 * @brief Sends a request to the remote agent
 		 * @param request_name The name of the request
@@ -165,9 +187,9 @@ namespace cubesat {
 			std::stringstream request;
 			request << request_name;
 			
-			for (auto arg : {args...}) {
-				request << " " << arg;
-			}
+			
+			using dummy = int[];
+			(void)dummy {0, (request << " " << ToString<Args>(args), 0)...};
 			
 			// Call the request
 			std::string output;
@@ -182,6 +204,11 @@ namespace cubesat {
 			}
 			
 			return output;
+		}
+		
+		template <typename... Args>
+		std::string SendDeviceRequest(const std::string &device_name, const std::string request_name, Args... args) {
+			return SendRequest(device_name + ":" + request_name, args...);
 		}
 		
 	protected:

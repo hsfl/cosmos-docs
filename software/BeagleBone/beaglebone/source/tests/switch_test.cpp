@@ -25,6 +25,7 @@ void TestSwitch(const char *device_name, int blink_count = 5) {
 
 int main(int argc, char ** argv) {
 	
+	
 	switch ( argc ) {
 		case 2:
 			TestSwitch(argv[1]);

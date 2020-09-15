@@ -1,90 +1,135 @@
 
 // Internal headers
 #include "utility/SimpleAgent.h"
-#include "device/temp_sensors.h"
-#include "device/switch.h"
-#include "cubesat_defs.h"
 
-// Standard headers
 #include <iostream>
 #include <fstream>
 #include <unordered_map>
 
-// The number of heaters available
-#define NUM_HEATERS 1
-// The interval between iterations in the run_agent() function
-#define SLEEP_TIME 1
+#include "rapidjson/document.h"
+
+#define SLEEP_TIME 5
 
 using namespace std;
 using namespace cubesat;
+using namespace rapidjson;
 
 
-// The agent object which allows for communication with COSMOS
-SimpleAgent *agent;
-Heater *heater;
+struct TemperatureDependency {
+	//! The name of this dependency
+	string name;
+	
+	//! The COSMOS state of health key to get
+	//! temperatures from for this dependency
+	string source;
+	
+	//! The temperature to enable the heater at
+	float enable_temp;
+	
+	//! The temperature to disable the heater at
+	float disable_temp;
+	
+	//! The current temperature
+	float current_temp;
+};
 
-TemperatureSensor *temp_sensor[TEMPSENSOR_COUNT];
 
+// |----------------------------------------------|
+// |                  Prototypes                  |
+// |----------------------------------------------|
 
-// Other settings
-float heater_enable_temp = 5; // Enable heater when temperatures are below this value (celcius)
-float heater_disable_temp = 20; // Disable heater when temperatures are above this value (celcius)
-
-/**
- * @brief Checks the latest temperatures and handles activation of the heaters if necessary.
- */
-void HandleTemperatures();
 /**
  * @brief Retrieves the temperatures from agent_temp
+ * @return True if the temperatures were successfully obtained
  */
-void GetTemperatures();
+bool GetTemperatures();
+
 /**
  * @brief Switchs a heater on or off via agent_switch
  * @param enabled Set to true to enable a heater, or false to disable a heater
  */
 void SetHeaterState(bool enabled);
 
+/**
+ * @brief Enables the heater
+ */
+void Request_Enable();
 
-//! Request to enable, disable, or check the status of the heaters
-string Request_Heater(vector<string> args);
+/**
+ * @brief Disables the heater
+ */
+void Request_Disable();
 
+/**
+ * @brief Gets the state of the heater
+ * @return "on" if it's on, "off" if it's off
+ */
+string Request_Get();
 
+// |----------------------------------------------|
+// |                   Variables                  |
+// |----------------------------------------------|
+
+//! The agent
+SimpleAgent *agent;
+
+//! The heater device
+Heater *heater;
+
+//! The switch which controls the heater
+string heater_switch;
+
+//! A list of the COSMOS names for temperature dependencies
+vector<string> agent_temp_keys;
+
+//! Represents the temperature dependencies
+vector<TemperatureDependency> temperature_dependencies;
+
+//! Holds the parsed heater configuration
+Document heater_config;
+
+// Include the switch configuration
+const char *heater_config_json =
+#include "config/heaters.json"
+;
+
+// |----------------------------------------------|
+// |                 Main Function                |
+// |----------------------------------------------|
 
 int main(int argc, char** argv) {
+	
 	// Create the agent
 	agent = new SimpleAgent(CUBESAT_AGENT_HEATER_NAME, CUBESAT_NODE_NAME, true);
-	agent->CrashIfNotOpen();
 	agent->SetLoopPeriod(SLEEP_TIME);
-	currentmjd();
+	agent->AddRequest({"on", "enable"}, Request_Enable, "Enables the heater");
+	agent->AddRequest({"off", "disable"}, Request_Disable, "Disables the heater");
+	agent->AddRequest("get", Request_Get, "Returns the state of the heater");
 	
-	// Add heater
-	heater = agent->NewDevice<Heater>("heater");
-	heater->Post(heater->utc);
-	heater->Post(heater->enabled);
-	heater->Post(heater->voltage);
-	heater->utc = Time::Now();
-	heater->enabled =false;
-	heater->voltage = 0;
+	// Parse the configuration
+	heater_config.Parse(heater_config_json);
+	heater_switch = heater_config["switch"].GetString();
 	
-	// Add temperature sensors and set default values
-	temp_sensor[0] = agent->NewDevice<TemperatureSensor>("temp_eps");
-	temp_sensor[1] = agent->NewDevice<TemperatureSensor>("temp_obc");
-	temp_sensor[2] = agent->NewDevice<TemperatureSensor>("temp_raspi");
-	temp_sensor[3] = agent->NewDevice<TemperatureSensor>("temp_battery");
-	temp_sensor[4] = agent->NewDevice<TemperatureSensor>("temp_pycubed");
-	
-	for (int i = 0; i < TEMPSENSOR_COUNT; ++i) {
-		temp_sensor[i]->utc = Time::Now();
-		temp_sensor[i]->temperature = 273.15;
+	// Add the heater device
+	heater = agent->NewDevice<Heater>(heater_config["name"].GetString());
+	heater->Post(heater->utc = Time::Now());
+	heater->Post(heater->enabled = false);
+
+	// Load all temperature dependencies
+	for (auto &sensor_obj : heater_config["sensors"].GetArray()) {
+		TemperatureDependency dependency;
+		dependency.name = sensor_obj["name"].GetString();
+		dependency.source = sensor_obj["source"].GetString();
+		dependency.enable_temp = sensor_obj["enable_temp"].GetFloat();
+		dependency.disable_temp = sensor_obj["disable_temp"].GetFloat();
+		dependency.current_temp = 1e6; // A temporary value
+		temperature_dependencies.push_back(dependency);
+		
+		agent_temp_keys.push_back(dependency.source);
 	}
 	
 	// Let the agent know all the devices have been set up
 	agent->Finalize();
-	
-	// Add request callbacks
-	agent->AddRequest({"heater", "state", "set", "get"}, Request_Heater, "Enables, disables, or displays the status of the heater", "Usage: heater [on | off]");
-	
-	// Debug print
 	agent->DebugPrint();
 	
 	// Make sure the heater is disabled
@@ -95,71 +140,67 @@ int main(int argc, char** argv) {
 	while ( agent->StartLoop() ) {
 		
 		// Update sensor readings
-		GetTemperatures();
+		if ( !GetTemperatures() )
+			continue;
 		
-		// Act on temperature readings
-		HandleTemperatures();
+		
+		bool any_enable = false;
+		
+		// Flag to indicate whether all temperature dependencies
+		// indicate that the heater should be disabled
+		bool all_disable = true;
+		
+		// Check if the heater should be enabled
+		for (TemperatureDependency &dependency : temperature_dependencies) {
+			if ( dependency.current_temp < dependency.enable_temp ) {
+				printf("Warning: temperature of '%s' (%.2f C) is too low.\n",
+					   dependency.name.c_str(), dependency.current_temp - 273.15);
+				any_enable = true;
+			}
+			else if ( dependency.current_temp < dependency.disable_temp ) {
+				all_disable = false;
+			}
+		}
+		
+		// If any temperatures are too low, enable the heater
+		if ( any_enable && !heater->enabled ) {
+			SetHeaterState(true);
+		}
+		// If all temperatures are above the disable temperature, disable the heater
+		else if ( all_disable && heater->enabled ) {
+			SetHeaterState(false);
+		}
+		
+		heater->utc = Time::Now();
 	}
 	
 	return 0;
 }
 
 
-void GetTemperatures() {
+bool GetTemperatures() {
 	static RemoteAgent agent_temp = agent->FindAgent(CUBESAT_AGENT_TEMP_NAME);
 	
 	// Attempt to reconnect to agent_temp
 	if ( !agent_temp.Connect() ) {
-		return;
+		return false;
 	}
 	
 	// Get the temperature and timestamp values from agent_temp
-	auto values = agent_temp.GetCOSMOSValues({
-										   "device_tsen_temp_000", "device_tsen_utc_000",
-										   "device_tsen_temp_001", "device_tsen_utc_001",
-										   "device_tsen_temp_002", "device_tsen_utc_002",
-										   "device_tsen_temp_003", "device_tsen_utc_003",
-										   "device_tsen_temp_004", "device_tsen_utc_004"
-									   });
+	auto values = agent_temp.GetCOSMOSValues(agent_temp_keys);
 	
 	// Check if the values were not retrieved
 	if ( values.empty() ) {
 		printf("Failed to get temperatures from agent_temp\n");
-		return;
+		return false;
 	}
 	
-	// Store the temperatures and timestamps
-	for (int i = 0; i < TEMPSENSOR_COUNT; ++i) {
-		temp_sensor[i]->utc = values["device_tsen_utc_00" + std::to_string(i)].nvalue;
-		temp_sensor[i]->temperature = values["device_tsen_temp_00" + std::to_string(i)].nvalue;
-	}
-}
-
-
-void HandleTemperatures() {
-	
-	// TODO: Handle other temperature sensors. For now, only the battery temperature is used.
-	
-	// Get the battery temperature
-	float temp = temp_sensor[TEMPSENSOR_BATT_ID]->temperature;
-	
-	// Handle temperature ranges
-	// Temperature below value needed to enable heater
-	if ( temp < heater_enable_temp ) {
-		cout << "Temperature read from " << TEMPSENSOR_BATT_NAME << " is too low (" << temp << " C)" << endl;
-		
-		// Enable the heater
-		SetHeaterState(true);
-	}
-	// Temperature above value needed to disable heater
-	else if ( temp > heater_disable_temp ) {
-		cout << "Temperature read from " << TEMPSENSOR_BATT_NAME << " is sufficiently high (" << temp << " C)" << endl;
-		
-		// Disable the heater
-		SetHeaterState(false);
+	// Store the temperatures
+	for (TemperatureDependency &dependency : temperature_dependencies) {
+		dependency.current_temp = values[dependency.source].nvalue;
 	}
 	
-	heater->utc = Time::Now();
+	return true;
 }
 
 
@@ -172,13 +213,11 @@ void SetHeaterState(bool enabled) {
 	}
 	
 	
-	std::string request_str = enabled ? "enable" : "disable";
-	
-	cout << "Attempting to " << request_str << "heater" << endl;
+	cout << "Attempting to " << (enabled ? "enable" : "disable") << "heater" << endl;
 	
 	
 	// Send a request to enable or disable the heater
-	string response = agent_switch.SendRequest(request_str, SWITCH_HEATER_NAME);
+	string response = agent_switch.SendDeviceRequest(heater_switch, enabled ? "on" : "off");
 	
 	// Check if an error occurred
 	if ( response.empty() ) {
@@ -192,36 +231,13 @@ void SetHeaterState(bool enabled) {
 }
 
 
-string Request_Heater(vector<string> args) {
-	
-	bool change_state = false;
-	bool new_state = true;
-	
-	if ( args.size() == 0 );
-	else if ( args.size() == 1 ) {
-		change_state = true;
-		ToLowercaseInPlace(args[0]);
-		
-		if ( args[0] == "on" || args[0] == "yes" )
-			new_state = true;
-		else if ( args[0] == "off" || args[0] == "no" )
-			new_state = false;
-		else
-			return "Usage: heater [on | off]";
-	}
-	else
-		return "Usage: heater [on | off]";
-	
-	if ( change_state ) {
-		SetHeaterState(new_state);
-		return "OK";
-	}
-	else {
-		stringstream ss;
-		ss <<	"{";
-		ss <<		"\"enabled\": " << (heater->enabled ? "true" : "false");
-		ss <<	"}";
-		
-		return ss.str();
-	}
+void Request_Enable() {
+	SetHeaterState(true);
 }
+void Request_Disable() {
+	SetHeaterState(false);
+}
+string Request_Get() {
+	return heater->enabled ? "on" : "off";
+}
+

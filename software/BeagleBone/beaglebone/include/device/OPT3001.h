@@ -6,10 +6,6 @@
 
 namespace cubesat {
 	
-	// Adapted from code here
-	// https://github.com/closedcube/ClosedCube_OPT3001_Arduino/blob/master/src/ClosedCube_OPT3001.h
-	
-	
 	/**
 	 * @brief Provides access to the OPT3001 temperature sensor.
 	 */

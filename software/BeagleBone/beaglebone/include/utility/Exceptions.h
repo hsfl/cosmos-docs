@@ -5,6 +5,8 @@
 
 #include <exception>
 #include <string>
+#include <stdexcept>
+
 
 
 namespace cubesat {
@@ -66,6 +68,22 @@ namespace cubesat {
 		
 	private:
 		std::string error_msg;
+	};
+	
+	
+	class ArgumentMismatchException : public std::runtime_error {
+		public:
+			ArgumentMismatchException(std::string const& msg) : std::runtime_error(msg) {}
+	};
+	
+	class CallbackNotSetException : public std::runtime_error {
+		public:
+			CallbackNotSetException(std::string const& msg): std::runtime_error(msg) {}
+	};
+	
+	class NonexistentRequestException : public std::runtime_error {
+		public:
+			NonexistentRequestException(std::string const& msg): std::runtime_error(msg) {}
 	};
 
 	
