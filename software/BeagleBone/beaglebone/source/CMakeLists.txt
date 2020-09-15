@@ -39,7 +39,8 @@ set(COSMOS_LIBS
     CosmosDeviceSerial
     CosmosDeviceCpu
     CosmosDeviceDisk
-    CosmosMath)
+    CosmosMath
+	CosmosPhysics)
 
 
 
@@ -92,7 +93,7 @@ add_executable(agent_raspi agents/agent_raspi.cpp)
 target_link_libraries(agent_raspi ${COSMOS_LIBS} ${CUBESAT_LIBS})
 
 
-# Tests
+# ==================================== Tests ====================================
 #add_executable(device_test tests/device_test.cpp device/I2CDevice.cpp)
 #target_link_libraries(device_test ${COSMOS_LIBS} ${CUBESAT_LIBS})
 
@@ -121,32 +122,7 @@ add_executable(simpleagent_test tests/simpleagent_test.cpp)
 target_link_libraries(simpleagent_test ${COSMOS_LIBS} ${CUBESAT_LIBS})
 
 
- 
- 
-# ===================================================================
-
-# to deploy on a remote device
-file(WRITE "${CMAKE_SOURCE_DIR}/QtCreatorDeployment.txt" "cosmos/bin\n")
-
-macro(add_deployment_file SRC DEST)
-    file(RELATIVE_PATH path ${CMAKE_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
-    file(APPEND "${CMAKE_SOURCE_DIR}/QtCreatorDeployment.txt" "${path}/${SRC}:${DEST}\n")
-endmacro()
-
-macro(add_deployment_directory SRC DEST)
-    file(GLOB_RECURSE files RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${SRC}/*")
-    foreach(filename ${files})
-        get_filename_component(path ${filename} PATH)
-        add_deployment_file("${filename}" "${DEST}/${path}")
-    endforeach(filename)
-endmacro()
-
-set(program_name programs/agents/agent)
-file(RELATIVE_PATH relativeDir ${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/${program_name})
-add_deployment_file(${relativeDir} "bin")
-
-set(program_name "${COSMOS_SOURCE}/source/projects/cubesat-kit/source/tests/device_test")
-file(RELATIVE_PATH relativeDir ${PROJECT_SOURCE_DIR} ${PROJECT_BINARY_DIR}/${program_name})
-add_deployment_file(${relativeDir} "bin")
-
+# ==================================== Simulations ====================================
+add_executable(agent_propagator simulation/agent_propagator.cpp)
+target_link_libraries(agent_propagator ${COSMOS_LIBS} ${CUBESAT_LIBS})
 
