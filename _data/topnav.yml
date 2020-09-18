@@ -4,11 +4,11 @@ topnav:
 - title: Topnav
   items:
     - title: Project Website
-      external_url: http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/
+      external_url: http://cosmos-project.org
     - title: GitHub
-      external_url: https://github.com/hsfl/artemis
+      external_url: https://github.com/hsfl/docs
     - title: Submit an Issue
-      external_url: https://github.com/hsfl/artemis/issues
+      external_url: https://github.com/hsfl/docs/issues
 
 #Topnav dropdowns
 # topnav_dropdowns:
