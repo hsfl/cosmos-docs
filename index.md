@@ -8,7 +8,7 @@ toc: false
 
 
 ![HSFL Logo](/images/hsfl-logo.png)
-![COSMOS Logo](/images/hsfl-logo.png)
+![COSMOS Logo](/images/cosmos-logo.png)
 
 ## Welcome!                                                             
 
