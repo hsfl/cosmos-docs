@@ -14,7 +14,7 @@ entries:
       url: /pages/documentation/cosmos-overview.html
       output: web
     - title: COSMOS Introduction
-      url: https://docs.google.com/document/d/1L4Zj18qiHuXaGP_LiW1hqxb7xOPx6wK19Tpp3RBvfVk/edit
+      url: /pages/documentation/cosmos-overview.html
       output: web
 # =================================================================================
   - title: Tutorials

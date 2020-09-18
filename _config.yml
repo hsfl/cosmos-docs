@@ -49,7 +49,7 @@ folder_tutorials_from_scratch: "/docs/pages/tutorials/setup-from-scratch"
 # ===================================== GitHub Folders =====================================
 
 # The github repository URL
-gh_repo: "https://github.com/hsfl/docs"
+gh_repo: "https://github.com/hsfl/cosmos-docs"
 
 # The folder agent source files are used in (used in quick description)
 gh_agent_source_folder: "/blob/master/software/BeagleBone/beaglebone/source/agents"
