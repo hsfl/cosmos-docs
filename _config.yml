@@ -11,13 +11,13 @@ title: Artemis CubeSat Kit
 description: "A low-cost cubesat kit for education, created by Hawaii Space Flight Laboratory"
 
 # The subpath of the website on the domain
-baseurl: "/artemis" # the subpath of your site, e.g. /blog
+baseurl: "/docs" # the subpath of your site, e.g. /blog
 
 # The hostname & protocol of the site
 url: "https://hsfl.github.io"
 
 # The external project website
-project_website: "http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/"
+project_website: "http://cosmos-project.org/"
 
 #twitter_username: jekyllrb
 #github_username: mtmk-ee
@@ -25,31 +25,31 @@ project_website: "http://leonidas-b.hsfl.hawaii.edu/wordpress-5.0.1/artemis-2-2/
 # Plugins
 # plugins:
 #   - jekyll-
-    
+
 # ===================================== Internal Paths =====================================
 agent_diagram_folder: "/resources/diagrams/agents"
 
-folder_resources: "/artemis/resources"
-folder_diagrams: "/artemis/resources/diagrams"
+folder_resources: "/docs/resources"
+folder_diagrams: "/docs/resources/diagrams"
 
 
-folder_docs: "/artemis/pages/documentation"
-folder_docs_other: "/artemis/pages/documentation/other"
-folder_docs_cosmos: "/artemis/pages/documentation/cosmos"
-folder_docs_library: "/artemis/pages/documentation/python-library"
-folder_docs_agents: "/artemis/pages/documentation/agents"
-folder_docs_utility: "/artemis/pages/documentation/utility-classes"
+folder_docs: "/docs/pages/documentation"
+folder_docs_other: "/docs/pages/documentation/other"
+folder_docs_cosmos: "/docs/pages/documentation/cosmos"
+folder_docs_library: "/docs/pages/documentation/python-library"
+folder_docs_agents: "/docs/pages/documentation/agents"
+folder_docs_utility: "/docs/pages/documentation/utility-classes"
 
-folder_tutorials: "/artemis/pages/tutorials"
-folder_tutorials_cosmos: "/artemis/pages/tutorials/cosmos"
-folder_tutorials_scripts: "/artemis/pages/tutorials/scripts"
-folder_tutorials_setup: "/artemis/pages/tutorials/setup"
-folder_tutorials_from_scratch: "/artemis/pages/tutorials/setup-from-scratch"
+folder_tutorials: "/docs/pages/tutorials"
+folder_tutorials_cosmos: "/docs/pages/tutorials/cosmos"
+folder_tutorials_scripts: "/docs/pages/tutorials/scripts"
+folder_tutorials_setup: "/docs/pages/tutorials/setup"
+folder_tutorials_from_scratch: "/docs/pages/tutorials/setup-from-scratch"
 
 # ===================================== GitHub Folders =====================================
 
 # The github repository URL
-gh_repo: "https://github.com/hsfl/artemis"
+gh_repo: "https://github.com/hsfl/docs"
 
 # The folder agent source files are used in (used in quick description)
 gh_agent_source_folder: "/blob/master/software/BeagleBone/beaglebone/source/agents"
@@ -107,7 +107,7 @@ exclude:
 # ====================== Feedback ======================
 
 # Default subject line for feedback
-feedback_subject_line: 
+feedback_subject_line:
 
 # Used as a contact email for the Feedback link in the top navigation bar
 feedback_email:
@@ -156,7 +156,7 @@ defaults:
     values:
       layout: "page"
       comments: false # Change to false if you don't want to use Commento.io
-      
+
       search: true
       sidebar: home_sidebar
       topnav: topnav
