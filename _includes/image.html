@@ -1,0 +1,18 @@
+{% assign align = include.align | default: "center" %}
+{% assign width = include.width | default: "80%" %}
+
+<div align="{{align}}">
+{% if include.url %}
+<a href="{{site.baseurl}}{{include.url}}">
+{% elsif include.external_url %}
+<a href="{{include.external_url}}" target="_blank" rel="noopener">
+{% endif %}
+<img align="{{align}}"
+src="{{site.baseurl}}{{include.file}}" style="width:{{width}};" />
+{% if include.url %}
+</a>
+{% elsif include.external_url %}
+</a>
+{% endif %}
+
+</div>

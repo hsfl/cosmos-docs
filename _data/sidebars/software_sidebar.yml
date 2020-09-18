@@ -1,0 +1,119 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: Software
+  product: Software
+  version: 
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Tutorials
+    output: web, pdf
+    folderitems:
+
+    - title: Setup
+      url: /pages/software/tutorials/setup/index.html
+      output: web, pdf
+
+      subfolders:
+      - title: BeagleBone
+        output: web
+        subfolderitems:
+        - title: SimpleAgent Tutorial
+          url: /pages/software/tutorials/beaglebone/utility/simpleagent-tutorial.html
+          output: web
+        
+      - title: COSMOS
+        output: web
+        subfolderitems:
+        - title: COSMOS and QtCreator
+          url: /pages/software/tutorials/cosmos/cosmos-and-qtcreator.html
+          output: web
+        - title: Customizing COSMOS Web
+          url: /pages/software/tutorials/cosmos/customizing-cosmos-web.html
+          output: web
+
+    - title: BeagleBone
+      url: /index.html
+      output: web, pdf
+
+    - title: Raspberry Pi
+      url: /mydoc_introduction.html
+      output: web, pdf
+
+    - title: PyCubed
+      url: /mydoc_supported_features.html
+      output: web, pdf
+
+    - title: COSMOS
+      url: /mydoc_about.html
+      output: web, pdf
+
+  - title: Documentation
+    output: web, pdf
+    folderitems:
+
+    - title: Getting Started
+      url: /getting_started.html
+      output: web, pdf
+
+      subfolders:
+      - title: BeagleBone
+        output: web
+        subfolderitems:
+
+        - title: Heater Agent
+          url: /pages/software/documentation/beaglebone/agents/heater-agent.html
+          output: web
+        - title: PyCubed Agent
+          url: /pages/software/documentation/beaglebone/agents/pycubed-agent.html
+          output: web
+        - title: Raspberry Pi Agent
+          url: /pages/software/documentation/beaglebone/agents/raspberry-pi-agent.html
+          output: web
+        - title: Switch Agent
+          url: /pages/software/documentation/beaglebone/agents/switch-agent.html
+          output: web
+        - title: Sun Sensor Agent
+          url: /pages/software/documentation/beaglebone/agents/sun-sensor-agent.html
+          output: web
+        - title: Temperature Sensor Agent
+          url: /pages/software/documentation/beaglebone/agents/temperature-sensor-agent.html
+          output: web
+
+        - title: SimpleAgent
+          url: /pages/software/documentation/beaglebone/utility/simpleagent.html
+          output: web
+        - title: SimpleAgent Devices
+          url: /pages/software/documentation/beaglebone/utility/simpleagent.html
+          output: web
+
+        - title: COSMOS
+          url: /pages/software/documentation/beaglebone/cosmos/cosmos.html
+          output: web
+          
+
+
+    - title: Raspberry Pi
+      url: /mydoc_introduction.html
+      output: web, pdf
+
+    - title: PyCubed
+      url: /mydoc_supported_features.html
+      output: web, pdf
+
+    - title: COSMOS
+      url: /mydoc_about.html
+      output: web, pdf

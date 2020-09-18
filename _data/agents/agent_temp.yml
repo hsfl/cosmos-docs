@@ -1,0 +1,138 @@
+
+# Quick Description table
+description:
+  program_name: agent_temp
+  agent_name: temp
+  files:
+    - name: "agent_temp.cpp"
+  hardware:
+    - name: "ADT7311 Temperature Sensor"
+      external_url: "https://www.analog.com/media/en/technical-documentation/data-sheets/ADT7311.pdf"
+    - name: "BMX160 IMU"
+      external_url: "https://ae-bst.resource.bosch.com/media/_tech/media/datasheets/BST-BMX160-DS000.pdf"
+
+# Diagram info
+diagram:
+  file: "agent_temp_diagram.png"
+  width: "700px"
+
+# Request table
+requests:
+  - name: "Sensor Status"
+    usage: "sensor <name>"
+    brief: Returns the status of a given sensor.
+    note: >
+      The argument `name` corresponds to the
+      [name of the temperature sensor](#sensor-names).
+
+  - name: "List Sensors"
+    usage: "list"
+    brief: Lists all available temperature sensors.
+    note: ""
+
+# Device table
+cosmos_devices:
+
+  # ================= EPS =================
+  - name: "Temperature Sensor<br>(PDU Board)"
+    cosmos_device_name: "tsen"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature reading"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # ================= OBC =================
+  - name: "Temperature Sensor<br>(OBC Board)"
+    cosmos_device_name: "tsen"
+    cosmos_device_number: "001"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature reading"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # ================= Payload =================
+  - name: "Temperature Sensor<br>(Payload Board)"
+    cosmos_device_name: "tsen"
+    cosmos_device_number: "002"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature reading"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # ================= Battery =================
+  - name: "Temperature Sensor<br>(Battery Board)"
+    cosmos_device_name: "tsen"
+    cosmos_device_number: "003"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature reading"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+  # ================= PyCubed =================
+  - name: "Temperature Sensor<br>(PyCubed Board)"
+    cosmos_device_name: "tsen"
+    cosmos_device_number: "004"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature reading"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+
+
+
+

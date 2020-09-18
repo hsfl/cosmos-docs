@@ -1,0 +1,63 @@
+
+entries:
+- title: Sidebar
+  product: Website Documentation
+  levels: one
+  folders:
+
+    
+# =================================================================================
+  - title: Overview
+    output: web
+    folderitems:
+    - title: Developer Home
+      url: /pages/documentation/site/index.html
+      output: web
+
+    - title: Getting Started
+      url: /pages/documentation/site/getting-started.html
+      output: web
+
+    - title: Site Structure
+      url: /pages/documentation/site/structure.html
+      output: web
+
+# =================================================================================
+  - title: Pages
+    output: web
+    folderitems:
+    - title: Contents
+      url: /pages/documentation/site/pages/contents.html
+      output: web
+
+# =================================================================================
+  - title: Layouts
+    output: web
+    folderitems:
+    - title: Agent Layout
+      url: /pages/documentation/site/layouts/agent.html
+      output: web
+    - title: FAQ Layout
+      url: /pages/documentation/site/layouts/faq.html
+      output: web
+
+# =================================================================================
+  - title: Includes
+    output: web
+    folderitems:
+    - title: Includes
+      url: /pages/documentation/site/includes/index.html
+      output: web
+      subfolders:
+      - title: Agents
+        output: web
+        subfolderitems:
+        - title: "Quick Details Table"
+          url: /pages/documentation/site/includes/agents/quick-details.html
+          output: web
+        - title: "Device Table"
+          url: /pages/documentation/site/includes/agents/device-table.html
+          output: web
+        - title: "Request Table"
+          url: /pages/documentation/site/includes/agents/request-table.html
+          output: web

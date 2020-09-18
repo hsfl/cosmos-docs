@@ -1,0 +1,29 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "IMU"
+  namespace: "artemis"
+  files:
+    - name: "imu.py"
+      url: "blob/master/software/RaspberryPi/artemis/imu.py"
+
+
+# Property Table
+properties:
+  - name: "Timestamp"
+    declaration: "utc"
+    description: The UTC timestamp of the data, stored as a Modified Julian Date.
+
+  - name: "Magnetic Field"
+    declaration: "magnetic"
+    description: The magnetic field vector as an array.
+
+  - name: "Linear Acceleration"
+    declaration: "acceleration"
+    description: The linear acceleration vector as an array.
+
+  - name: "Angular Velocity"
+    declaration: "gyro"
+    description: The angular velocity vector as an array.

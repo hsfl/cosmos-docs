@@ -1,0 +1,37 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "Agent"
+  namespace: "artemis"
+  files:
+    - name: "agent.py"
+      url: "blob/master/software/RaspberryPi/artemis/agent.py"
+
+
+# Member Table
+functions:
+  - name: "Send Request"
+    declaration: "def request(self, request_str)"
+    description: Sends an agent request to the BeagleBone and returns the result string.
+
+# Property table
+properties:
+  - name: "Name"
+    declaration: "name"
+    description: The name of the agent.
+
+  - name: "Node"
+    declaration: "node"
+    description: The node the agent is running on.
+
+
+  - name: "Is Reachable"
+    declaration: "active"
+    description: "`True` if the agent can be reached."
+
+  - name: "State of Health"
+    declaration: "soh"
+    description: A dictionary containing the last received state of health message.
+
