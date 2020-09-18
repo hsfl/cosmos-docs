@@ -1,18 +1,17 @@
 ---
 layout: page
 title: About Us
-permalink: /about/
+#permalink: /about/
 ---
 
-## COSMOS
+## [COSMOS](http://cosmos-project.org/)
 [Hawaii Space Flight Laboratory](https://www.hsfl.hawaii.edu/) at the [University of Hawaiʻi at Mānoa](https://manoa.hawaii.edu/).
 
-### 
+###
 
 ## Team Members
 
 ### HSFL Staff
-
 | Name                       | Role                              |
 | -------------------------- |:---------------------------------:|
 | Dr. Frances Zhu            | Principle Investigator            |

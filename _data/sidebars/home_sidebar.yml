@@ -1,11 +1,11 @@
 
 entries:
 - title: Sidebar
-  product: Artemis Cubesat Kit
+  product: COSMOS Documentation
   levels: one
   folders:
 
-    
+
 # =================================================================================
   - title: Overview
     output: web
