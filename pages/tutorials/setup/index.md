@@ -10,4 +10,4 @@ folder: /pages/tutorials
 ---
 
 
-<meta http-equiv = "refresh" content = "0; url = /pages/software/tutorials/setup/setup1.html" />
+<meta http-equiv = "refresh" content = "0; url = /pages/software/tutorials/setup/setup-cosmos-web.html" />

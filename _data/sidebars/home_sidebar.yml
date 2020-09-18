@@ -7,22 +7,15 @@ entries:
 
 
 # =================================================================================
-  - title: Overview
+  - title: Intro
     output: web
     folderitems:
-    - title: Home
-      url: /index.html
+    - title: COSMOS Overview
+      url: /pages/documentation/cosmos-overview.html
       output: web
-    - title: Design Overview
-      url: /pages/documentation/design-overview.html
+    - title: COSMOS Introduction
+      url: https://docs.google.com/document/d/1L4Zj18qiHuXaGP_LiW1hqxb7xOPx6wK19Tpp3RBvfVk/edit
       output: web
-    - title: FAQ
-      url: /pages/faq.html
-      output: web
-    - title: Safety First
-      url: /pages/safety-procedures.html
-      output: web
-
 # =================================================================================
   - title: Tutorials
     output: web
@@ -36,31 +29,8 @@ entries:
       - title: Getting Started Series
         output: web
         subfolderitems:
-        - title: "1. Unboxing"
-          url: /pages/tutorials/setup/setup1.html
-          output: web
-        - title: "2. Development Environment"
-          url: /pages/tutorials/setup/setup2.html
-          output: web
-        - title: "3. COSMOS Web"
-          url: /pages/tutorials/setup/setup3.html
-          output: web
-        - title: "4. Camera Script"
-          url: /pages/tutorials/setup/setup4.html
-          output: web
-
-
-      - title: Payload Script Series
-        output: web
-        subfolderitems:
-        - title: "1. Writing a Payload Script"
-          url: /pages/tutorials/scripts/scripts1.html
-          output: web
-        - title: "2. Uploading the Script"
-          url: /pages/tutorials/scripts/scripts2.html
-          output: web
-        - title: "3. Running the Script"
-          url: /pages/tutorials/scripts/scripts3.html
+        - title: "2. COSMOS Web"
+          url: /pages/tutorials/setup/setup-cosmos-web.html
           output: web
 
 
@@ -86,17 +56,11 @@ entries:
         - title: "COSMOS from Scratch"
           url: /pages/tutorials/setup-from-scratch/cosmos-from-scratch.html
           output: web
-        - title: "BeagleBone from Scratch"
-          url: /pages/tutorials/setup-from-scratch/beaglebone-from-scratch.html
-          output: web
-        - title: "Raspberry Pi from Scratch"
-          url: /pages/tutorials/setup-from-scratch/raspi-from-scratch.html
-          output: web
 
 
 # =================================================================================
 
-  - title: BeagleBone Software
+  - title: COSMOS Agents
     output: web
     folderitems:
     - title: Doxygen
@@ -136,7 +100,7 @@ entries:
             url: /pages/documentation/agents/temperature-sensor-agent.html
             output: web
 
-      - title: Utility Classes
+      - title: Agent Classes
         output: web
         subfolderitems:
           - title: SimpleAgent Class
@@ -145,100 +109,6 @@ entries:
           - title: Device Classes
             url: /pages/documentation/utility-classes/simpleagent-devices.html
             output: web
-          - title: PyCubed Utility
-            url: /pages/documentation/utility-classes/pycubed.html
-            output: web
-          - title: Raspberry Pi Utility
-            url: /pages/documentation/utility-classes/raspi.html
-            output: web
-          - title: Time Utility
-            url: /pages/documentation/utility-classes/time.html
-            output: web
-          - title: Timer Utility
-            url: /pages/documentation/utility-classes/timer.html
-            output: web
-          - title: GPIO Utility
-            url: /pages/documentation/utility-classes/gpio.html
-            output: web
 
 
-# =================================================================================
 
-  - title: Raspberry Pi Software
-    output: web
-    folderitems:
-    - title: Overview
-      url: /pages/documentation/raspi-library/index.html
-      output: web
-      subfolders:
-
-
-      - title: Classes
-        output: web
-        subfolderitems:
-
-        - title: CubeSat Class
-          url: /pages/documentation/raspi-library/cubesat-class.html
-          output: web
-
-        - title: BeagleBone Class
-          url: /pages/documentation/raspi-library/beaglebone-class.html
-          output: web
-
-        - title: Agent Class
-          url: /pages/documentation/raspi-library/agent-class.html
-          output: web
-
-        - title: Heater Class
-          url: /pages/documentation/raspi-library/heater-class.html
-          output: web
-
-        - title: IMU Class
-          url: /pages/documentation/raspi-library/imu-class.html
-          output: web
-
-        - title: GPS Class
-          url: /pages/documentation/raspi-library/gps-class.html
-          output: web
-
-        - title: SunSensor Class
-          url: /pages/documentation/raspi-library/sunsensor-class.html
-          output: web
-
-        - title: TempSensor Class
-          url: /pages/documentation/raspi-library/tempsensor-class.html
-          output: web
-
-
-# =================================================================================
-  - title: Development Environment
-    output: web
-    folderitems:
-    - title: Development Environment
-      url: /pages/documentation/other/development-environment.html
-      output: web
-    - title: Utility Scripts
-      url: /pages/documentation/other/scripts.html
-      output: web
-
-# =================================================================================
-  - title: Miscellaneous
-    output: web
-    folderitems:
-    - title: PyCubed Communication
-      url: /pages/documentation/other/pycubed-communication.html
-      output: web
-
-# =================================================================================
-  - title: Additional Resources
-    output: web
-    folderitems:
-    - title: Programming Tutorials
-      url: /pages/other/programming-tutorials.html
-      output: web
-    - title: Hardware Interfaces
-      url: /pages/other/hardware-interfaces.html
-      output: web
-    - title: Useful Tools
-      url: /pages/other/useful-tools.html
-      output: web

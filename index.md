@@ -6,8 +6,7 @@ permalink: index.html
 toc: false
 ---
 
-
-![HSFL Logo](/images/hsfl-logo.png)
+![HSFL Logo](/images/cosmos-logo.png)
 
 ## Welcome!                                                             
 
