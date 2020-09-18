@@ -7,7 +7,8 @@ toc: false
 ---
 
 
-![HSFL Logo](/images/favicon.png)
+![HSFL Logo](/images/hsfl-logo.png)
+![COSMOS Logo](/images/hsfl-logo.png)
 
 ## Welcome!                                                             
 
@@ -15,9 +16,5 @@ Here you'll find documentation and tutorials for the COSMOS Project, a system th
 
 
 ## What Now?
-
-{% include important.html content="Before doing anything, make sure to review the
-[safety procedures](pages/safety-procedures.html) for working with the hardware." %}
-
 
 If you are just getting started with COSMOS, you should definitely check out the _Getting Started_ set of tutorials over on the sidebar.
