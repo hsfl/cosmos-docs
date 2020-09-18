@@ -11,7 +11,7 @@ email: cosmos@hsfl.hawaii.edu
 description: "a system that is designed to primarily support the development and operations of one or more small spacecraft and is particularly suited for organizations with limited development and operations budget, such as universities, created by Hawaii Space Flight Laboratory"
 
 # The subpath of the website on the domain
-baseurl: "/docs" # the subpath of your site, e.g. /blog
+baseurl: "/cosmos-docs" # the subpath of your site, e.g. /blog
 
 # The hostname & protocol of the site
 url: "https://hsfl.github.io"
