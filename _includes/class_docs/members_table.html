@@ -1,0 +1,109 @@
+
+{% if page.obc == "raspi" %}
+    {% assign language = site.data.class_docs.raspi[page.class_name].language | default: "python" %}
+    {% assign functions = site.data.class_docs.raspi[page.class_name].functions %}
+    {% assign properties = site.data.class_docs.raspi[page.class_name].properties %}
+{% elsif page.obc == "pycubed" %}
+    {% assign language = site.data.class_docs.pycubed[page.class_name].language | default: "python" %}
+    {% assign functions = site.data.class_docs.pycubed[page.class_name].functions %}
+    {% assign properties = site.data.class_docs.pycubed[page.class_name].properties %}
+{% else %}
+    {% assign language = site.data.class_docs.beaglebone[page.class_name].language | default: "cpp" %}
+    {% assign functions = site.data.class_docs.beaglebone[page.class_name].functions %}
+{% endif %}
+
+
+{% assign function_counter = 0 %}
+
+
+
+
+
+
+{% if functions %}
+<h2>Functions</h2>
+
+<div class="panel panel-default">
+
+
+{% for function in functions %}
+
+{% capture function_counter %}{% increment function_counter %}{% endcapture %}
+
+
+
+{% assign codeblock="```" | append: language | append: "
+" | append: function.declaration | append: "
+```" %}
+
+{% assign highlighted=codeblock | markdownify %}
+
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{function_counter}}" aria-expanded="true">{{ function.name }}</a>
+    </h4>
+</div>
+<div id="collapse{{function_counter}}" class="panel-collapse noCrossRef collapse in"  aria-expanded="true">
+<div class="panel-body">
+
+<strong>Declaration: </strong> {{ highlighted }}
+<br><br>
+{{ function.description | markdownify }}
+
+</div>
+</div>
+
+{% endfor %}
+
+</div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+{% if properties %}
+<h2>Properties</h2>
+
+<div class="panel panel-default">
+
+{% for property in properties %}
+
+{% capture function_counter %}{% increment function_counter %}{% endcapture %}
+
+
+
+{% assign codeblock="`" | append: property.declaration | append: "`" %}
+
+{% assign highlighted=codeblock | markdownify | remove: "<p>" | remove: "</p>" %}
+
+
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{function_counter}}" aria-expanded="true">{{ property.name }}</a>
+    </h4>
+</div>
+<div id="collapse{{function_counter}}" class="panel-collapse noCrossRef collapse in"  aria-expanded="true">
+<div class="panel-body">
+
+<strong>Name: </strong> {{ highlighted }}
+<br><br>
+{{ property.description | markdownify }}
+
+</div>
+</div>
+
+
+
+{% endfor %}
+
+</div>
+
+{% endif %}

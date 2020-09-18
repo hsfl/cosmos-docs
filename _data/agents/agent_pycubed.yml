@@ -1,0 +1,232 @@
+
+# "Quick Description" info
+description:
+  program_name: agent_pycubed
+  agent_name: pycubed
+  files:
+    - name: "agent_pycubed.cpp"
+  hardware:
+    - name: "PyCubed Mainboard"
+
+
+# Diagram info
+diagram:
+  file: "agent_pycubed_diagram.png"
+  width: "800px"
+
+# Request table
+requests:
+  - name: "Check Connection"
+    usage: "is_up"
+    brief: Checks if the PyCubed can be reached.
+    note: >
+      If the PyCubed is connected properly, the request will return `"UP"`.
+      Otherwise, the request will return `"DOWN"`.
+
+  - name: "Send Message"
+    usage: "send_message <message_str>"
+    aliases: "send"
+    brief: Sends a message to the PyCubed.
+    note: >
+      The argument `message_str` is a message formatted to the
+      [PyCubed communication protocol](/pages/software/documentation/pycubed/communication-protocol.html) requirements.
+      The leading `$` and checksum should not be included.
+
+  - name: "Get IMU Data"
+    usage: "imu"
+    brief: Retrieves the PyCubed IMU data.
+    note: >
+      Returns a JSON-formatted string.
+
+  - name: "Get GPS Data"
+    usage: "gps"
+    brief: Retrieves the PyCubed GPS data.
+    note: >
+      Returns a JSON-formatted string.
+
+  - name: "Get Power Data"
+    usage: "power"
+    brief: Retrieves the PyCubed power data.
+    note: >
+      Returns a JSON-formatted string.
+
+  - name: "Get Temperature Data"
+    usage: "temperature"
+    aliases: "temp"
+    brief: Retrieves the PyCubed temperature data.
+    note: >
+      Returns a JSON-formatted string.
+
+  - name: "Kill Radio"
+    usage: "killradio yes"
+    brief: Kills future radio transmission.
+    note: |
+      The argument `yes` is required, and is meant to prevent accidental usage of the request.
+
+      > **_Note:_** **You should not call this request** unless the radio is transmitting harmful noise, or if you are performing tests.
+
+
+# "COSMOS Property" info
+cosmos_node:
+  - name: "UTC"
+    cosmos_name: "utc"
+    storage_type: ["double", "Time"]
+    description: "The UTC timestamp as a Modified Julian Day"
+
+  - name: "Power Use (W)"
+    cosmos_name: "powuse"
+    storage_type: "float"
+    description: "The current overall power usage"
+
+  - name: "Power Generation (W)"
+    cosmos_name: "powgen"
+    storage_type: "float"
+    description: "The current power generation"
+
+  - name: "Battery Capacity (Ah)"
+    cosmos_name: "battcap"
+    storage_type: "float"
+    description: "The capacity of the batteries"
+
+  - name: "Battery Charge (Ah)"
+    cosmos_name: "battlev"
+    storage_type: "float"
+    description: "The current charge of the batteries"
+
+cosmos_devices:
+
+    # ================= CPU =================
+  - name: "CPU"
+    cosmos_device_name: "cpu"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature of the IMU"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage supplied"
+        
+      - name: "Current (A)"
+        cosmos_name: "amp"
+        storage_type: "float"
+        description: "The current draw"
+
+      - name: "Memory Used (GiB)"
+        cosmos_name: "gib"
+        storage_type: "float"
+        description: "The memory currently used"
+
+      - name: "Maximum Memory (GiB)"
+        cosmos_name: "maxgib"
+        storage_type: "float"
+        description: "The maximum memory available"
+
+      - name: "Up Time (s)"
+        cosmos_name: "uptime"
+        storage_type: "int"
+        description: "The time since the PyCubed was last booted"
+
+# ================= Battery =================
+  - name: "Battery"
+    cosmos_device_name: "batt"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature of the battery board"
+        
+      - name: "Voltage (V)"
+        cosmos_name: "volt"
+        storage_type: "float"
+        description: "The voltage of the batteries"
+        
+      - name: "Current (A)"
+        cosmos_name: "amp"
+        storage_type: "float"
+        description: "The current draw from the batteries"
+
+      - name: "Capacity (Ah)"
+        cosmos_name: "cap"
+        storage_type: "float"
+        description: "The capacity of the batteries"
+
+      - name: "Charge (Ah)"
+        cosmos_name: "charge"
+        storage_type: "float"
+        description: "The current charge of the batteries"
+
+      - name: "Percentage (%)"
+        cosmos_name: "percentage"
+        storage_type: "float"
+        description: "The percentage of charge remaining"
+
+# ================= IMU =================
+  - name: "IMU"
+    cosmos_device_name: "imu"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Temperature (K)"
+        cosmos_name: "temp"
+        storage_type: "float"
+        description: "The temperature of the battery board"
+        
+      - name: "Acceleration (m/s<sup>2</sup>)"
+        cosmos_name: "accel"
+        storage_type: "Vec3"
+        description: "The linear acceleration reading"
+        
+      - name: "Angular Velocity (°/s)"
+        cosmos_name: "omega"
+        storage_type: "Vec3"
+        description: "The angular velocity reading"
+
+      - name: "Magnetic Field (G)"
+        cosmos_name: "mag"
+        storage_type: "Vec3"
+        description: "The magnetic field reading"
+
+# ================= GPS =================
+  - name: "GPS"
+    cosmos_device_name: "gps"
+    cosmos_device_number: "000"
+    properties:
+      - name: "UTC"
+        cosmos_name: "utc"
+        storage_type: ["double", "Time"]
+        description: "The UTC timestamp as a Modified Julian Day"
+        
+      - name: "Location"
+        cosmos_name: "geods"
+        storage_type: "Location"
+        description: "The latitude (°), longitude (°), and altitude (m)"
+        
+      - name: "Velocity (m/s)"
+        cosmos_name: "geocv"
+        storage_type: "Vec3"
+        description: "The velocity"
+        
+      - name: "Satellites Used"
+        cosmos_name: "sats_used"
+        storage_type: "int"
+        description: "The number of satellites being used"
+        

@@ -1,0 +1,42 @@
+
+{% assign requests = site.data.agents[page.agent_name].requests %}
+
+{% assign request_counter = 0 %}
+
+<div class="panel panel-default">
+
+
+{% for request in requests %}
+
+<div class="panel-heading">
+    <h4 class="panel-title">
+        <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{request_counter}}">{{ request.name }}</a>
+    </h4>
+</div>
+<div id="collapse{{request_counter}}" class="panel-collapse collapse noCrossRef">
+<div class="panel-body">
+
+<strong>Usage:</strong> <code>{{request.usage}}</code><br>
+
+{% if request.aliases %}
+<strong>Aliases:</strong>
+{% for alias in request.aliases %}
+<code>{{alias}}</code>
+{% endfor %}
+<br>
+{% endif %}
+<br>
+<strong>Description:</strong> {{ request.brief | markdownify | remove: "<p>" | remove: "</p>" }}
+<br><br>
+
+{{ request.note | markdownify }}
+
+</div>
+</div>
+
+{% capture request_counter %}{% increment request_counter %}{% endcapture %}
+{% endfor %}
+
+
+</div>
+    

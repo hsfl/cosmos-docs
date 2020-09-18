@@ -1,0 +1,20 @@
+---
+layout: page
+sidebar: home_sidebar
+---
+
+<!-- ==================== Quick Details ==================== -->
+<h2>Quick Details</h2>
+{% include class_docs/detail_table.html %}
+
+
+<!-- ==================== Page Contents ==================== -->
+{{ content }}
+
+
+<!-- ==================== Member Functions ==================== -->
+{% if page.list_members != false %}
+{% include class_docs/members_table.html %}
+
+{% endif %}
+

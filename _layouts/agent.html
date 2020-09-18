@@ -1,0 +1,26 @@
+---
+layout: page
+---
+
+<!-- ==================== Quick Details ==================== -->
+<h2>Quick Details</h2>
+{% include agents/detail_table.html %}
+
+<!-- ==================== Page Contents ==================== -->
+{{ content }}
+
+
+<!-- ==================== Requests ==================== -->
+<h2>Requests</h2>
+{% include agents/request_table.html %}
+
+<!-- ==================== COSMOS Properties ==================== -->
+<h2>COSMOS Names</h2>
+{% include agents/device_table.html %}
+
+<!-- ==================== Block Diagram ==================== -->
+<h2>Block Diagram</h2>
+Below is a software diagram demonstrating the behavior of this agent
+
+{% assign diagram = site.data.agents[page.agent_name].diagram %}
+<img src="{{site.baseurl}}{{site.agent_diagram_folder}}/{{diagram.file}}" alt="Agent block diagram" {% if diagram.width %} style="width:{{diagram.width}};" {% endif %}/>

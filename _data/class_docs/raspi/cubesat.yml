@@ -1,0 +1,106 @@
+
+language: "python"
+
+# Quick Description table
+description:
+  class: "CubeSat"
+  namespace: "artemis"
+  files:
+    - name: "cubesatclass.py"
+      url: "blob/master/software/RaspberryPi/artemis/cubesatclass.py"
+
+
+# Member Table
+functions:
+  - name: "Update Library"
+    declaration: "def update(self)"
+    description: Updates information stored in the cubesat object.
+
+  - name: "Transmit File"
+    declaration: "def transmit_file(self, source_file, outgoing_file_name=None)"
+    description: |
+      Marks the file `source_file` for transmission, renaming it to `outgoing_file_name`.
+      If `None` is provided for the second argument, then the file name is unchanged.
+
+      This is the same function as in the BeagleBone class
+
+  - name: "Set Shutdown Callback"
+    declaration: "def set_shutdown_callback(self, function)"
+    description: >
+      Sets the shutdown callback. The function supplied will be called
+      when the program terminates.
+
+  - name: "Set State of Health"
+    declaration: "def set_soh(self, soh_dictionary)"
+    description: >
+      Sets the state of health message for the payload script. The value `soh_dictionary` is a 
+      dictionary containing relevant values.
+
+
+# Property Table
+properties:
+  - name: "BeagleBone"
+    declaration: "beaglebone"
+    description: A [BeagleBone](beaglebone-class.html) object.
+
+  - name: "Heater Agent"
+    declaration: "agent_heater"
+    description: An [Agent](agent-class.html) object representing the heater agent.
+
+  - name: "PyCubed Agent"
+    declaration: "agent_pycubed"
+    description: An [Agent](agent-class.html) object representing the PyCubed agent.
+
+  - name: "Raspberry Pi Agent"
+    declaration: "agent_raspi"
+    description: An [Agent](agent-class.html) object representing the Raspberry Pi agent.
+  
+  - name: "Sun Sensor Agent"
+    declaration: "agent_sun"
+    description: An [Agent](agent-class.html) object representing the sun sensor agent.
+
+  - name: "Switch Agent"
+    declaration: "agent_switch"
+    description: An [Agent](agent-class.html) object representing the switch agent.
+
+  - name: "Temperature Sensor Agent"
+    declaration: "agent_temp"
+    description: An [Agent](agent-class.html) object representing the temperature sensor agent.
+
+  - name: "Heater"
+    declaration: "heater"
+    description: The [Heater](heater-class.html) object.
+
+  - name: "IMU"
+    declaration: "imu"
+    description: The [IMU](imu-class.html) sensor object.
+
+  - name: "GPS"
+    declaration: "gps"
+    description: The [GPS](gps-class.html) object.
+
+  - name: "Temperature Sensors"
+    declaration: "tempsensor"
+    description: A named tuple of [TempSensor](tempsensor-class.html) objects.
+
+  - name: "Sun Sensors"
+    declaration: "sunsensor"
+    description: A named tuple of [SunSensor](sunsensor-class.html) objects.
+
+
+  - name: "Battery Voltage"
+    declaration: "battery_voltage"
+    description: The battery voltage in volts.
+
+  - name: "Battery Charge Current"
+    declaration: "battery_current"
+    description: The battery charge current in mA.
+
+  - name: "System Voltage"
+    declaration: "system_voltage"
+    description: The system voltage in volts.
+
+  - name: "System Current Draw"
+    declaration: "system_current"
+    description: The system current draw in mA.
+

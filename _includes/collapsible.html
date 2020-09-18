@@ -1,0 +1,22 @@
+
+{% comment %}
+Usage: {% include collapsible.html header="Header Text" content="Expanded contents" %}
+Usage: {% include collapsible.html data="YML_file_name.yml" %}
+{% endcomment %}
+
+{% assign header = include.header | default: site.data.collapse[include.data].header %}
+{% assign text = include.text | default: site.data.collapse[include.data].text %}
+
+
+{% assign id = include.id | default: 0 %}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="noCrossRef accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{id}}">{{header}}</a>
+        </h4>
+    </div>
+    <div id="collapse{{id}}" class="panel-collapse collapse noCrossRef">
+        <div class="panel-body">{{text | markdownify}}</div>
+    </div>
+</div>
