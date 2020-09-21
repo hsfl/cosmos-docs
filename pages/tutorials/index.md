@@ -12,7 +12,8 @@ keywords: software
 This tutorial is meant to guide users in setting up the cubesat and necessary tools out-of-box.
 
 ### Parts
-1. [COSMOS Install]({{site.baseurl}}/pages/tutorials/install/index.html)
+1. [Development Environment]({{site.baseurl}}/pages/tutorials/setup/development-environment.html)
+1. [COSMOS Install]({{site.baseurl}}/pages/tutorials/install/ubuntu-install.html)
 2. [COSMOS Web]({{site.baseurl}}/pages/tutorials/setup/setup-cosmos-web.html)
 
 

@@ -43,10 +43,13 @@ entries:
       - title: Getting Started Series
         output: web
         subfolderitems:
-        - title: "1. Installation"
+        - title: "1. Development Environment"
+          url: /pages/tutorials/setup/development-environment.html
+          output: web
+        - title: "2. Installation"
           url: /pages/tutorials/install/index.html
           output: web
-        - title: "2. COSMOS Web"
+        - title: "3. COSMOS Web"
           url: /pages/tutorials/setup/setup-cosmos-web.html
           output: web
 
