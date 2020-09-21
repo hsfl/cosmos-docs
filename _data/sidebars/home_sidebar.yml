@@ -25,8 +25,11 @@ entries:
         url: /pages/tutorials/install/index.html
         output: web
 
-      - title: "Linux"
+      - title: "Developers"
         url: /pages/tutorials/install/ubuntu-install.html
+        output: web
+      - title: "Users"
+        url: /pages/tutorials/install/user-install.html
         output: web
 # =================================================================================
   - title: Tutorials

@@ -7,5 +7,8 @@ tags: [software]
 keywords: software
 ---
 
-### Developer
+### Developers
 1. [Linux Install]({{site.baseurl}}/pages/tutorials/install/ubuntu-install.html)
+
+### Users
+1. [User Install]({{site.baseurl}}/pages/tutorials/install/user-install.html)
