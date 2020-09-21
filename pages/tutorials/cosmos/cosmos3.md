@@ -10,7 +10,7 @@ toc: false
 
 series:
     language: "C++"
-    prev: /pages/tutorials/cosmos/cosmos2.html
+    prev: /pages/tutorials/install/ubuntu-install.html
     next: /pages/tutorials/cosmos/cosmos4.html
 ---
 
@@ -90,8 +90,3 @@ $ agent cubesat my_agent say_hi
 
 Once you're done testing out your agents, you should terminate them by pressing
 <kbd>Control</kbd> + <kbd>C</kbd> in their terminal window.
-
-
-
-
-

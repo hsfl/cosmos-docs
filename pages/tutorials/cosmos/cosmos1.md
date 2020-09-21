@@ -14,7 +14,7 @@ series:
 
 
 > **_Note:_** Not using the Artemis Development Environment? Then you should first follow the instructions for
-> [installing COSMOS from scratch]({{site.folder_tutorials_from_scratch}}/cosmos-from-scratch.html).
+> [installing COSMOS from scratch]({{site.folder_tutorials_install}}/cosmos-from-scratch.html).
 
 
 ## Introduction

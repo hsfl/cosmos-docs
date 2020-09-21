@@ -14,8 +14,20 @@ entries:
       url: /pages/documentation/cosmos-overview.html
       output: web
     - title: COSMOS Introduction
-      url: /pages/documentation/cosmos-overview.html
+      url: /pages/documentation/cosmos-introduction.html
       output: web
+
+# =================================================================================
+  - title: Installation
+    output: web
+    folderitems:
+      - title: "  Overview"
+        url: /pages/tutorials/install/index.html
+        output: web
+
+      - title: "Linux"
+        url: /pages/tutorials/install/ubuntu-install.html
+        output: web
 # =================================================================================
   - title: Tutorials
     output: web
@@ -25,10 +37,12 @@ entries:
       output: web
       subfolders:
 
-
       - title: Getting Started Series
         output: web
         subfolderitems:
+        - title: "1. Installation"
+          url: /pages/tutorials/install/index.html
+          output: web
         - title: "2. COSMOS Web"
           url: /pages/tutorials/setup/setup-cosmos-web.html
           output: web
@@ -50,65 +64,25 @@ entries:
           url: /pages/tutorials/cosmos/cosmos4.html
           output: web
 
-      - title: Setup from Scratch
+      - title: Build Options
         output: web
         subfolderitems:
-        - title: "COSMOS from Scratch"
-          url: /pages/tutorials/setup-from-scratch/cosmos-from-scratch.html
+        - title: "Cross-Compiling"
+          url: /pages/tutorials/build/cross-compile.html
           output: web
+
 
 
 # =================================================================================
-
-  - title: COSMOS Agents
+  - title: Documentation
     output: web
     folderitems:
-    - title: Doxygen
-      url: /pages/documentation/other/doxygen.html
-      output: web
-      subfolders:
-
+      - title: "Doxygen"
+        url: /pages/documentation/other/doxygen.html
+        output: web
       - title: COSMOS
+        url: /pages/documentation/cosmos/cosmos.html
         output: web
-        subfolderitems:
-        - title: COSMOS
-          url: /pages/documentation/cosmos/cosmos.html
-          output: web
-        - title: COSMOS Web
-          url: /pages/documentation/cosmos/cosmos-web.html
-          output: web
-
-      - title: Agents
+      - title: COSMOS Web
+        url: /pages/documentation/cosmos/cosmos-web.html
         output: web
-        subfolderitems:
-          - title: Heater Agent
-            url: /pages/documentation/agents/heater-agent.html
-            output: web
-          - title: PyCubed Agent
-            url: /pages/documentation/agents/pycubed-agent.html
-            output: web
-          - title: Raspberry Pi Agent
-            url: /pages/documentation/agents/raspberry-pi-agent.html
-            output: web
-          - title: Sun Sensor Agent
-            url: /pages/documentation/agents/sun-sensor-agent.html
-            output: web
-          - title: Switch Agent
-            url: /pages/documentation/agents/switch-agent.html
-            output: web
-          - title: Temperature Sensor Agent
-            url: /pages/documentation/agents/temperature-sensor-agent.html
-            output: web
-
-      - title: Agent Classes
-        output: web
-        subfolderitems:
-          - title: SimpleAgent Class
-            url: /pages/documentation/utility-classes/simpleagent.html
-            output: web
-          - title: Device Classes
-            url: /pages/documentation/utility-classes/simpleagent-devices.html
-            output: web
-
-
-

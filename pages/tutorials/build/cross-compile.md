@@ -1,88 +1,12 @@
 ---
-title: Installing COSMOS From Scratch
-permalink: /pages/tutorials/setup-from-scratch/cosmos-from-scratch.html
+title: Cross-Compiling COSMOS
+permalink: /pages/tutorials/build/cross-compile.html
 layout: page
 
 tags: [software]
 keywords: software
 
 ---
-
-
-## Introduction
-
-If you want to install COSMOS without using the development environment, you can always install COSMOS from scratch.
-
-{% include warning.html content="It is still _highly_ recommended that you install COSMOS on Ubuntu 18.04.3 for compatibility." %}
-
-## Clone COSMOS Core
-
-First you should make sure that you have all the dependencies you need by running the following in a terminal window:
-
-```bash
-$ sudo apt update && sudo apt upgrade -y
-$ sudo apt-get install git cmake build-essential -y
-```
-
-Next, clone the installer script:
-
-```bash
-$ git clone https://bitbucket.org/cosmos-project/installer.git ~/cosmos
-```
-
-Now you can run the installer script:
-
-```bash
-$ cd ~/cosmos
-$ ./cosmos-install.sh
-```
-
-## Switch to the Dev Branch
-
-There are many changes present in the COSMOS Core dev branch that are not present in the master branch. To get the newest changes, switch to the dev branch:
-
-```bin
-$ cd ~/cosmos/source/core
-$ git checkout dev
-$ git fetch
-```
-
-## Compile COSMOS Core Locally
-
-{% include important.html content="You can skip this step if you _only_ want to compile your programs to run on the BeagleBone." %}
-
-
-In Qt Creator, click on _File_ > _Open File or Project..._, and open up the file `~/cosmos/source/core/CMakeLists.txt`.
-
-**TODO:** a project configuration dialog might show up?
-
-Once the project is finished loading, click the _Projects_ button on the left side of the window, and then click
-on _Desktop_, and then click on _Build_ under it.
-
-Make sure the build directory looks something like:
-
-```
-/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug
-```
-
-Now you can press <kbd>Control</kbd> + <kbd>B</kbd> (or the hammer icon at the bottom left) to build the project.
-This can take a while.
-
-All of the executables are now located in the build directory from above. They are nested in a bunch of different folders,
-but we need to put them together all in the same folder. To do so, run the following command in a terminal (replacing `YOUR_USERNAME` with your username):
-
-```bash
-$ cd /home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug
-$ mkdir bin
-$ find ./ -perm /a+x -exec cp {} bin \;
-```
-
-Now you can copy the contents of the `/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug/bin` folder to the `/home/YOUR_USERNAME/cosmos/bin` folder. There will be a bunch of files already in the destination folder, but you can remove the old ones (those are from the master branch).
-
-
-
-
-
 
 
 ## Compile COSMOS Core for the BeagleBone
@@ -112,7 +36,7 @@ $ sudo gedit /etc/apt/sources.list
 At the bottom of the file that opens, add the following two lines:
 
 ```
-deb http://dk.archive.ubuntu.com/ubuntu/ xenial main 
+deb http://dk.archive.ubuntu.com/ubuntu/ xenial main
 deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe
 ```
 
@@ -235,16 +159,6 @@ to see the usage of the program:
 
 ```bash
 $ agent
-```
-
-
-## Grab the SimpleAgent Template (Optional)
-If you want to use the SimpleAgent template project, you can clone it to your COSMOS project folder by
-running the following in a terminal window:
-
-```bash
-$ cd ~/cosmos/source/projects
-$ git clone https://github.com/mtmk-ee/simpleagent_template.git
 ```
 
 

@@ -8,7 +8,7 @@ keywords: software
 
 ## What is this for?
 
-Doxygen can generate detailed documentation for the BeagleBone flight software, far beyond the documentation
+Doxygen can generate detailed documentation for the COSMOS software, far beyond the documentation
 included on this website.
 
 
@@ -17,17 +17,17 @@ included on this website.
 Enter the following a terminal window:
 
 ```bash
-$ cd ~/cosmos/source/projects/cubesat-kit/docs
+$ cd ~/cosmos/source/core/docs/doxygen
 $ doxygen
 ```
 
 You can then view the generated site by running:
 
 ```bash
-$ xdg-open doxygen/html/index.html
+$ xdg-open 1.0.2/index.html
 ```
 
-Optionally, you can navigate in the file explorer to the `~/cosmos/source/projects/cubesat-kit/docs/doxygen/html`
+Optionally, you can navigate in the file explorer to the `~/cosmos/source/core/docs/doxygen/1.0.2`
 folder and open up the `index.html` file.
 
 {% include tip.html content="If you visit the Doxygen docs frequently, you should bookmark the `index.html` file.
