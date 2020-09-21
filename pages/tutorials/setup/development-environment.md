@@ -15,11 +15,11 @@ series:
 
 ## Introduction
 
-The Artemis Development Environment is provided as an Ubuntu 18.04.4 Vagrant box with necessary tools preinstalled.
+The COSMOS Development Environment consists of Ubuntu 18.04.5. If you have MacOS or Windows OS, you can install 
+Oracle VM VirtualBox.
 
-VirtualBox and Vagrant are used to ensure the development environment is cross-platform. VirtualBox is used for
-virtualization of operating systems, and Vagrant is used to set up the virtual machine in a (mostly)
-platform-independent manner.
+VirtualBox is used to virtualize operating systems, allowing users to simulate operating systems without installing
+it on their hard drive.
 
 ### Why Linux?
 
@@ -39,149 +39,52 @@ The supported operating systems are essentially those that VirtualBox and Vagran
 ## 1. Install Dependencies
 
 ### 1.1 VirtualBox
-VirtualBox is used to run the virtual machine used as the development environment. Get it [here](https://www.virtualbox.org/wiki/Downloads). The install wizard will help you.
+VirtualBox is used to run the virtual machine used as the development environment. Get it [here](https://www.virtualbox.org/wiki/Downloads). Under VirtualBox
+X.X.XX (6.1.14 at time of writing) Platform Packages, choose the installation of your native operating system.
 
+Follow the installation wizard to complete the installation process.
 
-### 1.2 Install Vagrant
+### 1.2 Install Ubuntu 18.04 Image
 
-Vagrant is used to set up the virtual machine used as the development environment. Get it [here](https://www.vagrantup.com/downloads). The install wizard will help you.
+The Ubuntu image version recommended for COSMOS is 18.04, and can be downloaded [here](https://releases.ubuntu.com/18.04/?_ga=2.103985858.339547959.1600722773-1484274794.1597110289). An image is a copy of the operating system, with all of the information, executables, and data files that it uses.
 
-### 1.3 Install the Guest Additions Plugin
+{% include important.html content="Download the `64-bit PC (AMD64) desktop image`, not the server image." %}
 
-The Vagrant guest additions plugin automatically installs VirtualBox guest additions into the virtual machine.
-Install it by opening up a command prompt (Windows) or a terminal (Linux/Mac) and running the following:
+## 2. Set up the VirtualBox
 
-```bash
-$ vagrant plugin install vagrant-vbguest
-```
+After installing VirtualBox and the Ubuntu image, you can follow these [instructions](https://itsfoss.com/install-linux-in-virtualbox) to set up Ubuntu on VirtualBox. The instructions will be repeated below for convenience.
 
-{% include image.html file="/resources/tutorials/setup/part2/cmd.png" width="100%" %}
+### 2.1 Start VirtualBox
 
-{% include important.html content="Do not copy the `$` character or the following space when entering commands.
-This notation is used to indicate the input to a terminal." %}
+Double-click the VirtualBox icon on your desktop, and then press _New_. Name your operating system and match the settings in the image below.
 
-## 2. Set up the Artemis Box
+### 2.2 Allocate RAM
 
-Some of the commands you will need:
-- __cd__: changes directories. Use the command `cd {insert folder name here}` to move in to that folder. The command `cd ..` moves up one folder.
-- __dir__: shows what is in the current directory. Use this to check what folders/files are in your current directory to ensure everything is done properly.
+Choose how much memory you wish to provide to the operating system when it is running. It is recommended to allocate 1/3 - 1/4 of your maximum RAM. The more RAM you allocate, the faster your virtual operating system will be.
 
-### 2.1 Add the Box
+{% include tip.html content="It is recommended to allocate 1/3 - 1/4 your maximum RAM, but the more RAM you can allocate, the faster your virtual operating system will be." %}
+{% include note.html content="1000 MB = 1 GB"}
 
+### 2.3 Hard Disk Setup
 
-Download the Artemis box from
-[here](https://drive.google.com/file/d/1DE3rlG3X5IrTut54pok7zP7xZzsjPFm_/view?usp=sharing). An example location of the file on Windows is
-`C:\Users\YOUR_USERNAME\Documents\Vagrant\artemis`.
+Create a virtual hard disk and choose VDI on the next two setup windows. In the following window, you can choose between _Dynamically allocated_ and _Fixed size_ to choose how much space on your hard disk the operating system takes up.
 
+### 2.4 Hard Disk Size
 
+You can now partition how much of your hard disk is used for the virtual operating system. It is recommended to have at least 10 GB worth of storage. 
 
-{% include important.html content="You must be in the correct folder for the commands to work. The file may be in your Downloads folder if the download does not prompt a window for a save location. Below is an example Command window in the correct folder after the file has been moved to another location." %} {% include image.html file="/resources/tutorials/setup/part2/command_line2.png" width="100%" %}
+Now that you've successfully finished the setup, you can now proceed to install the image you downloaded earlier.
 
+### 2.5 Boot ISO
 
+Start the new operating system you created. The first time you start the system, it will ask you to select a start-up disk. Browse to where you installed the Ubuntu 18.04 iso file in the earlier step. 
 
-Once in the Command prompt is in the correct folder, Run the following commands.
+### 2.6 Install Ubuntu
 
-```bash
-$ cd "PATH/TO/VAGRANT/BOX"
-$ vagrant box add artemis artemis.box
-```
+When you run Ubuntu, it gives you the option to try it or install it. Press _Install Ubuntu_ and click _Continue_ on the next page.
 
-You can now delete the `artemis.box` file you downloaded if you wish.
+Select _Erase disk and install Ubuntu_. Since this is being done on a virtual machine, it will not delete the operating system you have on your computer.
 
-### 2.2 Create the Virtual Machine
+Proceed to complete the steps in the installation wizard.
 
-
-
-{% include note.html content="The previous command will create a new disk image, located in a different folder. Use the filepath and the contents in the folder below as a guide (your files may be in a folder called `.vagrant.d`). For the next command to work, you must be in the correct folder in your Command window. " %} {% include image.html file="/resources/tutorials/setup/part2/folder_location.png" width="100%" %}
-
-
-
-Enter the following commands, replacing `PATH/TO/VM` with the correct folder.
-
-```bash
-$ cd PATH/TO/VM
-$ vagrant init artemis
-```
-
-Download the `Vagrantfile` file from
-[here](https://drive.google.com/file/d/101mCavBwqa-DI9gCteU7ywSimwF4yU0Z/view?usp=sharing)
-and copy it to the folder you previously chose,
-overwriting the existing `Vagrantfile` file.
-The new Vagrantfile will set up the virtual machine with necessary virtualization settings.
-
-### 2.3 Start the Virtual Machine
-
-Next run the command:
-
-```bash
-$ vagrant up
-```
-
-After a minute or so should see the virtual machine boot. Login with the password below:
-
-    username: vagrant
-    password: vagrant
-
-
-
-{% include image.html file="/resources/tutorials/setup/part2/vagrant_login.png" width="100%" %}
-
-
-
-Open a terminal inside the virtual machine (<kbd>Control</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> or the
-black box icon on the left-hand dock) and enter the following command:
-
-```bash
-$ sudo apt install virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
-```
-
-{% include important.html content="Copying and pasting will not work until after this step, so make sure
-you type this command exactly as it appears!" %}
-
-### 2.4 Reboot the Virtual Machine
-
-Reboot the machine by returning to your host terminal and entering:
-
-```bash
-$ vagrant halt
-$ vagrant up
-```
-
-In the future you should be able to start the virtual machine directly from the VirtualBox GUI, or you can continue
-running `vagrant up` in the virtual machine folder.
-
-
-{% include image.html file="/resources/tutorials/setup/part2/virtual_box.png" width="100%" %}
-
-
-### 2.5 Enable Useful Features
-Once you have logged into the `vagrant` user again (default password is `vagrant`), you can enable some useful tools:
-
-#### Automatic Display Resizing
-
-This feature will resize the guest display when you adjust the size of the container window.
-
-Click on the _View_ menu at the top of the virtual machine and click on `Auto-resize Guest Display`. If it is already
-selected, then you should click on it again.
-
-#### Shared Clipboard
-
-This feature will allow you to copy and paste between the host and guest machines.
-
-Click on the _Devices_ menu at the top of the virtual machine and click on _Shared Clipboard_ > _Bidirectional_.
-
-{% include note.html content="When you paste text into a terminal you must use the
-<kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> shortcut, and when you copy text from a terminal you must
-use the <kbd>Control</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> shortcut." %}
-
-## 3. Update Software
-
-From the virtual machine, open a new terminal (<kbd>Control</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd>) and run the following command:
-
-
-```bash
-$ ./update
-```
-
-You will be prompted whether or not you want to update various components. Entering `y` will overwrite the existing
-installations, if present.
+After you see this screen, you are ready to install COSMOS.
