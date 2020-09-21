@@ -18,19 +18,20 @@ entries:
       output: web
 
 # =================================================================================
-  - title: Installation
+
+  - title: Getting Started
     output: web
     folderitems:
-      - title: "  Overview"
-        url: /pages/tutorials/install/index.html
-        output: web
+    - title: "  Overview"
+      url: /pages/getting-started/index.html
+      output: web
+    - title: "1. Development Environment"
+      url: /pages/getting-started/development-environment.html
+      output: web
+    - title: "2. COSMOS Installation"
+      url: /pages/getting-started/install/ubuntu-install.html
+      output: web
 
-      - title: "Developers"
-        url: /pages/tutorials/install/ubuntu-install.html
-        output: web
-      - title: "Users"
-        url: /pages/tutorials/install/user-install.html
-        output: web
 # =================================================================================
   - title: Tutorials
     output: web
@@ -39,19 +40,6 @@ entries:
       url: /pages/tutorials/index.html
       output: web
       subfolders:
-
-      - title: Getting Started Series
-        output: web
-        subfolderitems:
-        - title: "1. Development Environment"
-          url: /pages/tutorials/setup/development-environment.html
-          output: web
-        - title: "2. Installation"
-          url: /pages/tutorials/install/index.html
-          output: web
-        - title: "3. COSMOS Web"
-          url: /pages/tutorials/setup/setup-cosmos-web.html
-          output: web
 
 
       - title: COSMOS Series

@@ -8,13 +8,12 @@ keywords: software
 ---
 
 
-## Getting Started Series
-This tutorial is meant to guide users in setting up the cubesat and necessary tools out-of-box.
+## COSMOS Tutorials
+These tutorial are meant to guide users in setting up COSMOS and necessary tools out-of-box.
 
-### Parts
-1. [Development Environment]({{site.baseurl}}/pages/tutorials/setup/development-environment.html)
-1. [COSMOS Install]({{site.baseurl}}/pages/tutorials/install/ubuntu-install.html)
-2. [COSMOS Web]({{site.baseurl}}/pages/tutorials/setup/setup-cosmos-web.html)
+### Getting started
+Before anything else, make sure you have gone through the basic COSMOS install on your system. Instructions can be found here:
+[Getting Started]({{site.baseurl}}/pages/getting-started/index.html)
 
 
 
