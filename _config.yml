@@ -29,22 +29,22 @@ project_website: "http://cosmos-project.org/"
 # ===================================== Internal Paths =====================================
 agent_diagram_folder: "/resources/diagrams/agents"
 
-folder_resources: "/docs/resources"
-folder_diagrams: "/docs/resources/diagrams"
+folder_resources: "/cosmos-docs/resources"
+folder_diagrams: "/cosmos-docs/resources/diagrams"
 
 
-folder_docs: "/docs/pages/documentation"
-folder_docs_other: "/docs/pages/documentation/other"
-folder_docs_cosmos: "/docs/pages/documentation/cosmos"
-folder_docs_library: "/docs/pages/documentation/python-library"
-folder_docs_agents: "/docs/pages/documentation/agents"
-folder_docs_utility: "/docs/pages/documentation/utility-classes"
+folder_docs: "/cosmos-docs/pages/documentation"
+folder_docs_other: "/cosmos-docs/pages/documentation/other"
+folder_docs_cosmos: "/cosmos-docs/pages/documentation/cosmos"
+folder_docs_library: "/cosmos-docs/pages/documentation/python-library"
+folder_docs_agents: "/cosmos-docs/pages/documentation/agents"
+folder_docs_utility: "/cosmos-docs/pages/documentation/utility-classes"
 
-folder_tutorials: "/docs/pages/tutorials"
-folder_tutorials_cosmos: "/docs/pages/tutorials/cosmos"
-folder_tutorials_scripts: "/docs/pages/tutorials/scripts"
-folder_tutorials_setup: "/docs/pages/tutorials/setup"
-folder_tutorials_from_scratch: "/docs/pages/tutorials/setup-from-scratch"
+folder_tutorials: "/cosmos-docs/pages/tutorials"
+folder_tutorials_cosmos: "/cosmos-docs/pages/tutorials/cosmos"
+folder_tutorials_scripts: "/cosmos-docs/pages/tutorials/scripts"
+folder_tutorials_setup: "/cosmos-docs/pages/tutorials/setup"
+folder_tutorials_from_scratch: "/cosmos-docs/pages/tutorials/setup-from-scratch"
 
 # ===================================== GitHub Folders =====================================
 

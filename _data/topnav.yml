@@ -8,7 +8,7 @@ topnav:
     - title: GitHub
       external_url: https://github.com/hsfl/docs
     - title: Submit an Issue
-      external_url: https://github.com/hsfl/docs/issues
+      external_url: https://github.com/hsfl/cosmos-docs/issues
 
 #Topnav dropdowns
 # topnav_dropdowns:
