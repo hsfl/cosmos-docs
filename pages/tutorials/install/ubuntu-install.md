@@ -15,22 +15,29 @@ If you want to install COSMOS without using the development environment, you can
 
 {% include warning.html content="It is still _highly_ recommended that you install COSMOS on Ubuntu 18.04.3 for compatibility." %}
 
-## Clone COSMOS Core
+## Dependencies
+COSMOS depends on Git, CMake 2.8.12+ and Build Essential to function.
+- Git
+  - A version control manager that COSMOS depends on.
+- CMake  2.8.12+
+  - A cross-platform set of tools that packages COSMOS code and compiles it.
+- Build essential
+  - Compilers (gcc, g++ and their dependencies) that builds COSMOS code.
 
 First you should make sure that you have all the dependencies you need by running the following in a terminal window:
 
 ```bash
 $ sudo apt update && sudo apt upgrade -y
 $ sudo apt-get install git cmake build-essential -y
-```
-
-Next, clone the installer script:
+  ```
+## Clone COSMOS Core
+Clone the installer script:
 
 ```bash
 $ git clone https://bitbucket.org/cosmos-project/installer.git ~/cosmos
 ```
 
-Now you can run the installer script:
+Run the installer script:
 
 ```bash
 $ cd ~/cosmos
@@ -47,10 +54,12 @@ $ git checkout dev
 $ git fetch
 ```
 
-## Compile COSMOS Core Locally
+## Build COSMOS Core with Qt Creator
 
-{% include important.html content="You can skip this step if you _only_ want to compile your programs to run on the BeagleBone." %}
+{% include important.html content="You can skip this step if you _only_ want to compile your programs on the command line." %}
 
+### Install Qt
+For Qt Installation process, follow [these instructions]({{site.baseurl}}/pages/tutorials/install/qt-install.html).
 
 In Qt Creator, click on _File_ > _Open File or Project..._, and open up the file `~/cosmos/source/core/CMakeLists.txt`.
 
@@ -65,7 +74,7 @@ Make sure the build directory looks something like:
 /home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug
 ```
 
-Now you can press <kbd>Control</kbd> + <kbd>B</kbd> (or the hammer icon at the bottom left) to build the project.
+Now you can press <kbd>CTRL</kbd> + <kbd>B</kbd> (or the hammer icon at the bottom left) to build the project.
 This can take a while.
 
 All of the executables are now located in the build directory from above. They are nested in a bunch of different folders,
@@ -79,11 +88,45 @@ $ find ./ -perm /a+x -exec cp {} bin \;
 
 Now you can copy the contents of the `/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug/bin` folder to the `/home/YOUR_USERNAME/cosmos/bin` folder. There will be a bunch of files already in the destination folder, but you can remove the old ones (those are from the master branch).
 
+### Testing COSMOS
+Navigate to the “Projects” tab on the left menu.
+Under “Build & Run” on the left menu, click the “Run” under the same kit you built with.
+Under the Run category, select agent_001 under the run configuration. Then, to run it, press Ctrl + R.
+Now select agent_002 under the run configuration. Again, press Ctrl + R to run it.
+
+
+## Build COSMOS Core on the Command Line
+### Build COSMOS Core
+To build COSMOS, open a terminal and type:
+```bash
+$ cd ~/cosmos/source/core/build
+$ mkdir linux
+$ ./do_cmake linux
+$ cd linux
+$ make -j
+$ make -j install
+```
+### Testing COSMOS
+Let's test the installation of COSMOS
+Run the following commands in a terminal:
+```bash
+$ cd ~/cosmos/bin
+$ ./agent_002
+```
+
+In another terminal, run:
+```bash
+$ cd ~/cosmos/bin
+$ ./agent_001
+```
+
+The agents should now be talking to each other.
+This illustrates the interconnectivity aspect of COSMOS and its ability to piece together heterogeneous systems.
 
 
 
 
-### Add COSMOS to PATH
+## Add COSMOS to PATH
 
 A path allows easy access to executable programs. Through this method, you will be able to run agents globally; simply add the `cosmos/bin` folder to the path.
 Enter into the terminal:
@@ -112,6 +155,7 @@ to see the usage of the program:
 ```bash
 $ agent
 ```
+
 
 
 

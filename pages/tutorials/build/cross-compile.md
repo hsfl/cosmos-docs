@@ -104,7 +104,7 @@ Make sure the build directory looks something like:
 /home/YOUR_USERNAME/cosmos/source/core/build-core-arm32-Debug
 ```
 
-Now you can press <kbd>Control</kbd> + <kbd>B</kbd> (or the hammer icon at the bottom left) to build the project.
+Now you can press <kbd>CTRL</kbd> + <kbd>B</kbd> (or the hammer icon at the bottom left) to build the project.
 This can take a while.
 
 
@@ -148,11 +148,11 @@ Now, add the following line to the bottom of the file:
 export PATH="$HOME/cosmos/bin:$PATH"
 ```
 
-{% include tip.html content="Does the file look weird when scrolling? You can press <kbd>Control</kbd> + <kbd>L</kbd>
+{% include tip.html content="Does the file look weird when scrolling? You can press <kbd>CTRL</kbd> + <kbd>L</kbd>
 to manually refresh the view." %}
 
-After you've added that line, press <kbd>Control</kbd> + <kbd>S</kbd> to save the file, and then
-<kbd>Control</kbd> + <kbd>X</kbd> to exit.
+After you've added that line, press <kbd>CTRL</kbd> + <kbd>S</kbd> to save the file, and then
+<kbd>CTRL</kbd> + <kbd>X</kbd> to exit.
 
 Next, close the terminal window and open up a new one to reload the PATH. You should be able to run the following command
 to see the usage of the program:

@@ -89,4 +89,4 @@ $ agent cubesat my_agent say_hi
 ## Stop the Agent
 
 Once you're done testing out your agents, you should terminate them by pressing
-<kbd>Control</kbd> + <kbd>C</kbd> in their terminal window.
+<kbd>CTRL</kbd> + <kbd>C</kbd> in their terminal window.
