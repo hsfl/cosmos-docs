@@ -87,4 +87,4 @@ Select _Erase disk and install Ubuntu_. Since this is being done on a virtual ma
 
 Proceed to complete the steps in the installation wizard.
 
-After you see this screen, you are ready to install COSMOS.
+Once the installation wizard is complete, you are ready to install COSMOS.
