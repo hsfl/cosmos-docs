@@ -34,7 +34,7 @@ $ sudo apt-get install git cmake build-essential -y
 Clone the installer script:
 
 ```bash
-$ git clone https://bitbucket.org/cosmos-project/installer.git ~/cosmos
+$ git clone https://github.com/hsfl/cosmos-installer.git ~/cosmos
 ```
 
 Run the installer script:
@@ -89,11 +89,13 @@ $ find ./ -perm /a+x -exec cp {} bin \;
 Now you can copy the contents of the `/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug/bin` folder to the `/home/YOUR_USERNAME/cosmos/bin` folder. There will be a bunch of files already in the destination folder, but you can remove the old ones (those are from the master branch).
 
 ### Testing COSMOS
-Navigate to the “Projects” tab on the left menu.
-Under “Build & Run” on the left menu, click the “Run” under the same kit you built with.
-Under the Run category, select agent_001 under the run configuration. Then, to run it, press Ctrl + R.
-Now select agent_002 under the run configuration. Again, press Ctrl + R to run it.
+1. Navigate to the “Projects” tab on the left menu.
+2. Under “Build & Run” on the left menu, click the “Run” under the same kit you built with.
+3. Under the Run category, select agent_001 under the run configuration. To run it, press Ctrl + R.
+4. Now select agent_002 under the run configuration. Again, press Ctrl + R to run it.
 
+The agents should now be talking to each other.
+This illustrates the interconnectivity aspect of COSMOS and its ability to piece together heterogeneous systems.
 
 ## Build COSMOS Core on the Command Line
 ### Build COSMOS Core
