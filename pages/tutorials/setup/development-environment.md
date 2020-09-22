@@ -63,7 +63,7 @@ Double-click the VirtualBox icon on your desktop, and then press _New_. Name you
 Choose how much memory you wish to provide to the operating system when it is running. It is recommended to allocate 1/3 - 1/4 of your maximum RAM. The more RAM you allocate, the faster your virtual operating system will be.
 
 {% include tip.html content="It is recommended to allocate 1/3 - 1/4 your maximum RAM, but the more RAM you can allocate, the faster your virtual operating system will be." %}
-{% include note.html content="1000 MB = 1 GB"}
+{% include note.html content="1000 MB = 1 GB" %}
 
 ### 2.3 Hard Disk Setup
 
