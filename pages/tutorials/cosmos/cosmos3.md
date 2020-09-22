@@ -10,7 +10,7 @@ toc: false
 
 series:
     language: "C++"
-    prev: /pages/tutorials/install/ubuntu-install.html
+    prev: /pages/tutorials/cosmos/cosmos3.html
     next: /pages/tutorials/cosmos/cosmos4.html
 ---
 
