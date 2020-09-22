@@ -1,5 +1,5 @@
 ---
-title: "2.1 Development Environment"
+title: "2.1 Vanilla Install (Recommended)"
 layout: series
 permalink: /pages/getting-started/development-environment.html
 
