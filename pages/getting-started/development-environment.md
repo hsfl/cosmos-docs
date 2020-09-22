@@ -1,5 +1,5 @@
 ---
-title: "Getting Started Part 1 - Development Environment"
+title: "2.1 Development Environment"
 layout: series
 permalink: /pages/getting-started/development-environment.html
 

@@ -1,15 +1,21 @@
 ---
-title: "COSMOS Web Installation"
-permalink: /pages/tutorials/install/cosmos-web.html
-layout: page
+title: "2.3 COSMOS Web Installation"
+layout: series
+permalink: /pages/getting-started/install/cosmos-web.html
 
 tags: [software]
 keywords: software
+sidebar: home_sidebar
+toc: false
+
+
+series:
+  prev: /pages/getting-started/install/ubuntu-install.html
 ---
 
 ## Introduction
 
-COSMOS Web is a web application that allows the control and visualization of data incoming from the COSMOS ecosystem through a user interface. 
+COSMOS Web is a web application that allows the control and visualization of data incoming from the COSMOS ecosystem through a user interface.
 
 Agent MongoDB is the server component of COSMOS Web and bridges the gap between COSMOS Web and the COSMOS ecosystem via WebSockets. It also handles data storage in a MongoDB database.
 
@@ -41,7 +47,7 @@ The MongoDB C Driver allows us to interface with a MongoDB server in C.
 Run the following commands in a terminal:
 
 ```bash
-$ wget 
+$ wget
 https://github.com/mongodb/mongo-c-driver/releases/download/1.17.0/mongo-c-driver-1.17.0.tar.gz
 $ tar xzf mongo-c-driver-1.17.0.tar.gz
 $ cd mongo-c-driver-1.17.0
@@ -83,7 +89,7 @@ $ sudo apt-get install -y software-properties-common
 $ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 $ sudo apt update
 $ sudo apt install g++-7 -y
-$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 --slave /usr/bin/g++ g++ /usr/bin/g++-7 
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 --slave /usr/bin/g++ g++ /usr/bin/g++-7
 $ sudo update-alternatives --config gcc
 ```
 
@@ -110,7 +116,7 @@ CESIUM_ION_TOKEN= # Token for the globe simulation (optional). Get a token here 
 COSMOS_BIN=~/cosmos/bin # Location of your COSMOS bin folder
 MONGODB_COLLECTION=dump # The collection you are storing COSMOS data in
 ```
- 
+
 ###  Agent MongoDB Installation
 
 Clone the COSMOS Web git repository to retrieve the source code and set it up.

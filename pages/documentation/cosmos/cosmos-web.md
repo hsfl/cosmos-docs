@@ -1,5 +1,5 @@
 ---
-title: COSMOS Web
+title: 4.3 COSMOS Web
 permalink: /pages/documentation/cosmos/cosmos-web.html
 layout: page
 

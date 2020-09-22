@@ -1,5 +1,5 @@
 ---
-title: Getting Started Part 2 - Installing COSMOS
+title: 2.2 Installing COSMOS
 layout: series
 permalink: /pages/getting-started/install/ubuntu-install.html
 
@@ -11,6 +11,7 @@ toc: false
 
 series:
   prev: /pages/getting-started/development-environment.html
+  next: /pages/getting-started/install/cosmos-web.html
 ---
 
 
