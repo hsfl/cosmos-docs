@@ -51,21 +51,23 @@ The figure also shows the primary tools that COSMOS provides for interfacing wit
 
 ## 3. Tools
 The tools of COSMOS include software applications that human operators interact with to control COSMOS and the mission operations processes. Each of the tools are described below.
-### Mission Operations Support Tool (MOST)
-### COSMOS Executive Operator (CEO)
-### Mission Planning and Scheduling Tool (MPST)
-### Scheduler
-### Automated Collection Planning Tool (ACPT)
-### Timeliner and Command Script Generator
-### Ground Segment Control Tool
-### Data Management Tool
+### 3.1 Mission Operations Support Tool (MOST)
+### 3.2 COSMOS Executive Operator (CEO)
+### 3.3 Mission Planning and Scheduling Tool (MPST)
+#### 3.3.1 Scheduler
+### 3.4 Automated Collection Planning Tool (ACPT)
+### 3.5 Timeliner and Command Script Generator
+### 3.6 Ground Segment Control Tool
+### 3.7 Data Management Tool
 
 ## 4. Software Design
 The overall goal of the COSMOS software design is to create a unified set of software elements that fulfills the following roles:
+
 - Provide the functionality required for the design and operation of the majority of small satellites
 - Provide this functionality in a uniform manner across the life cycle of satellite design, development and operation
 - Make the functionality readily accessible through the use of commonly available protocols and standards, and an open software approach.
 - Support existing satellite software either through direct incorporation, or the creation of translating interfaces.
+
 To achieve the above goals, the COSMOS development team has both adopted, and defined a set of rules to govern the development process. The purpose of these rules is to constrain development along relatively straightforward pathways, while retaining the flexibility needed to achieve the desired goals. For the purposes of this section, these rules will be divided into the three broad categories of Type, Function, and Protocols and Standards. Type will describe the various levels of software development that will be provided within COSMOS. Function will describe the functionality addressed by each software element. Finally, Protocols and Standards will list the protocols and standards we plan to embrace as necessary to COSMOS.
 
 ### 4.1 Type
