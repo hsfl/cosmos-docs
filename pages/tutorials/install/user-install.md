@@ -25,7 +25,7 @@ Install dependencies by running the following in a terminal or command line:
 $ sudo apt update && sudo apt upgrade -y
 $ sudo apt-get install git cmake build-essential -y
   ```
-{% include note.html content="In Ubuntu, highlight and press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>c</kbd> to copy. To paste, press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>v</kbd>"}
+{% include note.html content="In Ubuntu, highlight and press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>c</kbd> to copy. To paste, press <kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>v</kbd>"%}
 
 ## Clone COSMOS Core
 Clone and run the installer script by executing the following:
