@@ -1,5 +1,5 @@
 ---
-title: COSMOS Introduction
+title: 1.2 COSMOS Introduction
 permalink: /pages/documentation/cosmos-introduction.html
 layout: page
 
