@@ -15,7 +15,7 @@ entries:
       output: web
 
     - title: Getting Started
-      url: /pages/documentation/site/getting-started.html
+      url: /pages/documentation/site/2-getting_started.html
       output: web
 
     - title: Site Structure

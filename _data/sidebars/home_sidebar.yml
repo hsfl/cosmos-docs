@@ -11,76 +11,105 @@ entries:
     output: web
     folderitems:
     - title: 1.1 COSMOS Overview
-      url: /pages/documentation/cosmos-overview.html
+      url: /pages/1-intro/cosmos-overview.html
       output: web
     - title: 1.2 COSMOS Introduction
-      url: /pages/documentation/cosmos-introduction.html
+      url: /pages/1-intro/cosmos-introduction.html
       output: web
 
 # =================================================================================
 
   - title: 2 Getting Started
     output: web
-    url: /pages/getting-started/index.html
+    url: /pages/2-getting_started/index.html
     folderitems:
     - title: " Overview"
-      url: /pages/getting-started/index.html
+      url: /pages/2-getting_started/index.html
       output: web
     - title: "2.1 Development Environment"
-      url: /pages/getting-started/development-environment.html
+      url: /pages/2-getting_started/development-environment.html
       output: web
     - title: "2.2 COSMOS Core Installation"
-      url: /pages/getting-started/install/ubuntu-install.html
+      url: /pages/2-getting_started/install/ubuntu-install.html
       output: web
     - title: "2.3 COSMOS Web Installation"
-      url: /pages/getting-started/install/cosmos-web.html
+      url: /pages/2-getting_started/install/cosmos-web.html
       output: web
-
 # =================================================================================
-  - title: 3 Tutorials
+  - title: 3 Features
+    output: web
+    folderitems:
+    - title: COSMOS Features
+      url: /pages/3-features/index.html
+      output: web
+# =================================================================================
+  - title: 4 Tutorials
     output: web
     folderitems:
     - title: Tutorials Overview
-      url: /pages/tutorials/index.html
+      url: /pages/4-tutorials/index.html
       output: web
       subfolders:
 
 
-      - title: 3.1 COSMOS Series
+      - title: 4.1 COSMOS Series
         output: web
         subfolderitems:
-        - title: "3.1.1 COSMOS and QtCreator"
-          url: /pages/tutorials/cosmos/cosmos1.html
+        - title: "4.1.1 COSMOS and QtCreator"
+          url: /pages/4-tutorials/cosmos/cosmos1.html
           output: web
-        - title: "3.1.2 Writing Agents"
-          url: /pages/tutorials/cosmos/cosmos2.html
+        - title: "4.1.2 Writing Agents"
+          url: /pages/4-tutorials/cosmos/cosmos2.html
           output: web
-        - title: "3.1.3 Building and Deploying"
-          url: /pages/tutorials/cosmos/cosmos3.html
+        - title: "4.1.3 Building and Deploying"
+          url: /pages/4-tutorials/cosmos/cosmos3.html
           output: web
-        - title: "3.1.4 Modifying COSMOS Web"
-          url: /pages/tutorials/cosmos/cosmos4.html
+        - title: "4.1.4 Modifying COSMOS Web"
+          url: /pages/4-tutorials/cosmos/cosmos4.html
           output: web
 
-      - title: 3.2 Build Options
+      - title: 4.2 Build Options
         output: web
         subfolderitems:
-        - title: "3.2.1 Cross-Compiling"
-          url: /pages/tutorials/build/cross-compile.html
+        - title: "4.2.1 Cross-Compiling"
+          url: /pages/4-tutorials/build/cross-compile.html
           output: web
 
 
 
 # =================================================================================
-  - title: 4 Documentation
+  - title: 5 Projects
     output: web
     folderitems:
-      - title: "4.1 Doxygen"
-        url: /pages/documentation/other/doxygen.html
+      - title: "Projects Using COSMOS"
+        url: /pages/5-projects/index.html
         output: web
-      - title: "4.2 COSMOS"
-        url: /pages/documentation/cosmos/cosmos.html
+
+# =================================================================================
+  - title: 6 Guidelines
+    output: web
+    folderitems:
+      - title: "Developer Guidelines"
+        url: /pages/6-developer_guidelines/index.html
         output: web
-      - title: "4.3 COSMOS Web"
-        url: /pages/documentation/cosmos/cosmos-web.html
+# =================================================================================
+  - title: 7 Workshops
+    output: web
+    folderitems:
+      - title: "COSMOS Workshops"
+        url: /pages/7-workshops/index.html
         output: web
+# =================================================================================
+  - title: 8 Help
+    output: web
+    folderitems:
+      - title: "8.1 Troubleshooting"
+        url: /pages/8-help/troubleshooting.html
+        output: web
+      - title: "8.2 FAQ"
+        url: /pages/8-help/faq.html
+        output: web
+# =================================================================================
+  - title: 9 Resources
+    output: web
+    folderitems:

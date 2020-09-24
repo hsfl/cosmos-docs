@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 layout: page
-permalink: /pages/documentation/site/getting-started.html
+permalink: /pages/documentation/site/2-getting_started.html
 
 sidebar: dev_sidebar
 search: exclude

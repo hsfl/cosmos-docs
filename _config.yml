@@ -41,10 +41,10 @@ folder_docs_agents: "/cosmos-docs/pages/documentation/agents"
 folder_docs_utility: "/cosmos-docs/pages/documentation/utility-classes"
 
 folder_tutorials: "/cosmos-docs/pages/tutorials"
-folder_tutorials_cosmos: "/cosmos-docs/pages/tutorials/cosmos"
-folder_tutorials_scripts: "/cosmos-docs/pages/tutorials/scripts"
-folder_tutorials_setup: "/cosmos-docs/pages/tutorials/setup"
-folder_tutorials_install: "/cosmos-docs/pages/tutorials/install"
+folder_tutorials_cosmos: "/cosmos-docs/pages/4-tutorials/cosmos"
+folder_tutorials_scripts: "/cosmos-docs/pages/4-tutorials/scripts"
+folder_tutorials_setup: "/cosmos-docs/pages/4-tutorials/setup"
+folder_tutorials_install: "/cosmos-docs/pages/4-tutorials/install"
 
 # ===================================== GitHub Folders =====================================
 
