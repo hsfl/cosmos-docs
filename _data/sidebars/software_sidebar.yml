@@ -24,7 +24,7 @@ entries:
     folderitems:
 
     - title: Setup
-      url: /pages/software/tutorials/setup/index.html
+      url: /pages/software/4-tutorials/setup/index.html
       output: web, pdf
 
       subfolders:
@@ -32,17 +32,17 @@ entries:
         output: web
         subfolderitems:
         - title: SimpleAgent Tutorial
-          url: /pages/software/tutorials/beaglebone/utility/simpleagent-tutorial.html
+          url: /pages/software/4-tutorials/beaglebone/utility/simpleagent-tutorial.html
           output: web
         
       - title: COSMOS
         output: web
         subfolderitems:
         - title: COSMOS and QtCreator
-          url: /pages/software/tutorials/cosmos/cosmos-and-qtcreator.html
+          url: /pages/software/4-tutorials/cosmos/cosmos-and-qtcreator.html
           output: web
         - title: Customizing COSMOS Web
-          url: /pages/software/tutorials/cosmos/customizing-cosmos-web.html
+          url: /pages/software/4-tutorials/cosmos/customizing-cosmos-web.html
           output: web
 
     - title: BeagleBone

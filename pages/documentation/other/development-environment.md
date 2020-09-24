@@ -10,7 +10,7 @@ keywords: software
 
 The development environment collectively refers to an [Ubuntu 18.04.4](https://en.wikipedia.org/wiki/Ubuntu_version_history#Ubuntu_18.04_LTS_(Bionic_Beaver)) disk image, and the tools and flight software it contains. Most of the setup and installation is already taken care of in this image.
 
-For the installation process, visit the [setup tutorial]({{site.baseurl}}/pages/tutorials/setup/setup2.html).
+For the installation process, visit the [setup tutorial]({{site.baseurl}}/pages/4-tutorials/setup/setup2.html).
 
 ## What's Inside
 
