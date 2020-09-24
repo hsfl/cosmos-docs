@@ -1,5 +1,5 @@
 ---
-title: Design Overview
+title: 1.2 COSMOS Introduction
 permalink: /pages/1-intro/cosmos-introduction.html
 layout: page
 
@@ -8,7 +8,7 @@ keywords: software
 ---
 
 
-## Background
+## 1. Background
 
 For many years following the first spacecraft launches by the original space faring nations, spacecraft size and complexity increased as more and more functionality was driven into each satellite and robotic explorer. We assume that this early trend was fueled at least partly by the fact that larger and larger launch vehicles could be constructed and launched to orbit and nations were willing and able to build these rockets. The budgets and political environments of this era allowed, and possibly even encouraged this trend.
 
@@ -26,7 +26,7 @@ Other systems similar to COSMOS exist, such as ESA’s European Ground Operation
 
 
 
-## Architecture and Design
+## 2. Architecture and Design
 
 The central pieces of this architecture are the visualization tools, support tools, and underlying programs that produce and manipulate the data needed by the rest of the tool sets. It combines both the software and unique hardware needed to support mission operations, including an operations test bed (OTB) and simulators. The simulators are all software applications, and the OTB combines simulators with spacecraft hardware where possible to mimic as closely as possible the reaction of the spacecraft to commands and operational states.
 
@@ -38,37 +38,44 @@ As a fully functional COSMOS is an ambitious project, we have planned an evoluti
 A computer can be provided at each mission ground station to provide the interface between COSMOS and the ground station for data management (both to and from the ground station), and to monitor and possibly control the operations of the ground station. The various tools of COSMOS provide the graphical interface between the MOT and the COSMOS functions. The MOT communicates with spacecraft engineers to assist in state-of-health (SOH) matters, such as anomaly resolution, and reports of the condition of the spacecraft and receives in return any constraints or tasking that may be required. The MOT also communicates with the various payload customers to receive reports on the status of the instruments and mission accomplishment goals, as well as to receive payload tasking requests. COSMOS will have websites or other means to allow the spacecraft engineers and customers to monitor the status of the mission directly without having to go through the MOT.
 {% include image.html file="/resources/documentation/cosmos-functionalblockdiagram.png" width="100%" %}
 The functional flow block diagram of COSMOS is shown in the previous figure. There are four major processes in mission operations that are supported by COSMOS:
+
 1. Mission Planning and Analysis which also includes command sequencing and the simulators and operations testbed (OTB);
 2. Contact Operations which includes pre-contact operations, real-time contact operations, and post-contact operations both in the MOC and the ground network;
 3. Data Management which includes transfer of all data throughout COSMOS and between COSMOS external locations; data processing, such as engineering units conversion and Level 0 data processing; and data archiving;
 4. Mission Analysis which includes support by the MOT to analyze and trend spacecraft and ground network state-of-health (SOH) data, orbital and trajectory data, and mission accomplishment data to help determine the mission success Measures of Effectiveness (MOEs). The results of the Mission Analysis process are fed back to the mission planners, spacecraft engineers (especially for resolving spacecraft anomalies), mission management, and customers.
 
+
 The figure also shows the primary tools that COSMOS provides for interfacing with the MOT to control these operations processes. The rest of COSMOS provides the underlying processes and engines that move, generate, and process the data used by COSMOS and the MOT. Each of the major software tools and programs that make up COSMOS will be described in the following sections along with our approach to developing them. The various tools, major agents/engines, and other software of the COSMOS system are shown in the following figure.
 
 {% include image.html file="/resources/documentation/cosmos-elements.png" width="100%" %}
 
-## Tools
+## 3. Tools
 The tools of COSMOS include software applications that human operators interact with to control COSMOS and the mission operations processes. Each of the tools are described below.
-### Mission Operations Support Tool (MOST)
-### COSMOS Executive Operator (CEO)
-### Mission Planning and Scheduling Tool (MPST)
-### Scheduler
-### Automated Collection Planning Tool (ACPT)
-### Timeliner and Command Script Generator
-### Ground Segment Control Tool
-### Data Management Tool
+### 3.1 Mission Operations Support Tool (MOST)
+### 3.2 COSMOS Executive Operator (CEO)
+### 3.3 Mission Planning and Scheduling Tool (MPST)
+#### 3.3.1 Scheduler
+### 3.4 Automated Collection Planning Tool (ACPT)
+### 3.5 Timeliner and Command Script Generator
+### 3.6 Ground Segment Control Tool
+### 3.7 Data Management Tool
 
-## Software Design
+## 4. Software Design
 The overall goal of the COSMOS software design is to create a unified set of software elements that fulfills the following roles:
+
 - Provide the functionality required for the design and operation of the majority of small satellites
 - Provide this functionality in a uniform manner across the life cycle of satellite design, development and operation
 - Make the functionality readily accessible through the use of commonly available protocols and standards, and an open software approach.
 - Support existing satellite software either through direct incorporation, or the creation of translating interfaces.
+
 To achieve the above goals, the COSMOS development team has both adopted, and defined a set of rules to govern the development process. The purpose of these rules is to constrain development along relatively straightforward pathways, while retaining the flexibility needed to achieve the desired goals. For the purposes of this section, these rules will be divided into the three broad categories of Type, Function, and Protocols and Standards. Type will describe the various levels of software development that will be provided within COSMOS. Function will describe the functionality addressed by each software element. Finally, Protocols and Standards will list the protocols and standards we plan to embrace as necessary to COSMOS.
-### Type
+
+### 4.1 Type
 The COSMOS software should be roughly envisioned as four levels of software, progressing from the rudimentary to the most complex. At the most basic level is the Foundation layer. This consists of a large number of support routines upon which the higher layers can be built. These routines provide the basic functionality as detailed below. The next two layers, Programs and Agents, are roughly parallel. Both build on the Foundation layer to provide more advanced functionality. The main difference is that Programs are one-shot deals that perform their function and exit, while Agents are persistent, communicating with the rest of the world to receive their orders. The fourth layer is Tools. Tools will incorporate both Foundation layer functions, the launching of Programs, and communications with Agents to perform complex functions in direct interaction with humans.
-### Function
+
+### 4.2 Function
 The COSMOS software will have to provide a large amount of functionality, some of which is not yet fully defined. However, the COSMOS development team has initially identified certain key areas of function that will be absolutely necessary. Those already identified are listed below:
+
 - Higher level mathematics, especially in the area of vector and matrix manipulation. Along with this is the need to define data types that work with these functions.
 - Conversions between different coordinate systems, for both position and attitude. These also require their own specific data types.
 - Conversion between different time systems.
@@ -76,18 +83,20 @@ The COSMOS software will have to provide a large amount of functionality, some o
 - Simulations, including orbital and attitude propagation, thermal, power, etc.
 - Protocol support
 - Agent support
-### Protocols and Standards
+
+### 4.3 Protocols and Standards
 COSMOS is first and foremost a Unix-based package. In respect of this, and the desire to have as much control over the software as possible, the Foundation layer and all Programs and Agents will be written in POSIX compliant C. In order to support the various upper level elements that will require C++, all code will be compiled against the GNU G++ compiler. This will not preclude the introduction of libraries written in FORTRAN, where unavoidable. In addition, support for Java will be investigated in later phases.
 
 Although Unix will be the primary Operating System platform, we desire to support other platforms as well. In particular, modifications will be made, where necessary, to allow the Foundation code to compile and operate on the latest version of Windows 7 and MacOS 10. Programs and Agents will be supported in these operating systems where possible. Tools are created in the Nokia QT GUI environment and therefore have the potential of running on any environment supported by QT.
 
 Communications are through standard RS-232, USB and Ethernet. More specifically, a SLIP protocol with a 16bit CRC appended to each packet is used for any Serial interactions. Standard IP protocols are used for all Ethernet interactions; only UDP based protocols are used for Earth/Space communications. Specific protocols will be adopted as appropriate. Protocols that have already been identified include:
- - JSON (JavaScript Object Notation): a simple text based method to be used for storage of all information and data. (web site: http://www.json.org/)
+
+- JSON (JavaScript Object Notation): a simple text based method to be used for storage of all information and data. (web site: http://www.json.org/)
 - NORM (NACK Oriented Reliable Multicast): a UDP based file and message transfer protocol that is robust, and can even function over a simplex connection. This will be used for Earth/Space communications. (web site: http://cs.itd.nrl.navy.mil/work/norm/)
 - LCM (Lightweight Communications and Marshalling): a UDP Multicast protocol for signaling and transferring data blocks between processes. This is the primary means of inter process, and inter processor communication within a local network. (web site: http://code.google.com/p/lcm/)
 
 
-## Operations Test
+## 5. Operations Test
 
 The COSMOS Operations Test-Bed (OTB) uses an open-source system architecture that integrates hardware and software components and tools to operate a low cost Satellite System Simulator (e.g. FlatSat) which can be integrated into the MOC setup for command scripting testing, personnel training, mission rehearsals and anomaly resolution. The OTB has tools for satellite technology integration and development that allows for cheaper satellite subsystem integration and testing. The OTB tools are based on COTS that are affordable to university labs while some tools are being developed under the COSMOS project using proven standards and made available to the small sat community. The OTB is part of the four major processes in mission operations that are supported by COSMOS, namely the Mission Planning and Scheduling, Real-time contact operations, mission analysis, and anomaly resolution.
 
@@ -121,6 +130,7 @@ The COSMOS OTB can incorporate different hardware parts that are made available 
 
 
 Finally, the OTB is designed to have the following operation features:
+
 - Calibration and testing of hardware components
 - Integrate Software tools for hardware simulation
 - Subsystem validation & monitoring
