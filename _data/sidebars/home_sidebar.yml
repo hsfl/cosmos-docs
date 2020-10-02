@@ -7,109 +7,163 @@ entries:
 
 
 # =================================================================================
-  - title: 1 Intro
+  - title: Intro
     output: web
     folderitems:
-    - title: 1.1 COSMOS Overview
+    - title: COSMOS Overview
       url: /pages/1-intro/cosmos-overview.html
       output: web
-    - title: 1.2 COSMOS Introduction
+    - title: COSMOS Introduction
       url: /pages/1-intro/cosmos-introduction.html
       output: web
 
 # =================================================================================
 
-  - title: 2 Getting Started
+  - title: Getting Started
     output: web
     url: /pages/2-getting_started/index.html
     folderitems:
-    - title: " Overview"
-      url: /pages/2-getting_started/index.html
-      output: web
-    - title: "2.1 Development Environment"
+    - title: "Development Environment"
       url: /pages/2-getting_started/development-environment.html
       output: web
-    - title: "2.2 COSMOS Core Installation"
+    - title: "COSMOS Core Installation"
       url: /pages/2-getting_started/install/ubuntu-install.html
       output: web
-    - title: "2.3 COSMOS Web Installation"
+    - title: "COSMOS Web Installation"
       url: /pages/2-getting_started/install/cosmos-web.html
       output: web
 # =================================================================================
-  - title: 3 Features
+  - title: Features
     output: web
     folderitems:
     - title: COSMOS Features
       url: /pages/3-features/index.html
       output: web
 # =================================================================================
-  - title: 4 Tutorials
+  - title: Tutorials
     output: web
+    url: /pages/4-tutorials/index.html
     folderitems:
-    - title: Tutorials Overview
-      url: /pages/4-tutorials/index.html
-      output: web
-      subfolders:
-
-
-      - title: 4.1 COSMOS Series
+      - title: COSMOS Concepts
         output: web
         subfolderitems:
-        - title: "4.1.1 COSMOS and QtCreator"
-          url: /pages/4-tutorials/cosmos/cosmos1.html
+        - title: "Time System"
           output: web
-        - title: "4.1.2 Writing Agents"
-          url: /pages/4-tutorials/cosmos/cosmos2.html
+          url: #
+        - title: "Libraries"
           output: web
-        - title: "4.1.3 Building and Deploying"
-          url: /pages/4-tutorials/cosmos/cosmos3.html
+          url: #
+        - title: "Error Messages"
           output: web
-        - title: "4.1.4 Modifying COSMOS Web"
-          url: /pages/4-tutorials/cosmos/cosmos4.html
+          url: #
+      - title: COSMOS Core Tutorials
+        output: web
+        url: #
+      - title: COSMOS Agents
+        output: web
+        url: #
+        subfolderitems:
+        - title: "Overview"
           output: web
-
-      - title: 4.2 Build Options
+          url: #
+        - title: "COSMOS Agent Program"
+          output: web
+          url: #
+        - title: "Setup a New Agent"
+          output: web
+          url: #
+        - title: "Reading Namespace Information from an Agent"
+          output: web
+          url: #
+        - title: "Agent 001 and 002"
+          output: web
+          url: #
+        - title: "Agent talk free"
+          output: web
+          url: #
+        - title: "Agent Calc"
+          output: web
+          url: #
+        - title: "Agent Forward"
+          output: web
+          url: #
+        - title: "Agent File: Remote File Transfers"
+          output: web
+          url: #
+      - title: Commands
         output: web
         subfolderitems:
-        - title: "4.2.1 Cross-Compiling"
+        - title: "Direct Commanding"
+          url: #
+          output: web
+        - title: "Executive Command Queue"
+          url: #
+          output: web
+      - title: COSMOS Namespace
+        output: web
+        subfolderitems:
+        - title: "SOH Messages"
+          url: #
+          output: web
+        - title: "Create a Node"
+          url: #
+          output: web
+        - title: "Add a New Device"
+          url: #
+          output: web
+      - title: "COSMOS Agents with Hardware"
+        output: web
+        subfolderitems:
+        - title: Arduino Agent
+          url: #
+          output: web
+        - title: Teensy Agent
+          url: #
+          output: web
+        - title: Raspberry Pi Agent
+          url: #
+          output: web
+        - title: Agent GPS
+          url: #
+          output: web
+      - title: "Simulating a Satellite Orbit & Attitude"
+        output: web
+        url: #
+
+      - title: Build Options
+        output: web
+        subfolderitems:
+        - title: "Cross-Compiling"
           url: /pages/4-tutorials/build/cross-compile.html
           output: web
 
 
+# =================================================================================
+  - title: Projects
+    output: web
+    url: /pages/5-projects/index.html
 
 # =================================================================================
-  - title: 5 Projects
+  - title: Guidelines
     output: web
-    folderitems:
-      - title: "Projects Using COSMOS"
-        url: /pages/5-projects/index.html
-        output: web
+    url: /pages/6-developer_guidelines/index.html
 
 # =================================================================================
-  - title: 6 Guidelines
+  - title: Workshops
     output: web
-    folderitems:
-      - title: "Developer Guidelines"
-        url: /pages/6-developer_guidelines/index.html
-        output: web
+    url: /pages/7-workshops/index.html
+
 # =================================================================================
-  - title: 7 Workshops
+  - title: Help
     output: web
     folderitems:
-      - title: "COSMOS Workshops"
-        url: /pages/7-workshops/index.html
-        output: web
-# =================================================================================
-  - title: 8 Help
-    output: web
-    folderitems:
-      - title: "8.1 Troubleshooting"
+      - title: "Troubleshooting"
         url: /pages/8-help/troubleshooting.html
         output: web
-      - title: "8.2 FAQ"
+      - title: "FAQ"
         url: /pages/8-help/faq.html
         output: web
 # =================================================================================
-  - title: 9 Resources
+  - title: Resources
     output: web
     folderitems:
