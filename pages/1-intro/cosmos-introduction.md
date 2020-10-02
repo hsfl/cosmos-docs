@@ -1,8 +1,8 @@
 ---
-title: 1.2 COSMOS Introduction
+title: COSMOS Introduction
 permalink: /pages/1-intro/cosmos-introduction.html
 layout: page
-
+index: 1.2
 tags: [software]
 keywords: software
 ---

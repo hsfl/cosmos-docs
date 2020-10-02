@@ -1,12 +1,12 @@
 ---
-title: COSMOS Features
+title: COSMOS Core
 permalink: /pages/3-features/index.html
 layout: page
+index: 3.1
 
 tags: [software]
 keywords: software
 ---
-## 3.1 COSMOS Core
 core is organized into libraries and programs. The libraries provide the building blocks for everything done in COSMOS while the programs provide a basic set of essential command line programs to deploy COSMOS in any platform (core does not include graphic user interfaces).
 - **COSMOS Agents**: persistent command line programs that can run in any platform (Linux, macOS, Windows, ARM, etc.) and interact with other agents on the network. The Agents can also control the hardware such as the ground station radio, antennas, satellite radio, satellite attitude control hardware, etc.
 - **COSMOS Devices**: core provides a set of device drivers and libraries to connect to typical hardware (e.g. serial library, I2C library, CPU information library, disk, etc.)
@@ -24,8 +24,3 @@ core is organized into libraries and programs. The libraries provide the buildin
 ### 3.1.5 COSMOS Namespace
 
 ### 3.1.6 Pieces and Devices
-
-
-## 3.2 COSMOS Nodes
-
-## 3.3 COSMOS Tools

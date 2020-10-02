@@ -1,6 +1,7 @@
 ---
-title: "2.1 Development Environment"
+title: "Development Environment"
 layout: series
+index: 2.1
 permalink: /pages/2-getting_started/development-environment.html
 
 tags: [software]

@@ -36,99 +36,105 @@ entries:
   - title: Features
     output: web
     folderitems:
-    - title: COSMOS Features
+    - title: COSMOS Core
       url: /pages/3-features/index.html
+      output: web
+    - title: COSMOS Nodes
+      url: /pages/3-features/#
+      output: web
+    - title: COSMOS Tools
+      url: /pages/3-features/#
       output: web
 # =================================================================================
   - title: Tutorials
     output: web
     url: /pages/4-tutorials/index.html
     folderitems:
-      - title: COSMOS Concepts
+      - title: Concepts
         output: web
         subfolderitems:
         - title: "Time System"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Libraries"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Error Messages"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
       - title: COSMOS Core Tutorials
         output: web
-        url: #
-      - title: COSMOS Agents
+        url: /pages/4-tutorials/#
+      - title: Agents
         output: web
-        url: #
+        url: /pages/4-tutorials/#
         subfolderitems:
         - title: "Overview"
           output: web
-          url: #
-        - title: "COSMOS Agent Program"
+          url: /pages/4-tutorials/#
+        - title:  Agent Program
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Setup a New Agent"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Reading Namespace Information from an Agent"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Agent 001 and 002"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Agent talk free"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Agent Calc"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Agent Forward"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
         - title: "Agent File: Remote File Transfers"
           output: web
-          url: #
+          url: /pages/4-tutorials/#
       - title: Commands
         output: web
         subfolderitems:
         - title: "Direct Commanding"
-          url: #
+          url: /pages/4-tutorials/#
           output: web
         - title: "Executive Command Queue"
-          url: #
+          url: /pages/4-tutorials/#
           output: web
-      - title: COSMOS Namespace
+      - title: Namespace
         output: web
         subfolderitems:
         - title: "SOH Messages"
-          url: #
+          url: /pages/4-tutorials/#
           output: web
         - title: "Create a Node"
-          url: #
+          url: /pages/4-tutorials/#
           output: web
         - title: "Add a New Device"
-          url: #
+          url: /pages/4-tutorials/#
           output: web
-      - title: "COSMOS Agents with Hardware"
+      - title: "Agents with Hardware"
         output: web
         subfolderitems:
         - title: Arduino Agent
-          url: #
+          url: /pages/4-tutorials/#
           output: web
         - title: Teensy Agent
-          url: #
+          url: /pages/4-tutorials/#
           output: web
         - title: Raspberry Pi Agent
-          url: #
+          url: /pages/4-tutorials/#
           output: web
         - title: Agent GPS
-          url: #
+          url: /pages/4-tutorials/#
           output: web
       - title: "Simulating a Satellite Orbit & Attitude"
         output: web
-        url: #
+        url: /pages/4-tutorials/#
 
       - title: Build Options
         output: web
@@ -166,4 +172,5 @@ entries:
 # =================================================================================
   - title: Resources
     output: web
+    url: pages/9-resources/index.html
     folderitems:

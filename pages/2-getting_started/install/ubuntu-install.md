@@ -1,8 +1,8 @@
 ---
-title: 2.2 Installing COSMOS
+title: Installing COSMOS
 layout: series
 permalink: /pages/2-getting_started/install/ubuntu-install.html
-
+index: 2.2
 tags: [software]
 keywords: software
 sidebar: home_sidebar
