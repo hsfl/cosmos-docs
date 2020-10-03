@@ -74,9 +74,6 @@ entries:
         - title: "Setup a New Agent"
           output: web
           url: /pages/4-tutorials/agents/new-agent.html
-        - title: "Reading Namespace Information from an Agent"
-          output: web
-          url: /pages/4-tutorials/agents/namespace.html
         - title: "Agent 001 and 002"
           output: web
           url: /pages/4-tutorials/agents/agents001-002.html
