@@ -6,7 +6,6 @@ index: 4.1.1
 tags: [software]
 keywords: software
 series:
-    language: "C++"
     next: /pages/4-tutorials/concepts/libraries.html
 ---
 
