@@ -93,10 +93,10 @@ entries:
         output: web
         subfolderitems:
         - title: "Direct Commanding"
-          url: /pages/4-tutorials/agents/commanding.html
+          url: /pages/4-tutorials/commands/commanding.html
           output: web
         - title: "Executive Command Queue"
-          url: /pages/4-tutorials/agents/command-queue.html
+          url: /pages/4-tutorials/commands/command-queue.html
           output: web
       - title: Namespace
         output: web
