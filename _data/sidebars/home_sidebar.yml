@@ -110,6 +110,9 @@ entries:
         - title: "Add a New Device"
           url: /pages/4-tutorials/namespace/new-device.html
           output: web
+        - title: "Aliases"
+          url: /pages/4-tutorials/namespace/alias.html
+          output: web
       - title: "Agents with Hardware"
         output: web
         subfolderitems:

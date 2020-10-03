@@ -8,4 +8,5 @@ keywords: software
 series:
     language: "C++"
     prev: /pages/4-tutorials/namespace/create-node.html
+    next: /pages/4-tutorials/namespace/alias.html
 ---
