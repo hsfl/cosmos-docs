@@ -2,6 +2,7 @@
 title: "Tutorials"
 permalink: /pages/4-tutorials/index.html
 layout: page
+index: 4
 
 tags: [software]
 keywords: software

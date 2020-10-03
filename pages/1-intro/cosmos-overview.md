@@ -1,6 +1,7 @@
 ---
-title: 1. COSMOS Overview
+title: COSMOS Overview
 permalink: /pages/1-intro/cosmos-overview.html
+index: 1.1
 layout: page
 
 #tags: [software]

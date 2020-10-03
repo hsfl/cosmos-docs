@@ -1,7 +1,8 @@
 ---
-title: "2.3 COSMOS Web Installation"
+title: "COSMOS Web Installation"
 layout: series
 permalink: /pages/2-getting_started/install/cosmos-web.html
+index: 2.3
 
 tags: [software]
 keywords: software

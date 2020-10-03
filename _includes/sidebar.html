@@ -5,54 +5,100 @@
   {% for entry in sidebar %}
   {% for folder in entry.folders %}
   {% if folder.output contains "web" %}
-  <li>
-      <a title="{{folder.title}}" href="#">{{folder.title}}</a>
-      <ul>
-          {% for folderitem in folder.folderitems %}
-          {% if folderitem.output contains "web" %}
-          {% if folderitem.external_url %}
-          <li><a title="{{folderitem.title}}" href="{{folderitem.external_url}}" target="_blank" rel="noopener">{{folderitem.title}}</a></li>
-          {% elsif page.url == folderitem.url %}
-          <li class="active"><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{folderitem.title}}</a></li>
-          {% elsif folderitem.type == "empty" %}
-          <li><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{folderitem.title}}</a></li>
+  {% assign firstIndex = forloop.index%}
 
-          {% else %}
-          <li><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{folderitem.title}}</a></li>
+
+    {% if folder.url %}
+      {% if page.url == folder.url %}
+        <li class="active">
+      {% else %}
+        <li>
+      {% endif %}
+      <a title="{{folder.title}}" href="{{folder.url| prepend: site.baseurl}}" >{{firstIndex}} {{folder.title}}</a>
+    {% else %}
+      <li>
+      <a title="{{folder.title}}" href="#">{{firstIndex}} {{folder.title}}</a>
+    {% endif %}
+      <ul>
+
+          {% for folderitem in folder.folderitems %}
+          {% assign secondIndex = forloop.index %}
+          {% if folderitem.output contains "web" %}
+            {% if folderitem.subfolderitems.size > 0 %}
+              <li class="subfolders">
+                {% if folderitem.external_url %}
+                <a title="{{folderitem.title}}" href="{{folderitem.external_url}}" target="_blank" rel="noopener">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a>
+                {% elsif folderitem.url %}
+                <a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a>
+                {% else %}
+                <a title="{{folderitem.title}}" href="#">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a>
+                {% endif %}
+                  <ul>
+                      {% for subfolderitem in folderitem.subfolderitems %}
+                      {% assign thirdIndex = forloop.index %}
+                        {% if subfolderitem.output contains "web" %}
+                          {% if subfolderitem.external_url %}
+                          <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.external_url}}" target="_blank" rel="noopener">{{firstIndex}}.{{ secondIndex }}.{{thirdIndex}} {{subfolderitem.title}}</a></li>
+                          {% elsif page.url == subfolderitem.url %}
+                          <li class="active"><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{ secondIndex }}.{{thirdIndex}} {{subfolderitem.title}}</a></li>
+                          {% else %}
+                          <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{ secondIndex }}.{{thirdIndex}} {{subfolderitem.title}}</a></li>
+                          {% endif %}
+
+                        {% endif %}
+                      {% endfor %}
+                  </ul>
+              </li>
+            {% else %}
+              {% if folderitem.external_url %}
+
+              <li><a title="{{folderitem.title}}" href="{{folderitem.external_url}}" target="_blank" rel="noopener">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a></li>
+              {% elsif page.url == folderitem.url %}
+              <li class="active"><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a></li>
+              {% elsif folderitem.type == "empty" %}
+              <li><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a></li>
+
+              {% else %}
+              <li><a title="{{folderitem.title}}" href="{{folderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{secondIndex}} {{folderitem.title}}</a></li>
+              {% endif %}
+            {% endif %}
+            {% for subfolders in folderitem.subfolders %}
+              {% if subfolders.output contains "web" %}
+              {% assign subfolderIndex = forloop.index | plus: secondIndex %}
+              <li class="subfolders">
+                  <a title="{{subfolders.title}}" href="#">{{firstIndex}}.{{ subfolderIndex }} {{ subfolders.title }}</a>
+                  <ul>
+                      {% for subfolderitem in subfolders.subfolderitems %}
+                      {% assign thirdIndex = forloop.index %}
+                        {% if subfolderitem.output contains "web" %}
+                          {% if subfolderitem.external_url %}
+                          <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.external_url}}" target="_blank" rel="noopener">{{firstIndex}}.{{ subfolderIndex }}.{{thirdIndex}} {{subfolderitem.title}}</a></li>
+                          {% elsif page.url == subfolderitem.url %}
+                          <li class="active"><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{ subfolderIndex }}.{{thirdIndex}} {{subfolderitem.title}}</a></li>
+                          {% else %}
+                          <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl }}">{{firstIndex}}.{{ subfolderIndex }}.{{thirdIndex}} {{subfolderitem.title}}</a></li>
+                          {% endif %}
+
+                        {% endif %}
+                      {% endfor %}
+                  </ul>
+              </li>
+              {% endif %}
+            {% endfor %}
           {% endif %}
-          {% for subfolders in folderitem.subfolders %}
-          {% if subfolders.output contains "web" %}
-          <li class="subfolders">
-              <a title="{{subfolders.title}}" href="#">{{ subfolders.title }}</a>
-              <ul>
-                  {% for subfolderitem in subfolders.subfolderitems %}
-                  {% if subfolderitem.output contains "web" %}
-                  {% if subfolderitem.external_url %}
-                  <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.external_url}}" target="_blank" rel="noopener">{{subfolderitem.title}}</a></li>
-                  {% elsif page.url == subfolderitem.url %}
-                  <li class="active"><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl }}">{{subfolderitem.title}}</a></li>
-                  {% else %}
-                  <li><a title="{{subfolderitem.title}}" href="{{subfolderitem.url | prepend: site.baseurl }}">{{subfolderitem.title}}</a></li>
-                  {% endif %}
-                  
-                  {% endif %}
-                  {% endfor %}
-              </ul>
-          </li>
-          {% endif %}
-          {% endfor %}
-          {% endif %}
-          {% endfor %}
+        {% endfor %}
+
+
       </ul>
    </li>
-     {% endif %}
-      {% endfor %}
-      {% endfor %}
+   {% endif %}
+  {% endfor %}
+  {% endfor %}
       <!-- if you aren't using the accordion, uncomment this block:
          <p class="external">
              <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
-         </p>
-         -->
+         </p> -->
+
 </ul>
 
 <!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
