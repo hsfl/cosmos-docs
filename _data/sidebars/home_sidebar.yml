@@ -36,14 +36,8 @@ entries:
   - title: Features
     output: web
     folderitems:
-    - title: COSMOS Core
+    - title: COSMOS Features
       url: /pages/3-features/index.html
-      output: web
-    - title: COSMOS Nodes
-      url: /pages/3-features/nodes.html
-      output: web
-    - title: COSMOS Tools
-      url: /pages/3-features/tools.html
       output: web
 # =================================================================================
   - title: Tutorials
