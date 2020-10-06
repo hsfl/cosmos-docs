@@ -27,14 +27,112 @@ Run the command generator:
 ```
 $ command_generator
 ```
-Example: (TO DO: update this example)
+Example: Create a test command using the *command_generator* program to create a command to command an agent.
+For this example, we will use Agent CPU and request the CPU load from it.
+
+Start *agent_cpu*. Open a terminal and run
+```
+$ agent_cpu
+```
+Find the **node** by opening another terminal and running `agent list`. Find the *cpu* agent and take note of the node name.
+The Agent CPU request we will use in the command is `load`. Test it by running `agent  <nodename> cpu load`.
+
+Now, use the command generator to create the command. Run the following in a terminal and replace <nodename> with the node of your cpu agent.  
+```
+$ command_generator test_command "agent <nodename> cpu load" +60
+```
+The `+60` argument will set the time of the command to sixty seconds from now. If you leave out this argument, the command will be generated with time 0, it will be executed immediately.
+
+The output should give you something like this:
+```
+Command string:
+{"event_utc":59128.046385,"event_name":"test_command","event_type":8192,"event_flag":0,"event_data":"agent nodeName cpu load"}
+```
+Copy the JSON structure that is output from the command generator. Create a new file `test_command.command` file in `~/cosmos/nodes/<nodename>/incoming/exec`
+
+```
+$ vi ~/cosmos/nodes/<nodename>/incoming/exec/test_command.command
+```
+Next, start *agent_exec* with the same nodename as your cpu agent
+```
+$ agent_exec <nodename>
+```
+You will see in the terminal, your command added by the agent. After the command is executed, the file will no longer be in the `...incoming/exec` directory that you put it in. Check for the output file in `outgoing/exec` or `temp/exec` the output will be in a file with the `.out` suffix. Agent Exec temporarily stores the output in the `temp/exec` directory in the nodes folder. Periodically, the files are then moved to the `outgoing/exec` directory.
+
+The text in this file should be identical to the output of the command run from a terminal.
 
 
 ### Command Generator Script
 
+An alternative to generate commands is to use the *command_generator.sh* script in the folder: *cosmos/source/core/scripts/*
+
+Example: Create a test command using the *command_generator* program to create a command to command an agent.
+For this example, we will use Agent CPU and request the CPU load from it.
+
+Start *agent_cpu*. Open a terminal and run
+```
+$ agent_cpu
+```
+Find the **node** by opening another terminal and running `agent list`. Find the *cpu* agent and take note of the node name.
+The Agent CPU request we will use in the command is `load`. Test it by running `agent  <nodename> cpu load`.
+
+Run the command generator script:
+```
+$ ./command_generator.sh
+```
+You will encounter a series of prompts
+```
+Please enter an event name:     test
+```
+The event name is arbitrary
+```
+Please enter a UTC time:        0
+```
+UTC Time  is the time to execute the command. Time 0 means execute immediately, time `+10` means 10 seconds into the future.
+```
+What is the event command?      "agent <nodename> cpu load"
+```
+Event Command: enter the full command you wish to execute. Encapsulate in quotes if there are spaces.
+
+Event Repeatability / Condition: An event must be conditional to be repeatable. Conditions must be formatted as `(”device_bus_power_003”=0)`, enclosed in parentheses. To refer to an item in the COSMOS namespace as an operand, enclose the item in parentheses.  
+```
+Is your event repeatable? (y/n):    n
+Is your event conditional? (y/n):   y
+```
+this will generate a *autogen.command* file in the current directory.
+To add this command to the command queue, move the *autogen.command* file that was just created into the directory: *cosmos/nodes/<nodename>/incoming/exec*
+
+Next, start *agent_exec* with the same nodename as your cpu agent
+```
+$ agent_exec <nodename>
+```
+You will see in the terminal, your command added by the agent. After the command is executed, the file will no longer be in the `...incoming/exec` directory that you put it in. Check for the output file in `outgoing/exec` or `temp/exec` the output will be in a file with the `.out` suffix. Agent Exec temporarily stores the output in the `temp/exec` directory in the nodes folder. Periodically, the files are then moved to the `outgoing/exec` directory.
+
+The text in this file should be identical to the output of the command run from a terminal.
+
 ### Command Generator Python Script
+Another alternative is to use the python script *command_generator.py* in the directory: *cosmos/source/core/scripts/*
+
+```
+$ python command_generator.py
+```
+You should see :
+{% include image.html file="/resources/tutorials/cosmos/command_generator.png" width="100%" %}
+Fill in the fields and hit “ENTER” to move on to the next block
+
+This will generate a command file (.command) in the current directory.
+To add this command to the command queue, move the *.command* file that was just created into the directory: *cosmos/nodes/NodeName/incoming/exec*
 
 ## Adding Commands to Command Queue via *add_event* Request
+Commands added through requests must be passed as JSON string with their quotes escaped. This can be done by wrapping the entire argument in single quotes. An example is given below:
+```
+$ agent neutron1 exec add_event ‘{“event_name”:”diskSize”}{“event_utc”:0}{“event_utcexec”:0}{“event_flag”:0}{“event_type”:8192}{“event_data”:”agent neutron1 cpu diskSize”}{“event_condition”:””}’
+```
+If the argument is correctly interpreted as a string, you will get the following output back:
+```
+Command added to queue: {“event_name”:”diskSize”}{“event_utc”:0}{“event_utcexec”:0}{“event_flag”:0}{“event_type”:8192}{“event_data”:”agent neutron1 cpu diskSize”}{“event_condition”:””}[OK] ...
+```
+The inverse request (‘del_event’) should also format this argument by escaping its quotes.
 
 ## Managing the Command Queue
 
