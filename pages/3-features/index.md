@@ -10,13 +10,36 @@ keywords: software
 ## 3.1 COSMOS Elements
 The COSMOS System is based on a number of key concepts, all acting in concert to provide a "COSMOS Aware" implementation. These concepts are realized through a set of libraries, programs and "rules of engagement" which will be explained below. Also included below are some examples of simple implementations that should serve to better explain the concept.
 
-### 3.1.1 COSMOS Nodes
+### 3.1.1 Nodes
 A core concept of working with a complex system in COSMOS is "generalization". The idea is to generalize the parts of the system in to the minimum number necessary to achieve the desired goal. These parts are then each generalized as to the minimum number of qualities needed to accurately perform the task at hand. Each such generalized assemblage of parts is called a Node. Any "COSMOS Aware" software is cognizant of the Node it is working with, and can access the generalized information for that Node.
 
 ### 3.1.2 Pieces, Components and Devices
 The generalization is ultimately achieved by assigning a "Device" to each required piece of hardware. Each Device is in turn assigned a set of attributes sufficient to represent its function. These attributes are both general in nature (eg. voltage, current, etc.) and specific (eg. Reaction wheel velocity, GPS position). In order to fully simulate all aspects of a Nodal system, the generalized description actually includes a physical aspect as well. Each Node starts as a collection of "Pieces", each with a geometry (eg. box, sphere, etc.) and associated dimensions, as well as physical aspects (eg. mass, heat capacity, etc.) Some of these pieces (though not necessarily all) are associated with electronic "Components", each with an assoicated electrical nature. Finally, each Component is assigned a specific Device.
-### 3.1.1 COSMOS Namespace
+
+### 3.1.3 Namespace
 COSMOS uses a predefined Namespace in order to handle the marshalling and unmarshalling of data between different systems, and to provide a unique expression of all the attributes of all the Pieces, Components and Devices in a Node. We have chosen to represent this Namespace usnig JavaScript Object Notation, or JSON. A set of rules has been defined for the representation of each attribute, using JSON. We are currently using a flat representation, which we call Namespace 1.0. In this representation, each attribute is its own unique JSON object, and is tied to a unique location in a Namespace structure in memory. The names follow a pattern of "type_attribute{_###}", where type is one of "node", "agent", "piece", "device_all", "device_{device}"; attribute is any attribute (voltage, current, position, time); and ### is the index number for the piece, component or device.
+
+### 3.1.4 Requests
+Specialized commands, or "requests" are supported within COSMOS. Any COSMOS Aware application can use these Requests to request behavior that is specific to the particular COSMOS application that has been developed. Both requests, and any subsequent response, are delivered as regular ASCII strings. A standard set of Requests are built into all programs. Support is then provided for adding additional requests that are unique to a particular program.
+
+### 3.1.4 Network Bus
+COSMOS defines a specific usage of UDP packets that defines a "Network Bus" that allows the cross-communication of information and requests. This bus is built on the following elements:
+- Standard UDP Port (10020) over which messages are broadcast. Primary among these are:
+  - Heartbeat: a set of data that defines the particular program that is sending the Heartbeat. This includes:
+    - Time
+    - Node name
+    - Process name
+    - IP address
+    - IP Port
+  - State of Health (SOH): a JSON string providing a preset subset of the Namespace and the current values.
+- Unique UDP Port over which Requests are accepted
+- Standard predefined message types (indicated by first byte of message)
+
+### 3.1.4 Agents
+COSMOS has borrowed from modern operating systems by simple elaborating on many of their concepts. All modern operating systems support the concept of a persistent program that offers some sort of generalized service. COSMOS elaborates on this concept with "Agents". These are persistent programs that use the Elements defined in this section to make them part of COSMOS.
+
+### 3.1.4 COSMOS Awareness
+The way that COSMOS is used is through the process of making programs "COSMOS Aware". Any program can be made aware of COSMOS
 
 ## 3.2 COSMOS Core
 core is organized into libraries and programs. The libraries provide the building blocks for everything done in COSMOS while the programs provide a basic set of essential command line programs to deploy COSMOS in any platform (core does not include graphic user interfaces).
