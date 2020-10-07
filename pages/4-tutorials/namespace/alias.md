@@ -2,7 +2,7 @@
 title: COSMOS Aliases
 permalink: /pages/4-tutorials/namespace/alias.html
 layout: series
-index: 4.6.4
+index: 4.6.5
 tags: [software]
 keywords: software
 series:

@@ -2,12 +2,14 @@
 title: State of Health (SOH) Messages
 permalink: /pages/4-tutorials/namespace/soh.html
 layout: series
-index: 4.6.1
+index: 4.6.2
 tags: [software]
 keywords: software
 series:
     language: "C++"
     next: /pages/4-tutorials/namespace/create-node.html
+    prev: /pages/4-tutorials/namespace/index.html
+
 ---
 
 This is a tutorial to show you how to use State of Health messages in the COSMOS Agents.

@@ -101,6 +101,9 @@ entries:
       - title: Namespace
         output: web
         subfolderitems:
+        - title: "Namespace Overview"
+          url: /pages/4-tutorials/namespace/index.html
+          output: web
         - title: "SOH Messages"
           url: /pages/4-tutorials/namespace/soh.html
           output: web
