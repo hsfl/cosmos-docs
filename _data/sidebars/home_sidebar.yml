@@ -42,7 +42,6 @@ entries:
 # =================================================================================
   - title: Tutorials
     output: web
-    url: /pages/4-tutorials/index.html
     folderitems:
       - title: Concepts
         output: web
