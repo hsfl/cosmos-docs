@@ -141,6 +141,12 @@ entries:
           url: /pages/4-tutorials/build/cross-compile.html
           output: web
 
+      - title: Hardware
+        output: web
+        subfolderitems:
+        - title: "Gumstix"
+          url: /pages/4-tutorials/hardware/gumstix.html
+          output: web
 
 # =================================================================================
   - title: Projects
