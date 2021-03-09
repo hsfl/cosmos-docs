@@ -1,5 +1,5 @@
 ---
-title: "Installation Overview"
+title: "COSMOS Core Installation"
 permalink: /pages/2-getting_started/install/index.html
 index: 2.2
 layout: page
