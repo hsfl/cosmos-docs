@@ -27,31 +27,10 @@ entries:
       url: /pages/2-getting_started/development-environment.html
       output: web
     - title: "Install COSMOS Core"
-      url: /pages/2-getting_started/install/ubuntu-install.html
+      url: /pages/2-getting_started/install/index.html
       output: web
     - title: "Install COSMOS Web"
       url: /pages/2-getting_started/install/cosmos-web.html
-      output: web
-    - title: "Install "
-      url: /pages/2-getting_started/install/cosmos-web.html
-      output: web
-
-# =================================================================================
-  - title: Build COSMOS
-    output: web
-    folderitems:
-    - title: Build for Windows
-      base-url: /pages/install/windows.html
-      output: web
-    - title: Build for macOS
-      base-url: https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU
-      output: web
-    - title: Build for Linux/Ubuntu
-      base-url: https://docs.google.com/document/d/1jCWwJyiwQVfwtHrvJwAQ4vTe55TE-UGZzd0wIU9yiig/
-      output: web
-    - title: Build for ARM (Raspberry PI, etc.)
-      url:  [google.com](https://google.com){:target="_blank" rel="noopener"}
-<a href="https://google.com" target="_blank" rel="noopener">google.com</a>
       output: web
 
 # =================================================================================
