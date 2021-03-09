@@ -1,5 +1,5 @@
 ---
-title: "Development Environment"
+title: "Install COSMOS Development Environment"
 layout: series
 index: 2.1
 permalink: /pages/2-getting_started/development-environment.html
