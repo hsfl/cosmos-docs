@@ -23,15 +23,36 @@ entries:
     output: web
     url: /pages/2-getting_started/index.html
     folderitems:
-    - title: "Development Environment"
+    - title: "Install COSMOS Development Environment"
       url: /pages/2-getting_started/development-environment.html
       output: web
-    - title: "COSMOS Core Installation"
+    - title: "Install COSMOS Core"
       url: /pages/2-getting_started/install/ubuntu-install.html
       output: web
-    - title: "COSMOS Web Installation"
+    - title: "Install COSMOS Web"
       url: /pages/2-getting_started/install/cosmos-web.html
       output: web
+    - title: "Install "
+      url: /pages/2-getting_started/install/cosmos-web.html
+      output: web
+
+# =================================================================================
+  - title: Build COSMOS
+    output: web
+    folderitems:
+    - title: Build for Windows
+      url: https://docs.google.com/document/d/1oMxOi7A6c3XGwOz93kgrcoFby61ilEU8Z0geZae1mAQ
+      output: web
+    - title: Build for macOS
+      url: https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU
+      output: web
+    - title: Build for Linux/Ubuntu
+      url: https://docs.google.com/document/d/1jCWwJyiwQVfwtHrvJwAQ4vTe55TE-UGZzd0wIU9yiig/
+      output: web
+    - title: Build for ARM (Raspberry PI, etc.)
+      url: https://docs.google.com/document/d/1-336LrhvC03C0C3OoDuKsPLIZt3Zr3oOAHkmAQ3lr9g
+      output: web
+
 # =================================================================================
   - title: Features
     output: web
