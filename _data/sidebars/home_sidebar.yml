@@ -23,13 +23,13 @@ entries:
     output: web
     url: /pages/2-getting_started/index.html
     folderitems:
-    - title: "Install COSMOS Development Environment"
+    - title: "Development Environment"
       url: /pages/2-getting_started/development-environment.html
       output: web
-    - title: "Install COSMOS Core"
+    - title: "COSMOS Core"
       url: /pages/2-getting_started/install/index.html
       output: web
-    - title: "Install COSMOS Web"
+    - title: "COSMOS Web"
       url: /pages/2-getting_started/install/cosmos-web.html
       output: web
 
