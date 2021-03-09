@@ -16,7 +16,7 @@ series:
 
 ## Introduction
 
-The Artemis Development Environment is provided as an Ubuntu 18.04.4 Vagrant box with necessary tools preinstalled.
+The COSMOS Development Environment is provided as an Ubuntu 18.04.4 Vagrant box with necessary tools preinstalled.
 
 VirtualBox and Vagrant are used to ensure the development environment is cross-platform. VirtualBox is used for
 virtualization of operating systems, and Vagrant is used to set up the virtual machine in a (mostly)
@@ -61,7 +61,7 @@ $ vagrant plugin install vagrant-vbguest
 {% include important.html content="Do not copy the `$` character or the following space when entering commands.
 This notation is used to indicate the input to a terminal." %}
 
-## 2. Set up the Artemis Box
+## 2. Set up the COSMOS Box
 
 Some of the commands you will need:
 - __cd__: changes directories. Use the command `cd {insert folder name here}` to move in to that folder. The command `cd ..` moves up one folder.
@@ -70,7 +70,7 @@ Some of the commands you will need:
 ### 2.1 Add the Box
 
 
-Download the Artemis box from
+Download the COSMOS box from
 [here](https://drive.google.com/file/d/1DE3rlG3X5IrTut54pok7zP7xZzsjPFm_/view?usp=sharing). An example location of the file on Windows is
 `C:\Users\YOUR_USERNAME\Documents\Vagrant\artemis`.
 
