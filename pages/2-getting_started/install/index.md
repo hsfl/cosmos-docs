@@ -1,6 +1,7 @@
 ---
 title: "Installation Overview"
 permalink: /pages/2-getting_started/install/index.html
+index: 2.2
 layout: page
 
 tags: [software]
