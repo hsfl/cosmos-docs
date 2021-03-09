@@ -17,8 +17,7 @@ If you want to install COSMOS without using the development environment, you can
 ### Developers
 1. [Linux Install]({{site.baseurl}}/pages/2-getting_started/install/ubuntu-install.html)
 2. [Windows Install]({{site.baseurl}}/pages/2-getting_started/install/ubuntu-install.html)
-3. [macOS Install](https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU){:target="_blank"}
-4. <a href="https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU" target="_blank" rel=“noreferrer noopener”> macOS Install </a>
+3. [macOS Install](https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU)
 
 ### Users
 1. [User Install]({{site.baseurl}}/pages/2-getting_started/install/user-install.html)
