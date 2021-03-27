@@ -37,4 +37,10 @@ The namespace variable for the imu temperature in this case, is "device_imu_temp
 To simplify the use of this equation we use an alias such as
 "imuTempCelcius"
 
-The code to handle COSMOS namespace aliases and equations can be found in jsonlib.cpp. The relevant functions for aliases are \ref json_addentry and \ref json_get_double. For equations the relevant functions are \ref json_equation and \ref json_equation_map.
+```
+string equation = "(\"device_imu_temp_000\" - 273.15)";
+jsonhandle eqhandle; 
+json_equation_map(equation, cinfo, &eqhandle); 
+string alias = "imuTempCelcius";
+json_addentry(alias, equation, cinfo); 
+```
