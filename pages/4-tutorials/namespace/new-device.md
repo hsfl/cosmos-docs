@@ -10,4 +10,6 @@ series:
     prev: /pages/4-tutorials/namespace/create-node.html
     next: /pages/4-tutorials/namespace/alias.html
 ---
-## [Add Device Tutorial](https://docs.google.com/document/d/1nrOId7-6iBiTzjoFnFobEZpwlmBhdKSEu3mWkHiQ094/edit#heading=h.ubto8udfq1od)
+
+## Adding a device to an Agent 
+We can add a device to an agent using this simplified `add_device`
