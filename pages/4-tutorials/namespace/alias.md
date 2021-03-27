@@ -37,6 +37,8 @@ The namespace variable for the imu temperature in this case, is "device_imu_temp
 To simplify the use of this equation we use an alias such as
 "imuTempCelcius"
 
+The code for creating an alias would be as follows: 
+
 ```
 string equation = "(\"device_imu_temp_000\" - 273.15)";
 jsonhandle eqhandle; 
