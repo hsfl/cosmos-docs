@@ -67,7 +67,7 @@ $ git fetch
 ### Install Qt
 For Qt Installation process, follow [these instructions]({{site.baseurl}}/pages/2-getting_started/install/qt-install.html).
 
-In Qt Creator, click on _File_ > _Open File or Project..._, and open up the file `~/cosmos/source/core/CMakeLists.txt`.
+In Qt Creator, click on _File_ > _Open File or Project..._, and open up the file `~/cosmos/source/CMakeLists.txt`.
 
 **TODO:** a project configuration dialog might show up?
 
@@ -77,7 +77,7 @@ on _Desktop_, and then click on _Build_ under it.
 Make sure the build directory looks something like:
 
 ```
-/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug
+/home/YOUR_USERNAME/cosmos/source/build-core-Desktop-Debug
 ```
 
 Now you can press <kbd>CTRL</kbd> + <kbd>B</kbd> (or the hammer icon at the bottom left) to build the project.
@@ -87,7 +87,7 @@ All of the executables are now located in the build directory from above. They a
 but we need to put them together all in the same folder. To do so, run the following command in a terminal (replacing `YOUR_USERNAME` with your username):
 
 ```bash
-$ cd /home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug
+$ cd /home/YOUR_USERNAME/cosmos/source/build-core-Desktop-Debug
 $ mkdir bin
 $ find ./ -perm /a+x -exec cp {} bin \;
 ```
