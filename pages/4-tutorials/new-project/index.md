@@ -29,12 +29,12 @@ Create a `hello_world.cpp` test program using Qt Creator.
 3. Select “configure project” when the window opens.
 4. Create the new file
 - *File → New File or Project → C++ Source file*
-- Add the new file into `cosmos/source/projects/my-project/source/tests/hello_world.cpp`
+- Add the new file into `cosmos/source/projects/my-project/source/hello_world.cpp`
 5. In Qt Creator, edit the `CMakeLists.txt` and enter the following line:
 ```
 add_executable(hello_world "hello_world.cpp")
 ```
 6. Build
 Build by clicking on the hammer icon or with the shortcut <kbd>CTRL</kbd> + <kbd>B</kbd>
-6. Run
+7. Run
 Run the program in Qt with the shortcut <kbd>CTRL</kbd> + <kbd>R</kbd>
