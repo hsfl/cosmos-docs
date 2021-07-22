@@ -17,7 +17,7 @@ series:
 
 ## Introduction
 
-This tutorial will help you install the COSMOS core programs and libraries on a Linux Ubuntu environment. This assumes you already have Ubuntu installed (natively, via Virtual Box or WSL). If you're on the macOS you can also follow the [COSMOS quick install instructions](https://docs.google.com/document/d/1xrLsOIelfm3DJb8nfm8n24lLsPU7E3KQZiw9NcfKKgg/edit?usp=sharing).
+This tutorial will help you install the COSMOS core programs and libraries on a Linux Ubuntu environment. This assumes you already have Ubuntu installed (natively, via Virtual Box or WSL). If you're on the macOS you can also follow these instructions.
 
 {% include warning.html content="It is still _highly_ recommended that you install COSMOS on Ubuntu 18.04.3 for compatibility." %}
 
