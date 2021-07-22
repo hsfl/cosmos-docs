@@ -52,6 +52,28 @@ cd ~/cosmos
 ./cosmos-install.sh
 ```
 
+### Testing COSMOS
+Let's test the installation of COSMOS by running two software agents (agent_001, agent_002) 
+Run the following commands in a terminal:
+```bash
+agent_002
+```
+
+Open another terminal, run:
+```bash
+agent_001
+```
+
+The agents should now be talking to each other. This illustrates the interconnectivity aspect of COSMOS and its ability to piece together heterogeneous systems.
+If the terminal reported an error while starting the agent command please [check if the PATH env variable was set correctly during the installation process](https://hsfl.github.io/cosmos-docs/pages/2-getting_started/install/ubuntu-install.html#add-cosmos-to-path).
+
+Alternatively you can start the programs by changing to the cosmos/bin directory and running
+```bash
+cd ~/cosmos/bin
+./agent_001
+```
+
+
 ## Switch to the Dev Branch
 
 There are many changes present in the COSMOS Core dev branch that are not present in the master branch. To get the newest changes, switch to the dev branch:
@@ -62,7 +84,7 @@ git checkout dev
 git fetch
 ```
 
-## Build COSMOS Core with Qt Creator
+## Build COSMOS Core with Qt Creator (Optional)
 
 {% include important.html content="You can skip this step if you _only_ want to compile your programs on the command line." %}
 
@@ -116,22 +138,7 @@ cd linux
 make -j
 make -j install
 ```
-### Testing COSMOS
-Let's test the installation of COSMOS
-Run the following commands in a terminal:
-```bash
-cd ~/cosmos/bin
-./agent_002
-```
 
-In another terminal, run:
-```bash
-cd ~/cosmos/bin
-./agent_001
-```
-
-The agents should now be talking to each other.
-This illustrates the interconnectivity aspect of COSMOS and its ability to piece together heterogeneous systems.
 
 
 
