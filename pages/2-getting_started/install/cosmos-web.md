@@ -32,6 +32,8 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
 - Any OS that supports Node.js
 - [Node.js](https://nodejs.org/en/download/)
   - A runtime environment that supports JavaScript
+  - Install Node.js v7.5.3 (as of April 4/29/2021)
+  - To install [node.js on WLS](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)
 
 ### Agent MongoDB Dependencies
 
