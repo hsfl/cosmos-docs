@@ -74,11 +74,11 @@ cd ~/cosmos/bin
 ```
 
 
-## Switch to the Dev Branch
+## Switch to the Dev Branch (Optional)
 
 There are many changes present in the COSMOS Core dev branch that are not present in the master branch. To get the newest changes, switch to the dev branch:
 
-```bin
+```bash
 cd ~/cosmos/source/core
 git checkout dev
 git fetch
@@ -118,7 +118,7 @@ find ./ -perm /a+x -exec cp {} bin \;
 
 Now you can copy the contents of the `/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug/bin` folder to the `/home/YOUR_USERNAME/cosmos/bin` folder. There will be a bunch of files already in the destination folder, but you can remove the old ones (those are from the master branch).
 
-### Testing COSMOS
+### Testing COSMOS on Qt Creator
 1. Navigate to the “Projects” tab on the left menu.
 2. Under “Build & Run” on the left menu, click the “Run” under the same kit you built with.
 3. Under the Run category, select agent_001 under the run configuration. To run it, press Ctrl + R.
