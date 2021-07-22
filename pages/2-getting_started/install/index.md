@@ -21,6 +21,7 @@ Installing COSMOS core is easy it can be done from the sources repository. Follo
 1. [Installing COSMOS Core on Linux]({{site.baseurl}}/pages/2-getting_started/install/ubuntu-install.html)
 2. [Installing COSMOS Core on Windows]({{site.baseurl}}/pages/2-getting_started/install/ubuntu-install.html) (use [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and follow the Linux Install instructions)
 3. [Installing COSMOS Core on macOS](https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU)
+4. [Installing COSMOS Core on Raspberry Pi]({{site.baseurl}}/pages/4-tutorials/build/cross-compile.html)
 
 After your are done installing COSMOS core you can [check your installation](https://hsfl.github.io/cosmos-docs/pages/2-getting_started/install/ubuntu-install.html#testing-cosmos-core).
 
