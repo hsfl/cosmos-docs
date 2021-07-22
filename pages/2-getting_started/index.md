@@ -22,11 +22,11 @@ The most straightforward way to start with COSMOS is to install it under Linux U
 
 ### Get Started
 
-* To get a quick COSMOS core installation going start here:
+* To get COSMOS core installed start here:
 [COSMOS Core Installation]({{site.baseurl}}/pages/2-getting_started/install/ubuntu-install.html)
 
 * To get a fully working development environment (cosmos core, Qt Creator, cross compilers, etc.) start here: 
 [Development Environment]({{site.baseurl}}/pages/2-getting_started/development-environment.html)
 
-* Finally, install the graphic user interface for COSMOS:
+* To install the graphic user interface for COSMOS:
 [COSMOS Web Installation]({{site.baseurl}}/pages/2-getting_started/install/cosmos-web.html)
