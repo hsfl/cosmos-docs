@@ -38,21 +38,22 @@ Before anything else make sure that you have all the dependencies you need by ru
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install git cmake build-essential -y
   ```
-## Clone COSMOS Core
-Clone the installer script:
+## Build COSMOS Core
+
+### Clone the COSMOS installer script:
 
 ```bash
 git clone https://github.com/hsfl/cosmos-installer.git ~/cosmos
 ```
 
-Run the installer script:
+### Run the installer script:
 
 ```bash
 cd ~/cosmos
 ./cosmos-install.sh
 ```
 
-### Testing COSMOS
+### Testing COSMOS Core
 Let's test the installation of COSMOS by running two software agents (agent_001, agent_002) 
 Run the following commands in a terminal:
 ```bash
@@ -74,15 +75,6 @@ cd ~/cosmos/bin
 ```
 
 
-## Switch to the Dev Branch (Optional)
-
-There are many changes present in the COSMOS Core dev branch that are not present in the master branch. To get the newest changes, switch to the dev branch:
-
-```bash
-cd ~/cosmos/source/core
-git checkout dev
-git fetch
-```
 
 ## Build COSMOS Core with Qt Creator (Optional)
 
@@ -139,6 +131,16 @@ make -j8
 make -j8 install
 ```
 
+## Switch to the Dev Branch (Optional)
+
+There are many changes present in the COSMOS Core dev branch that are not present in the master branch. To get the newest changes, switch to the dev branch:
+
+```bash
+cd ~/cosmos/source/core
+git checkout dev
+git fetch
+```
+
 
 ## Add COSMOS to PATH
 
@@ -169,9 +171,6 @@ to see the usage of the program:
 ```bash
 agent
 ```
-
-
-
 
 ## See Also
 * [COSMOS Manual](https://docs.google.com/document/d/19rqvtZeEMJzkEcsTlC4ojYUkN-3OcYLc6IqRXgDIQlI)
