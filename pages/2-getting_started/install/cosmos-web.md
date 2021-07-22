@@ -25,6 +25,8 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
 
 ## Dependencies
 
+{% include warning.html content="It is still _highly_ recommended that you install COSMOS Web on Ubuntu 18.04 for compatibility." %}
+
 ### COSMOS Web Dependencies
 
 - Any OS that supports Node.js
