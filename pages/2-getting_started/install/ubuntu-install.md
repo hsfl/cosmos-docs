@@ -1,5 +1,5 @@
 ---
-title: Installing COSMOS
+title: Install COSMOS Core on Ubuntu
 layout: series
 permalink: /pages/2-getting_started/install/ubuntu-install.html
 index: 2.2
@@ -17,37 +17,39 @@ series:
 
 ## Introduction
 
-If you want to install COSMOS without using the development environment, you can always install COSMOS from scratch.
+This tutorial will help you install the COSMOS core programs and libraries on a Linux Ubuntu environment. This assumes you already have Ubuntu installed (natively, via Virtual Box or WSL). If you're on the macOS you can also follow the [COSMOS quick install instructions](https://docs.google.com/document/d/1xrLsOIelfm3DJb8nfm8n24lLsPU7E3KQZiw9NcfKKgg/edit?usp=sharing).
 
 {% include warning.html content="It is still _highly_ recommended that you install COSMOS on Ubuntu 18.04.3 for compatibility." %}
 
 ## Dependencies
 COSMOS depends on Git, CMake 2.8.12+ and Build Essential to function.
 - Git
-  - A version control manager that COSMOS depends on.
+  - A version control manager used for most moderm software development 
+  - To learn more about Git see the [HSFL guide on getting started with Git](https://docs.google.com/document/d/1wMfGmQrrwGb9nrq0Mgbzm1sq9-XTwk3qJ2S1dyUw480/edit?usp=sharing) and the [Git Handbook](https://guides.github.com/introduction/git-handbook/) 
 - CMake  2.8.12+
-  - A cross-platform set of tools that packages COSMOS code and compiles it.
-- Build essential
+  - A cross-platform tool to manage building source code.
+  - To learn more about Cmake follow the documentation links on the [official Cmake page](https://cmake.org/)
+- Build essential packages
   - Compilers (gcc, g++ and their dependencies) that builds COSMOS code.
 
-First you should make sure that you have all the dependencies you need by running the following in a terminal window:
+Before anything else make sure that you have all the dependencies you need by running the following commands in a terminal window:
 
 ```bash
-$ sudo apt update && sudo apt upgrade -y
-$ sudo apt-get install git cmake build-essential -y
+sudo apt update && sudo apt upgrade -y
+sudo apt-get install git cmake build-essential -y
   ```
 ## Clone COSMOS Core
 Clone the installer script:
 
 ```bash
-$ git clone https://github.com/hsfl/cosmos-installer.git ~/cosmos
+git clone https://github.com/hsfl/cosmos-installer.git ~/cosmos
 ```
 
 Run the installer script:
 
 ```bash
-$ cd ~/cosmos
-$ ./cosmos-install.sh
+cd ~/cosmos
+./cosmos-install.sh
 ```
 
 ## Switch to the Dev Branch
@@ -55,9 +57,9 @@ $ ./cosmos-install.sh
 There are many changes present in the COSMOS Core dev branch that are not present in the master branch. To get the newest changes, switch to the dev branch:
 
 ```bin
-$ cd ~/cosmos/source/core
-$ git checkout dev
-$ git fetch
+cd ~/cosmos/source/core
+git checkout dev
+git fetch
 ```
 
 ## Build COSMOS Core with Qt Creator
@@ -87,9 +89,9 @@ All of the executables are now located in the build directory from above. They a
 but we need to put them together all in the same folder. To do so, run the following command in a terminal (replacing `YOUR_USERNAME` with your username):
 
 ```bash
-$ cd /home/YOUR_USERNAME/cosmos/source/build-core-Desktop-Debug
-$ mkdir bin
-$ find ./ -perm /a+x -exec cp {} bin \;
+cd /home/YOUR_USERNAME/cosmos/source/build-core-Desktop-Debug
+mkdir bin
+find ./ -perm /a+x -exec cp {} bin \;
 ```
 
 Now you can copy the contents of the `/home/YOUR_USERNAME/cosmos/source/core/build-core-Desktop-Debug/bin` folder to the `/home/YOUR_USERNAME/cosmos/bin` folder. There will be a bunch of files already in the destination folder, but you can remove the old ones (those are from the master branch).
@@ -107,25 +109,25 @@ This illustrates the interconnectivity aspect of COSMOS and its ability to piece
 ### Build COSMOS Core
 To build COSMOS, open a terminal and type:
 ```bash
-$ cd ~/cosmos/source/core/build
-$ mkdir linux
-$ ./do_cmake linux
-$ cd linux
-$ make -j
-$ make -j install
+cd ~/cosmos/source/core/build
+mkdir linux
+./do_cmake linux
+cd linux
+make -j
+make -j install
 ```
 ### Testing COSMOS
 Let's test the installation of COSMOS
 Run the following commands in a terminal:
 ```bash
-$ cd ~/cosmos/bin
-$ ./agent_002
+cd ~/cosmos/bin
+./agent_002
 ```
 
 In another terminal, run:
 ```bash
-$ cd ~/cosmos/bin
-$ ./agent_001
+cd ~/cosmos/bin
+./agent_001
 ```
 
 The agents should now be talking to each other.
@@ -141,7 +143,7 @@ Enter into the terminal:
 
 
 ```bash
-$ nano ~/.bashrc
+nano ~/.bashrc
 ```
 
 This will open up the file containing the directories the shell looks for programs in.
@@ -161,7 +163,7 @@ Next, close the terminal window and open up a new one to reload the PATH. You sh
 to see the usage of the program:
 
 ```bash
-$ agent
+agent
 ```
 
 
@@ -169,3 +171,4 @@ $ agent
 
 ## See Also
 * [COSMOS Manual](https://docs.google.com/document/d/19rqvtZeEMJzkEcsTlC4ojYUkN-3OcYLc6IqRXgDIQlI)
+* [Original "Install COSMOS on Linux Ubuntu" doc](https://docs.google.com/document/d/1jCWwJyiwQVfwtHrvJwAQ4vTe55TE-UGZzd0wIU9yiig/edit#heading=h.uydetxsepgs0)
