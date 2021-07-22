@@ -20,6 +20,9 @@ COSMOS Web is a web application that allows the control and visualization of dat
 
 Agent MongoDB is the server component of COSMOS Web and bridges the gap between COSMOS Web and the COSMOS ecosystem via WebSockets. It also handles data storage in a MongoDB database.
 
+![cosmos web](https://user-images.githubusercontent.com/1541868/126595087-d598d736-b824-4e7b-bf6b-0c3f62f6ec17.PNG)
+
+
 ## Dependencies
 
 ### COSMOS Web Dependencies
