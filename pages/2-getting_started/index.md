@@ -30,3 +30,12 @@ The most straightforward way to start with COSMOS is to install it under Linux U
 
 * To install the graphic user interface for COSMOS:
 [COSMOS Web Installation]({{site.baseurl}}/pages/2-getting_started/install/cosmos-web.html)
+
+### COSMOS Core + COSMOS Web in < 10 min (WIP)
+
+For Win10 
+1. [Install WSL 2 on Win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+2. Install Ubuntu 18.04 on WLS2
+3. [COSMOS Core Installation]({{site.baseurl}}/pages/2-getting_started/install/ubuntu-install.html)
+4. [COSMOS Web Installation]({{site.baseurl}}/pages/2-getting_started/install/cosmos-web.html)
+
