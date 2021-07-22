@@ -135,12 +135,9 @@ cd ~/cosmos/source/core/build
 mkdir linux
 ./do_cmake linux
 cd linux
-make -j
-make -j install
+make -j8
+make -j8 install
 ```
-
-
-
 
 
 ## Add COSMOS to PATH
