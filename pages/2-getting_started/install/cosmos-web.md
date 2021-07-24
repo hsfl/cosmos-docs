@@ -44,7 +44,7 @@ npm install -g npm
 ### MongoDB Dependencies
 - Ubuntu 18.04
 - Install [MongoDB Server](https://docs.mongodb.com/manual/administration/install-community/) on a native Ubuntu computer distribution
-- If you're using Ubuntu on WSL [MongoDB Server](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database)
+- If you're using Ubuntu on WSL install using these instructions [MongoDB Server](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database)
 
 MongoDB is A non-relational database. COSMOS Web uses ...
 
