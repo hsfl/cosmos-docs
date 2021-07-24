@@ -104,6 +104,9 @@ $ npm start
 ```
 In a web browser, connect to http://localhost:5000 to access it.
 
+![cosmos web](https://user-images.githubusercontent.com/1541868/126856185-2030eaf6-5114-4ce9-9a4e-6b4372226de3.PNG)
+
+
 ### Running COSMOS Web API
 Navigate to the root directory of COSMOS WebApi, then open a terminal and run:
 ```bash
