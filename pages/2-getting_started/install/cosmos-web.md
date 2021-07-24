@@ -64,7 +64,7 @@ $ cp .env.example .env
 Set up environment variables by editing the .env file. These are settings for your local copy of COSMOS Web based on your set up. The pre-set values are defaults and can be changed. Don't forget to change the USER.
 
 ```bash
-API_IP=localhost # IP of agent_mongo
+API_IP=localhost # IP of cosmos web instance 
 WEBSOCKET_PORT=8081 # IP of websocket port on agent_mongo
 REST_PORT=8082 # IP of REST port on agent_mongo
 COSMOS_BIN=/home/<USER>/cosmos/bin # Location of your COSMOS bin folder
@@ -87,7 +87,7 @@ DB_URI=mongodb://localhost:27017
 WEBSOCKET_PORT=8081
 API_PORT=8082
 COSMOS_DIR=/home/<USER>/cosmos/
-HOST_NODE= cubesat1 # node name  
+HOST_NODE=cubesat1 # node name  
 ```
 
 ## Running
@@ -102,7 +102,7 @@ Navigate to the root directory of COSMOS Web. Then, to start an instance of COSM
 $ cd ~/cosmos/source/tools/cosmos-web
 $ npm start
 ```
-In a web browser, connect to http://0.0.0.0:5000 to access it.
+In a web browser, connect to http://localhost:5000 to access it.
 
 ### Running COSMOS Web API
 Navigate to the root directory of COSMOS WebApi, then open a terminal and run:
@@ -112,5 +112,5 @@ $ npm run dev
 ```
 
 ### Confirm COSMOS Web and API connection
-In a satellite or ground station page (e.g. http://0.0.0.0:5000/realm/cubesat1), in the top toolbar, it should say “Connected”.
+In a satellite or ground station page (e.g. http://localuser:5000/realm/cubesat1), in the top toolbar, it should say “Connected”.
 Now you are done and ready to use COSMOS Web!
