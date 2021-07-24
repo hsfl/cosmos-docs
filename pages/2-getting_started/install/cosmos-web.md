@@ -35,73 +35,20 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
   - Install Node.js v7.5.3 (as of April 4/29/2021)
   - To install [node.js on WLS](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)
 
+To update npm
+
+```bash
+sudo npm install -g npm
+```
+
 ### Agent MongoDB Dependencies
 
 - Ubuntu 18.04
 - [MongoDB Server](https://docs.mongodb.com/manual/administration/install-community/)
   - A non-relational database.
 
-### Install OpenSSL & Boost WebSocket Library Packages
 
-These packages allow us to use WebSockets for Agent Mongo.
-
-```bash
-$ sudo apt-get update
-$ sudo apt-get install build-essential wget libz-dev gcc-7 g++-7 cmake git openssl libssl-dev libsasl2-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev -y
-```
-
-### Install MongoDB C Driver
-The MongoDB C Driver allows us to interface with a MongoDB server in C.
-Run the following commands in a terminal:
-
-```bash
-$ wget
-https://github.com/mongodb/mongo-c-driver/releases/download/1.17.0/mongo-c-driver-1.17.0.tar.gz
-$ tar xzf mongo-c-driver-1.17.0.tar.gz
-$ cd mongo-c-driver-1.17.0
-$ mkdir cmake-build
-$ cd cmake-build
-
-$ cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF ..
-$ make -j4
-$ sudo make install
-```
-
-### Install MongoDB C++ Driver
-
-The MongoDB C++ Driver allows us to interface with a MongoDB server in C++.
-Run the following commands in a terminal:
-
-```bash
-$ git clone https://github.com/mongodb/mongo-cxx-driver.git --branch releases/stable --depth 1
-$ cd mongo-cxx-driver/build
-
-$ cmake -DCMAKE_BUILD_TYPE=Release -DBSONCXX_POLY_USE_BOOST=1 -DCMAKE_INSTALL_PREFIX=/usr/local ..
-$ make -j4
-$ sudo make install
-```
-
-### Check that you have GCC/G++ 7.4+ installed
-
-```bash
-$ gcc --version
-$ g++ --version
-```
-
-### Change compiler to GCC/G++ 7.4+ if it is not your default compiler
-
-If, by default, you do not have GCC/G++ 7.4+, you must retrieve the compiler and change it to your default. Otherwise, you can skip this step.
-
-```bash
-$ sudo apt-get install -y software-properties-common
-$ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-$ sudo apt update
-$ sudo apt install g++-7 -y
-$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 --slave /usr/bin/g++ g++ /usr/bin/g++-7
-$ sudo update-alternatives --config gcc
-```
-
-## Installing COSMOS Web & Agent Mongo
+## Installing COSMOS Web
 
 ### COSMOS Web Installation
 
@@ -120,29 +67,32 @@ Set up environment variables by editing the .env file. These are settings for yo
 API_IP=localhost # IP of agent_mongo
 WEBSOCKET_PORT=8081 # IP of websocket port on agent_mongo
 REST_PORT=8082 # IP of REST port on agent_mongo
-CESIUM_ION_TOKEN= # Token for the globe simulation (optional). Get a token here -> https://cesium.com/ion/signup?gs=true
-COSMOS_BIN=~/cosmos/bin # Location of your COSMOS bin folder
+COSMOS_BIN=/home/<USER>/cosmos/bin # Location of your COSMOS bin folder
 MONGODB_COLLECTION=dump # The collection you are storing COSMOS data in
 ```
 
-###  Agent MongoDB Installation
-
-Clone the COSMOS Web git repository to retrieve the source code and set it up.
-
+### COSMOS Web API Installation
+Clone the COSMOS Web API repository and set it up.
 ```bash
-$ git clone https://github.com/spjy/cosmos-mongodb.git ~/cosmos/source/tools/cosmos-mongodb
-$ cd ~/cosmos/source/tools/cosmos-mongodb
+$ git clone https://github.com/hsfl/cosmos-webapi.git ~/cosmos/source/tools/cosmos-webapi
+$ cd ~/cosmos/source/tools/cosmos-webapi
 
-$ mkdir build
-$ cd build
+$ npm install 
+$ cp .env.defaults .env
+```
 
-$ cmake ../source
-$ make
+Set up environment variables by editing the .env file.
+```bash
+DB_URI=mongodb://localhost:27017
+WEBSOCKET_PORT=8081
+API_PORT=8082
+COSMOS_DIR=/home/username/cosmos/
+HOST_NODE= # node name of agent file 
 ```
 
 ## Running
 
-We are now ready to run COSMOS Web and Agent MongoDB!
+We are now ready to run COSMOS Web and COSMOS Web API!
 
 ### Running COSMOS Web
 
@@ -152,32 +102,15 @@ Navigate to the root directory of COSMOS Web. Then, to start an instance of COSM
 $ cd ~/cosmos/source/tools/cosmos-web
 $ npm start
 ```
-
 In a web browser, connect to http://0.0.0.0:5000 to access it.
 
+### Running COSMOS Web API
+Navigate to the root directory of COSMOS WebApi, then open a terminal and run:
+```bash
+$ cd ~/cosmos/source/tools/cosmos-webapi
+$ npm run dev
+```
 
-### Running Agent MongoDB
-
-Navigate to the output folder of Agent Mongo, then run the agent_mongo executable. Be sure to set the appropriate command line arguments if the defaults deviate from your environment.
-
-$ cd ~/cosmos/tools
-$ ./agent_mongo
-
-### Agent Mongo Command Line Arguments
-
-| Argument               | Default Value                         | Description                                               |
-|------------------------|---------------------------------------|-----------------------------------------------------------|
-| --include              |                                       | Nodes to listen to on the COSMOS network                  |
-| --exclude              |                                       | Nodes to not listen to on the COSMOS network              |
-| --whitelist_file_path |                                       | JSON file that contains nodes to include/exclude          |
-| --database             | db                                    | Name of database to use in MongoDB                        |
-| --file_walk_path       | get_cosmosnodes(true) (Core function) | Path to the COSMOS nodes folder                           |
-| --agent_path           | ~/cosmos/bin/agent                    | Location of the agent executable                          |
-| -- shell               | /bin/bash                             | Location of the shell you want to use to execute commands |
-| --mongo_server         | mongodb://localhost:27017/            | MongoDB server IP                                         |
-
-### Confirm COSMOS Web and Agent MongoDB connection
-
-In a satellite or ground station page (e.g. http://0.0.0.0:5000/satellite/neutron1), in the top toolbar, it should say “Connected”.
-
-Now you are done and ready to use and configure COSMOS Web!
+### Confirm COSMOS Web and API connection
+In a satellite or ground station page (e.g. http://0.0.0.0:5000/realm/cubesat1), in the top toolbar, it should say “Connected”.
+Now you are done and ready to use COSMOS Web!
