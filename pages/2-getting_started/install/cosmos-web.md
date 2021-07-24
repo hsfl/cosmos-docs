@@ -118,6 +118,20 @@ $ npm run dev
 In a satellite or ground station page (e.g. http://localuser:5000/realm/cubesat1), in the top toolbar, it should say “Connected”.
 Now you are done and ready to use COSMOS Web!
 
+### Display Data on COSMOS Web
+
+Run Agent CPU on cubesat1 node
+```
+agent_cpu cubesat1
+```
+
+Navigate to the COSMOS Web page -> Realm -> CubeSat1. You should see the agent list populated with Agent CPU.
+
+Run a simple orbital propagator to display the orbit
+```
+propagator_simple
+```
+
 ## Docker Development Image (Optional)
 
 Docker is a quick way to get started with running applications with ease.
