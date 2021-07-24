@@ -117,3 +117,18 @@ $ npm run dev
 ### Confirm COSMOS Web and API connection
 In a satellite or ground station page (e.g. http://localuser:5000/realm/cubesat1), in the top toolbar, it should say “Connected”.
 Now you are done and ready to use COSMOS Web!
+
+
+## Docker Development Image
+
+Docker is a quick way to get started with running applications with ease.
+
+### Self Build
+
+If you want to run the COSMOS Web development image through Docker:
+
+```
+cd /path/to/cosmos-web
+docker build . -t cosmos_web
+docker run 3000:3000 cosmos_web
+```
