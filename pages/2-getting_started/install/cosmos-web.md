@@ -38,15 +38,15 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
 To update npm
 
 ```bash
-sudo npm install -g npm
+npm install -g npm
 ```
 
-### Agent MongoDB Dependencies
-
+### MongoDB Dependencies
 - Ubuntu 18.04
-- [MongoDB Server](https://docs.mongodb.com/manual/administration/install-community/)
-  - A non-relational database.
+- Install [MongoDB Server](https://docs.mongodb.com/manual/administration/install-community/) on a native Ubuntu computer distribution
+- If you're using Ubuntu on WSL [MongoDB Server](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database)
 
+MongoDB is A non-relational database. COSMOS Web uses ...
 
 ## Installing COSMOS Web
 
@@ -58,17 +58,17 @@ Clone the COSMOS Web git repository to retrieve the source code and set it up.
 $ git clone https://github.com/hsfl/cosmos-web.git ~/cosmos/source/tools/cosmos-web
 $ cd ~/cosmos/source/tools/cosmos-web
 $ npm install
-$ cp .env.defaults .env
+$ cp .env.example .env
 ```
 
-Set up environment variables by editing the .env file. These are settings for your local copy of COSMOS Web based on your set up. The pre-set values are defaults and can be changed.
+Set up environment variables by editing the .env file. These are settings for your local copy of COSMOS Web based on your set up. The pre-set values are defaults and can be changed. Don't forget to change the USER.
 
 ```bash
 API_IP=localhost # IP of agent_mongo
 WEBSOCKET_PORT=8081 # IP of websocket port on agent_mongo
 REST_PORT=8082 # IP of REST port on agent_mongo
 COSMOS_BIN=/home/<USER>/cosmos/bin # Location of your COSMOS bin folder
-MONGODB_COLLECTION=dump # The collection you are storing COSMOS data in
+FLIGHT_MODE=false
 ```
 
 ### COSMOS Web API Installation
@@ -78,16 +78,16 @@ $ git clone https://github.com/hsfl/cosmos-webapi.git ~/cosmos/source/tools/cosm
 $ cd ~/cosmos/source/tools/cosmos-webapi
 
 $ npm install 
-$ cp .env.defaults .env
+$ cp .env.example .env
 ```
 
-Set up environment variables by editing the .env file.
+Set up environment variables by editing the .env file. Don't forget to change the USER.
 ```bash
 DB_URI=mongodb://localhost:27017
 WEBSOCKET_PORT=8081
 API_PORT=8082
-COSMOS_DIR=/home/username/cosmos/
-HOST_NODE= # node name of agent file 
+COSMOS_DIR=/home/<USER>/cosmos/
+HOST_NODE= cubesat1 # node name  
 ```
 
 ## Running
