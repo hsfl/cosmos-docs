@@ -12,6 +12,8 @@ toc: false
 
 Here you'll find documentation and tutorials for the COSMOS Project, a system that is designed to primarily support the development and operations of one or more small spacecraft. For more information on the project itself explore the sections of this manual and visit the <a href="{{ site.project_website }}" target="_blank" rel="noopener">project website</a>
 
+Hi!
+
 
 ## What Now?
 
