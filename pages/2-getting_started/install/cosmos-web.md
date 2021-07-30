@@ -55,19 +55,19 @@ MongoDB is A non-relational database. COSMOS Web uses ...
 Clone the COSMOS Web git repository to retrieve the source code and set it up.
 
 ```bash
-$ git clone https://github.com/hsfl/cosmos-web.git ~/cosmos/source/tools/cosmos-web
+git clone https://github.com/hsfl/cosmos-web.git ~/cosmos/source/tools/cosmos-web
 ```
 Change directory to the new cosmos-web folder:
 ```bash
-$ cd ~/cosmos/source/tools/cosmos-web
+cd ~/cosmos/source/tools/cosmos-web
 ```
 Install the node.js dependencies
 ```bash
-$ npm install
+npm install
 ```
 Copy the .env.example file to .env to set your own configuration
 ```bash
-$ cp .env.example .env
+cp .env.example .env
 ```
 
 
@@ -84,11 +84,19 @@ FLIGHT_MODE=false
 ### COSMOS Web API Installation
 Clone the COSMOS Web API repository and set it up.
 ```bash
-$ git clone https://github.com/hsfl/cosmos-webapi.git ~/cosmos/source/tools/cosmos-webapi
-$ cd ~/cosmos/source/tools/cosmos-webapi
-
-$ npm install 
-$ cp .env.example .env
+git clone https://github.com/hsfl/cosmos-webapi.git ~/cosmos/source/tools/cosmos-webapi
+```
+Change directory to the new cosmos-webapi folder:
+```bash
+cd ~/cosmos/source/tools/cosmos-webapi
+```
+Install the node.js dependencies
+```bash
+npm install 
+```
+Copy the .env.example file to .env to set your own configuration
+```bash
+cp .env.example .env
 ```
 
 Set up environment variables by editing the .env file. Don't forget to change the USER.
@@ -109,8 +117,8 @@ We are now ready to run COSMOS Web and COSMOS Web API!
 Navigate to the root directory of COSMOS Web. Then, to start an instance of COSMOS Web, open a terminal and run:
 
 ```
-$ cd ~/cosmos/source/tools/cosmos-web
-$ npm start
+cd ~/cosmos/source/tools/cosmos-web
+npm start
 ```
 In a web browser, connect to http://localhost:5000 to access it.
 
@@ -120,8 +128,8 @@ In a web browser, connect to http://localhost:5000 to access it.
 ### Running COSMOS Web API
 Navigate to the root directory of COSMOS WebApi, then open a terminal and run:
 ```bash
-$ cd ~/cosmos/source/tools/cosmos-webapi
-$ npm run dev
+cd ~/cosmos/source/tools/cosmos-webapi
+npm run dev
 ```
 
 ### Confirm COSMOS Web and API connection
