@@ -35,7 +35,7 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
   - Install Node.js v7.5.3 (as of April 4/29/2021)
   - To install [node.js on WLS](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)
 
-To update npm
+To update npm run this command on the command terminal:
 
 ```bash
 npm install -g npm
@@ -56,10 +56,20 @@ Clone the COSMOS Web git repository to retrieve the source code and set it up.
 
 ```bash
 $ git clone https://github.com/hsfl/cosmos-web.git ~/cosmos/source/tools/cosmos-web
+```
+Change directory to the new cosmos-web folder:
+```bash
 $ cd ~/cosmos/source/tools/cosmos-web
+```
+Install the node.js dependencies
+```bash
 $ npm install
+```
+Copy the .env.example file to .env to set your own configuration
+```bash
 $ cp .env.example .env
 ```
+
 
 Set up environment variables by editing the .env file. These are settings for your local copy of COSMOS Web based on your set up. The pre-set values are defaults and can be changed. Don't forget to change the USER.
 
