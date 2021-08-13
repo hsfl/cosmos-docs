@@ -1,6 +1,6 @@
 ---
 title: Setup COSMOS with Beagle Bone
-permalink: /pages/4-tutorials/hardware/bleaglebone.html
+permalink: /pages/4-tutorials/hardware/beaglebone.html
 layout: page
 
 tags: [beagle bone]
