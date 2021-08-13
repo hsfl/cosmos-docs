@@ -13,10 +13,6 @@ This tutorial assumes you have two Raspberry Pi's (RPI-1, RPI-2).
 The csmos_slip library lets you use SLIP protocol with IP packets. 
 It is used be Cosmos_Serial library to support SLIP protocol over serial. 
 
-Setting up a SLIP connection over Linux (though they do use the exact same protocol)
-Just saying this because somewhere I was tasked with writing up a SLIP tutorial, and sliplib was mentioned, 
-but now I think it was really SLIP over Linux. 🤯
-
 Setting up slip on RPI-1
 ```
 # enter this on /etc/network/interfaces
