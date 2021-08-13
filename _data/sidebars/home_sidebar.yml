@@ -154,7 +154,7 @@ entries:
         - title: "BeagleBone"
           url: /pages/4-tutorials/hardware/beaglebone.html
           output: web
-         - title: "Setup SLIP"
+        - title: "Setup SLIP"
           url: /pages/4-tutorials/hardware/setup-slip.html
           output: web
           
