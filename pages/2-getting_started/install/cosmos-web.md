@@ -38,7 +38,7 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
 To update npm run this command on the command terminal:
 
 ```bash
-npm install -g npm
+sudo apt install npm
 ```
 
 ### MongoDB Dependencies
