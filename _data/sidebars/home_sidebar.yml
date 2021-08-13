@@ -151,7 +151,10 @@ entries:
         - title: "PyCubed"
           url: /pages/4-tutorials/hardware/pycubed.html
           output: web
-
+        - title: "BeagleBone"
+          url: /pages/4-tutorials/hardware/beaglebone.html
+          output: web
+          
 # =================================================================================
   - title: Projects
     output: web
