@@ -56,7 +56,7 @@ Install it by opening up a command prompt (Windows) or a terminal (Linux/Mac) an
 $ vagrant plugin install vagrant-vbguest
 ```
 
-{% include image.html file="/resources/4-tutorials/setup/part2/cmd.png" width="100%" %}
+{% include image.html file="/resources/tutorials/setup/part2/cmd.png" width="100%" %}
 
 {% include important.html content="Do not copy the `$` character or the following space when entering commands.
 This notation is used to indicate the input to a terminal." %}
@@ -76,7 +76,7 @@ Download the COSMOS box from
 
 
 
-{% include important.html content="You must be in the correct folder for the commands to work. The file may be in your Downloads folder if the download does not prompt a window for a save location. Below is an example Command window in the correct folder after the file has been moved to another location." %} {% include image.html file="/resources/4-tutorials/setup/part2/command_line2.png" width="100%" %}
+{% include important.html content="You must be in the correct folder for the commands to work. The file may be in your Downloads folder if the download does not prompt a window for a save location. Below is an example Command window in the correct folder after the file has been moved to another location." %} {% include image.html file="/resources/tutorials/setup/part2/command_line2.png" width="100%" %}
 
 
 
@@ -93,7 +93,7 @@ You can now delete the `artemis.box` file you downloaded if you wish.
 
 
 
-{% include note.html content="The previous command will create a new disk image, located in a different folder. Use the filepath and the contents in the folder below as a guide (your files may be in a folder called `.vagrant.d`). For the next command to work, you must be in the correct folder in your Command window. " %} {% include image.html file="/resources/4-tutorials/setup/part2/folder_location.png" width="100%" %}
+{% include note.html content="The previous command will create a new disk image, located in a different folder. Use the filepath and the contents in the folder below as a guide (your files may be in a folder called `.vagrant.d`). For the next command to work, you must be in the correct folder in your Command window. " %} {% include image.html file="/resources/tutorials/setup/part2/folder_location.png" width="100%" %}
 
 
 
@@ -125,7 +125,7 @@ After a minute or so should see the virtual machine boot. Login with the passwor
 
 
 
-{% include image.html file="/resources/4-tutorials/setup/part2/vagrant_login.png" width="100%" %}
+{% include image.html file="/resources/tutorials/setup/part2/vagrant_login.png" width="100%" %}
 
 
 
@@ -152,7 +152,7 @@ In the future you should be able to start the virtual machine directly from the 
 running `vagrant up` in the virtual machine folder.
 
 
-{% include image.html file="/resources/4-tutorials/setup/part2/virtual_box.png" width="100%" %}
+{% include image.html file="/resources/tutorials/setup/part2/virtual_box.png" width="100%" %}
 
 
 ### 2.5 Enable Useful Features
