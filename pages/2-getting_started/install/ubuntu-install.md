@@ -40,17 +40,26 @@ sudo apt-get install git cmake build-essential -y
   ```
 ## Build COSMOS Core
 
+### Add your ssh key to github.com
+
+```bash
+ssh-keygen (Accept all questions with return. Only perform this step if you have not already created a key)
+cat ~/.ssh/id_rsa.pub
+```
+
+Copy this text and add it as a ssh key in your github account settings.
+
 ### Clone the COSMOS installer script:
 
 ```bash
-git clone https://github.com/hsfl/cosmos-installer.git ~/cosmos
+git clone git@github.com:hsfl/cosmos-installer.git ~/cosmos
 ```
 
 ### Run the installer script:
 
 ```bash
 cd ~/cosmos
-./cosmos-install.sh
+./cosmos-install.sh developer
 ```
 
 ### Testing COSMOS Core
