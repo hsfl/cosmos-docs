@@ -24,5 +24,6 @@ Installing COSMOS core is easy it can be done from the sources repository. Follo
 4. [Installing COSMOS Core on macOS](https://docs.google.com/document/d/146mBWBmxkAu0qBdSlCSer1nqVvOLBn_B-VzkcwpjhEU)
 5. [Installing COSMOS Core on Raspberry Pi]({{site.baseurl}}/pages/4-tutorials/build/cross-compile.html)
 
+
 After your are done installing COSMOS core you can [check your installation](https://hsfl.github.io/cosmos-docs/pages/2-getting_started/install/ubuntu-install.html#testing-cosmos-core).
 
