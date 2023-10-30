@@ -43,10 +43,10 @@ sudo apt-get install git cmake build-essential -y
 ### Add your ssh key to github.com
 
 ```bash
-ssh-keygen (Accept all questions with return. Only perform this step if you have not already created a key)
+ssh-keygen 
 cat ~/.ssh/id_rsa.pub
 ```
-
+Accept all questions with return. Only perform this step if you have not already created a key.
 Copy this text and add it as a ssh key in your github account settings.
 
 ### Clone the COSMOS installer script:
@@ -168,8 +168,10 @@ Now, add the following line to the bottom of the file:
 export PATH="$HOME/cosmos/bin:$PATH"
 ```
 
-{% include tip.html content="Does the file look weird when scrolling? You can press <kbd>CTRL</kbd> + <kbd>L</kbd>
-to manually refresh the view." %}
+{% include tip.html content="You need to edit the file without getting into nano-specific <kbd>CTRL</kbd> + <kbd>L</kbd> commands." %}
+
+<!--{% include tip.html content="Does the file look weird when scrolling? You can press <kbd>CTRL</kbd> + <kbd>L</kbd>
+to manually refresh the view." %}-->
 
 After you've added that line, press <kbd>CTRL</kbd> + <kbd>S</kbd> to save the file, and then
 <kbd>CTRL</kbd> + <kbd>X</kbd> to exit.

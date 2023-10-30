@@ -25,7 +25,7 @@ Agent MongoDB is the server component of COSMOS Web and bridges the gap between 
 
 ## Dependencies
 
-{% include warning.html content="It is still _highly_ recommended that you install COSMOS Web on Ubuntu 18.04 for compatibility." %}
+<!--{% include warning.html content="It is still _highly_ recommended that you install COSMOS Web on Ubuntu 18.04 for compatibility." %}-->
 
 ### COSMOS Web Dependencies
 
@@ -51,6 +51,16 @@ MongoDB is A non-relational database. COSMOS Web uses ...
 ## Installing COSMOS Web
 
 ### COSMOS Web Installation
+Login to github.
+
+```bash
+https://github.com/login
+```
+
+<!--Go to User Icons > Settings > SSH and GPG Keys
+
+New SSH Key Add Title and Paste Key.
+-->
 
 Clone the COSMOS Web git repository to retrieve the source code and set it up.
 

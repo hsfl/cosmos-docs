@@ -12,7 +12,7 @@ keywords: software
 
 You can install COSMOS from scratch using the following instructions. Alternatively you can get COSMOS via the [development environment](https://hsfl.github.io/cosmos-docs/pages/2-getting_started/development-environment.html). 
 
-{% include warning.html content="It is still _highly_ recommended that you install COSMOS on Ubuntu 18.04.3 for compatibility." %}
+<!--{% include warning.html content="It is still _highly_ recommended that you install COSMOS on Ubuntu 18.04.3 for compatibility." %}-->
 
 
 <!--## Installation
