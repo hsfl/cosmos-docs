@@ -150,24 +150,22 @@ sudo apt upgrade       # Installs some updates; does not remove packages
 
 {% capture update-time %}
 If you get the error `Release file ... is not valid yet (invalid for another ...). Updates for this repository will not be applied.` 
-when updating `apt`, this is because your Linux installation's date and time is not accurate. 
-
-Run the following command to show the time on your system:
-
-```date```
-
+when updating `apt`, this is because your Linux installation's date and time is 
+not accurate. 
+<br/><br/>
+Run the `date` command to show the time on your system.<br/>
 If the timezone is incorrect, you can list possible timezones using
-
+<br/>
 ```timedatectl list-timezones```
-
+<br/>
 And you can change the timezone using
-
+<br/>
 ```sudo timedatectl set-timezone <new_timezone>```
-
+<br/>
 To directly update the time on your system, run
-
+<br/>
 ```sudo date -s "YYYY-MM-DD HH:MM:SS"```
-
+<br/>
 You can verify the date is properly set by then running `date` again. If it is 
 correct, you can try updating your `apt` packages again.
 {% endcapture %}
@@ -177,12 +175,9 @@ correct, you can try updating your `apt` packages again.
 
 ```
 sudo apt-get install build-essential cmake          # Installs compilation tools
-git clone https://github.com/hsfl/cosmos/ ~/cosmos  # Clones the COSMOS
-                                                    # installation tools
-cd ~/cosmos/install_scripts                         # Go to installation
-                                                    # directory
-chmod +x *                                          # Makes installation scripts
-                                                    # executable
+git clone https://github.com/hsfl/cosmos/ ~/cosmos  # Clones the COSMOS installation tools
+cd ~/cosmos/install_scripts                         # Go to installation directory
+chmod +x *                                          # Makes installation scripts executable
 ./cosmos-install                                    # Starts COSMOS installation
 ```
 
