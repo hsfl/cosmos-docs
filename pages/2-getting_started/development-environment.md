@@ -102,15 +102,23 @@ running the command
 docker ps
 ```
 
-{% include note.html content="If you get the error `Got permission denied while trying to connect to the Docker daemon...`, this is because your user has not been added to the `docker` group. Run the following command to add the current user to the `docker` group:
+{% capture docker-permission %}
+If you get the error `Got permission denied while trying to connect to the Docker daemon...`, this is because your user has not been added to the `docker` group. Run the following command to add the current user to the `docker` group:
+<br/><br/>
 ```
 sudo usermod -aG docker $USER
 ```
+<br/><br/>
 Close and reopen the terminal window to continue. You can confirm that your user is within the `docker` group by running the command
+<br/><br/>
 ```
 groups
 ```
-" %}
+<br/><br/>
+{% endcapture %}
+
+
+{% include note.html content=docker-permission %}
 
 ### Step 3: Connect to the container
 With the container running, you can connect to it using VSCode. This step assumes that you have the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed.
@@ -153,19 +161,19 @@ If you get the error `Release file ... is not valid yet (invalid for another ...
 when updating `apt`, this is because your Linux installation's date and time is 
 not accurate. 
 <br/><br/>
-Run the `date` command to show the time on your system.<br/>
-If the timezone is incorrect, you can list possible timezones using
-<br/>
+Run the `date` command to show the time on your system. If the timezone is 
+incorrect, you can list possible timezones using
+<br/><br/>
 ```timedatectl list-timezones```
-<br/>
+<br/><br/>
 And you can change the timezone using
-<br/>
+<br/><br/>
 ```sudo timedatectl set-timezone <new_timezone>```
-<br/>
+<br/><br/>
 To directly update the time on your system, run
-<br/>
+<br/><br/>
 ```sudo date -s "YYYY-MM-DD HH:MM:SS"```
-<br/>
+<br/><br/>
 You can verify the date is properly set by then running `date` again. If it is 
 correct, you can try updating your `apt` packages again.
 {% endcapture %}
