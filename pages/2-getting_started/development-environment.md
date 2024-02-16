@@ -164,11 +164,7 @@ To directly update the time on your system, run
 ```
 sudo date -s "YYYY-MM-DD HH:MM:SS" 
 ```
-You can verify the date is properly set by then running 
-```
-date
-```
-If it is correct, you can try again.
+You can verify the date is properly set by then running `date` again. If it is correct, you can try updating your `apt` packages again.
 " %}
 
 ```
