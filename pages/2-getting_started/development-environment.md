@@ -104,17 +104,13 @@ docker ps
 
 {% capture docker-permission %}
 If you get the error `Got permission denied while trying to connect to the Docker daemon...`, this is because your user has not been added to the `docker` group. Run the following command to add the current user to the `docker` group:
-<br/><br/>
 ```
 sudo usermod -aG docker $USER
 ```
-<br/><br/>
 Close and reopen the terminal window to continue. You can confirm that your user is within the `docker` group by running the command
-<br/><br/>
 ```
 groups
 ```
-<br/><br/>
 {% endcapture %}
 
 
@@ -163,17 +159,17 @@ not accurate.
 <br/><br/>
 Run the `date` command to show the time on your system. If the timezone is 
 incorrect, you can list possible timezones using
-<br/><br/>
-```timedatectl list-timezones```
-<br/><br/>
+```
+timedatectl list-timezones
+```
 And you can change the timezone using
-<br/><br/>
-```sudo timedatectl set-timezone <new_timezone>```
-<br/><br/>
+```
+sudo timedatectl set-timezone <new_timezone>
+```
 To directly update the time on your system, run
-<br/><br/>
-```sudo date -s "YYYY-MM-DD HH:MM:SS"```
-<br/><br/>
+```
+sudo date -s "YYYY-MM-DD HH:MM:SS"
+```
 You can verify the date is properly set by then running `date` again. If it is 
 correct, you can try updating your `apt` packages again.
 {% endcapture %}
