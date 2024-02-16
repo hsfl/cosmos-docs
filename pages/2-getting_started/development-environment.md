@@ -53,8 +53,10 @@ Use this terminal window in order to run commands in the rest of this guide.
 
 #### For all Operating Systems
 Install [Docker Desktop](https://www.docker.com/get-started/). This program is a
-graphical method to manage and run Docker containers. Note that you do *not* 
-need a Docker account to use Docker Desktop.
+graphical method to manage and run Docker containers. 
+
+{% include note.html content="A Docker account is *not* needed to use Docker 
+Desktop." %}
 
 Install [Visual Studio Code (VSCode)](https://code.visualstudio.com/). This is 
 the preferred IDE for COSMOS development. This IDE can be extended by various 
@@ -94,11 +96,11 @@ At this point, the container, containing the COSMOS installation, is running.
 
 {% include image.html file="/resources/tutorials/setup/part2/docker-install.png" width="100%" %}
 
-You can verify that the container is running by running the command
+You can verify that the container is running by opening Docker Desktop, or 
+running the command
 ```
 docker ps
 ```
-Alternatively, you can open Docker Desktop and see the running container.
 
 {% include note.html content="If you get the error `Got permission denied while trying to connect to the Docker daemon...`, this is because your user has not been added to the `docker` group. Run the following command to add the current user to the `docker` group:
 ```
