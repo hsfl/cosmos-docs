@@ -128,3 +128,79 @@ When VSCode finishes connecting to the container, press the "Open Folder" button
 {% include image.html file="/resources/tutorials/setup/part2/select-directory.png" width="100%" %}
 
 You will now be within the `~/cosmos/` directory.
+
+## Manual Installation
+It is also possible to manually install and work with COSMOS on your computer.
+
+### Step 1: Install Prerequisites
+#### For Windows Users
+Install the Windows Subsystem for Linux using [the same instructions as in the Docker section]({{site.baseurl}}/pages/2-getting_started/development-environment.html#for-windows-users).
+
+#### For all Operating Systems
+Install Visual Studio Code using [the same instructions as in the Docker section]({{site.baseurl}}/pages/2-getting_started/development-environment.html#for-all-operating-systems). 
+
+The Dev Containers extension is not necessary if you are not using Docker containers. However, the [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension is required if you are using Windows.
+
+### Step 2: Install COSMOS
+Next, open a terminal, and enter the following commands:
+```
+sudo apt update        # Fetches the list of available updates
+sudo apt upgrade       # Installs some updates; does not remove packages
+```
+
+{% include note.html content="If you get the error `Release file ... is not valid yet (invalid for another ...). Updates for this repository will not be applied.` when updating `apt`, this is because your Linux installation's date and time is not accurate. Run the following command to show the time on your system:
+```
+date
+```
+If the timezone is incorrect, you can list possible timezones using 
+```
+timedatectl list-timezones
+```
+And you can change the timezone using
+```
+sudo timedatectl set-timezone <new_timezone>
+```
+To directly update the time on your system, run
+```
+sudo date -s "YYYY-MM-DD HH:MM:SS" 
+```
+You can verify the date is properly set by then running 
+```
+date
+```
+If it is correct, you can try again.
+" %}
+
+```
+sudo apt-get install build-essential cmake          # Installs compilation tools
+git clone https://github.com/hsfl/cosmos/ ~/cosmos  # Clones the COSMOS
+                                                    # installation tools
+cd ~/cosmos/install_scripts                         # Go to installation
+                                                    # directory
+chmod +x *                                          # Makes installation scripts
+                                                    # executable
+./cosmos-install                                    # Starts COSMOS installation
+```
+
+After COSMOS completes installation, ensure you have the most recent version of 
+COSMOS submodules.
+
+```
+cd ~/cosmos
+git submodule update --init --recursive   # Initialize the COSMOS submodules
+got submodule update --remote --merge     # Ensure the submodules are up-to-date
+```
+
+### Step 3: Open the COSMOS directory
+With COSMOS set up, you can connect to it using VSCode.
+#### For Windows Users
+This step assumes that you have the [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension installed.
+
+Press the "Attach" button (the green button) at the bottom left of the VSCode window. A dropdown will appear at the top center of the window. Select "Connect to WSL".
+
+#### For all Operating Systems
+On the File tab on the left navigation menu, select the blue "Open Folder" button, or select File > Open Folder...
+
+Select the `cosmos` folder.
+
+You will now be within the `~/cosmos/` directory.
