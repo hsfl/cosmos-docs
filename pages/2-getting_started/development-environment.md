@@ -3,11 +3,11 @@ title: "Development Environment Setup Guide"
 layout: series
 index: 2.1
 permalink: /pages/2-getting_started/development-environment.html
+toc: false
 
 tags: [software]
 keywords: software
 sidebar: home_sidebar
-
 
 series:
   next: /pages/2-getting_started/install/ubuntu-install.html
