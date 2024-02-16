@@ -148,7 +148,7 @@ sudo apt update        # Fetches the list of available updates
 sudo apt upgrade       # Installs some updates; does not remove packages
 ```
 
-{% include note.html content="If you get the error `Release file ... is not valid yet (invalid for another ...). Updates for this repository will not be applied.` when updating `apt`, this is because your Linux installation's date and time is not accurate. Run the following command to show the time on your system:```date```If the timezone is incorrect, you can list possible timezones using```timedatectl list-timezones```And you can change the timezone using```sudo timedatectl set-timezone <new_timezone>```To directly update the time on your system, run```sudo date -s "YYYY-MM-DD HH:MM:SS"```You can verify the date is properly set by then running `date` again. If it is correct, you can try updating your `apt` packages again." %}
+{% include note.html content="If you get the error `Release file ... is not valid yet (invalid for another ...). Updates for this repository will not be applied.` when updating `apt`, this is because your Linux installation's date and time is not accurate. Run the following command to show the time on your system:```date```<br/><br/>If the timezone is incorrect, you can list possible timezones using```timedatectl list-timezones```<br/><br/>And you can change the timezone using```sudo timedatectl set-timezone <new_timezone>```<br/><br/>To directly update the time on your system, run```sudo date -s "YYYY-MM-DD HH:MM:SS"```<br/><br/>You can verify the date is properly set by then running `date` again. If it is correct, you can try updating your `apt` packages again." %}
 
 ```
 sudo apt-get install build-essential cmake          # Installs compilation tools
