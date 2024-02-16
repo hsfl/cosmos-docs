@@ -109,3 +109,20 @@ Close and reopen the terminal window to continue. You can confirm that your user
 groups
 ```
 " %}
+
+### Step 3: Connect to the container
+With the container running, you can connect to it using VSCode. This step assumes that you have the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension installed.
+
+Press the "Attach" button (the green button) at the bottom left of the VSCode window. A dropdown will appear at the top center of the window. Select "Attach to Running Container..."
+
+{% include image.html file="/resources/tutorials/setup/part2/attach-container.png" width="100%" %}
+
+Select the /cosmos_core container. If this container is not visible, ensure that the container is running using `docker ps` or Docker Desktop.
+
+{% include image.html file="/resources/tutorials/setup/part2/select-container.png" width="100%" %}
+
+When VSCode finishes connecting to the container, press the "Open Folder" button in the Files tab on the left navigation menu. It wil start in the `/root/` directory. Select the `cosmos` directory, then press OK.
+
+{% include image.html file="/resources/tutorials/setup/part2/select-directory.png" width="100%" %}
+
+You will now be within the `~/cosmos/` directory.
