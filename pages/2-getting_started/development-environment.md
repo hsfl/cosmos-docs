@@ -7,7 +7,6 @@ permalink: /pages/2-getting_started/development-environment.html
 tags: [software]
 keywords: software
 sidebar: home_sidebar
-toc: false
 
 
 series:
@@ -26,21 +25,29 @@ For Windows users, install [Windows Subsystem for Linux](https://learn.microsoft
 first:
 - Open the Start menu, type "PowerShell", then right-click PowerShell and 
 select "Run as administrator". 
+
 {% include image.html file="/resources/tutorials/setup/part2/powershell.png" width="100%" %}
+
 - Confirm the User Account Control prompt.
 - Type `wsl --install` into the window and press enter.
+
 {% include image.html file="/resources/tutorials/setup/part2/wsl-install.png" width="100%" %}
+
 - After the installation completes, restart your computer.
 - After restarting, type "wsl" in the Start menu. It should bring up a penguin
 icon. Run this command.
 - A window should open, finishing the WSL installation. You will be prompted to
 set a username and password for the Ubuntu installation. You can use any values 
 you wish. This tutorial will use the username `localuser`.
+
 {% include image.html file="/resources/tutorials/setup/part2/wsl-firstrun.png" width="100%" %}
+
 - Restart your computer.
 - After restarting, type "wsl" in the Start menu. It should bring up a penguin
 icon. Run this command.
+
 {% include image.html file="/resources/tutorials/setup/part2/wsl-run.png" width="100%" %}
+
 - You can now "pin" the WSL icon on your toolbar to bring up an Ubuntu terminal.
 Use this terminal window in order to run commands in the rest of this guide.
 
@@ -84,6 +91,7 @@ Now start the Docker container:
 docker compose up -d
 ```
 At this point, the container, containing the COSMOS installation, is running. 
+
 {% include image.html file="/resources/tutorials/setup/part2/docker-install.png" width="100%" %}
 
 You can verify that the container is running by running the command
