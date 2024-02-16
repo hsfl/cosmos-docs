@@ -201,6 +201,8 @@ This step assumes that you have the [WSL](https://marketplace.visualstudio.com/i
 
 Press the "Attach" button (the green button) at the bottom left of the VSCode window. A dropdown will appear at the top center of the window. Select "Connect to WSL".
 
+{% include image.html file="/resources/tutorials/setup/part2/attach-wsl.png" width="100%" %}
+
 #### For all Operating Systems
 On the File tab on the left navigation menu, select the blue "Open Folder" button, or select File > Open Folder...
 
