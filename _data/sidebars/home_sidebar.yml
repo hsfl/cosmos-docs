@@ -187,19 +187,3 @@ entries:
   - title: Resources
     output: web
     url: /pages/9-resources/index.html
-
-###########################
-
-related_resources_title: Other Resources
-
-related_resources_list:
-
-- title: Forums
-  hurl: https://yourcompany.com/forums
-
-- title: Other Documentation
-  hurl: https://yourcompany.com/docs/somedocs
-
-- title: Support Portal
-  hurl: https://developer.yourcompany.com
-
