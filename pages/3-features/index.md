@@ -2,7 +2,7 @@
 title: COSMOS Features
 permalink: /pages/3-features/index.html
 layout: page
-index: 3.1
+index: 3
 
 tags: [software]
 keywords: software
