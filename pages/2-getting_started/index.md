@@ -1,5 +1,5 @@
 ---
-title: "2 Getting Started"
+title: "Getting Started"
 permalink: /pages/2-getting_started/index.html
 layout: page
 index: 2

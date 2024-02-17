@@ -1,9 +1,10 @@
 ---
 title: "COSMOS Core Install"
 permalink: /pages/2-getting_started/install/index.html
-index: 2.2
 layout: page
-sidebar: home_sidebar
+index: 2.2
+
+#sidebar: home_sidebar
 tags: [software]
 keywords: software
 ---
