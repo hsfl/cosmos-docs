@@ -1,6 +1,6 @@
 ---
 title: "Development Environment Setup Guide"
-layout: series
+layout: page
 index: 2.1
 permalink: /pages/2-getting_started/development-environment.html
 toc: false
@@ -8,9 +8,6 @@ toc: false
 tags: [software]
 keywords: software
 sidebar: home_sidebar
-
-series:
-  next: /pages/2-getting_started/install/ubuntu-install.html
 ---
 This is a guide on how to set up your Development Environment (DE) to compile, 
 run, and debug COSMOS.
