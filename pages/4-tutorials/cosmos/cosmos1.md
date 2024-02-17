@@ -5,6 +5,7 @@ layout: series
 
 tags: [software]
 keywords: software
+sidebar: home_sidebar
 toc: false
 
 series:

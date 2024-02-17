@@ -164,19 +164,23 @@ entries:
         - title: "Setup SLIP"
           url: /pages/4-tutorials/hardware/setup-slip.html
           output: web
+      - title: COSMOS
         output: web
         subfolderitems:
-        - title: "Gumstix"
-          url: /pages/4-tutorials/hardware/gumstix.html
+        - title: "COSMOS Tutorial Part 1"
+          url: /pages/4-tutorials/cosmos/cosmos1.html
           output: web
-        - title: "PyCubed"
-          url: /pages/4-tutorials/hardware/pycubed.html
+        - title: "COSMOS Tutorial Part 2"
+          url: /pages/4-tutorials/cosmos/cosmos2.html
           output: web
-        - title: "BeagleBone"
-          url: /pages/4-tutorials/hardware/beaglebone.html
+        - title: "COSMOS Tutorial Part 3"
+          url: /pages/4-tutorials/cosmos/cosmos3.html
           output: web
-        - title: "Setup SLIP"
-          url: /pages/4-tutorials/hardware/setup-slip.html
+        - title: "COSMOS Tutorial Part 4"
+          url: /pages/4-tutorials/cosmos/cosmos4.html
+          output: web
+        - title: "COSMOS Tutorial Part 4"
+          url: /pages/4-tutorials/cosmos/cosmos5.html
           output: web
           
 # =================================================================================
