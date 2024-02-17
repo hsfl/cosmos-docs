@@ -20,7 +20,7 @@ The `Device` class is a base (i.e. parent or super) class of various types. The 
 {% include class_docs/members_table.html %}
 
 ## Supported Device Types
-Below are the supported device types. Note that in the last column of each table, the `XXX` indicates the COSMSOS device number.
+Below are the supported device types. Note that in the last column of each table, the `XXX` indicates the COSMOS device number.
 
 All of these devices below can accept custom properties, although these properties cannot be posted (i.e. viewed externally).
 

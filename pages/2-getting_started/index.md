@@ -18,7 +18,7 @@ If you are using a different OS (example: Linux CentOS) and find problems when c
 
 Next we provide a step by step guide to help you to get started with COSMOS (download, install, run). We recommend following these steps listed in order for a better experience.
 
-The most straightforward way to start with COSMOS is to install it under Linux Ubuntu 18.04. If you're on a Windows 10 computer we recommend using [Windows Susbsytem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and install the Ubuntu 18.04 app. Alternatively install [VirtualBox](https://www.virtualbox.org/) and then install [Ubuntu 18.04](https://www.ubuntu.com/download/desktop), but this approach requires a computer with enough resources (recommended RAM 16GB, Intel i7 or better).
+The most straightforward way to start with COSMOS is to install it under Linux Ubuntu 18.04. If you're on a Windows 10 computer we recommend using [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) and install the Ubuntu 18.04 app. Alternatively install [VirtualBox](https://www.virtualbox.org/) and then install [Ubuntu 18.04](https://www.ubuntu.com/download/desktop), but this approach requires a computer with enough resources (recommended RAM 16GB, Intel i7 or better).
 
 ### Get Started
 

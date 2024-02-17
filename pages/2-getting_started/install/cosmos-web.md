@@ -290,7 +290,7 @@ AsyncComponent is the component that brings together dashboard components. It al
 
 ### BaseComponent.jsx 
 
-BaseComponent is the component that contains common functionality and user interfaces across other components. For instance, it contains a header, configuration form modal, and content area for other componenents.
+BaseComponent is the component that contains common functionality and user interfaces across other components. For instance, it contains a header, configuration form modal, and content area for other components.
 
 ### ComponentSettings.jsx
 
@@ -343,7 +343,7 @@ The name of the layout for a certain route. Differentiate between other layout n
 - Unique key (i) - to avoid conflicts with other layouts,  use the format: dashboardName-key
 - Width (w)
 - Height (h)
-- Horiztonal position (w)
+- Horizontal position (w)
 - Vertical position (y)
 - Component name (component.name)
 - Component props (component.props)
@@ -393,4 +393,4 @@ Click *Save Layout* to save it.
 
 ### Switching Layouts
 
-On top of each Dashboard page, e.g. Sattelites or Ground Stations, a dropdown menu coupled with a button exist to allow for quickly switching between pre-defined layouts.
+On top of each Dashboard page, e.g. Satellites or Ground Stations, a dropdown menu coupled with a button exist to allow for quickly switching between pre-defined layouts.

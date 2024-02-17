@@ -24,7 +24,7 @@ This tutorial will help you install the COSMOS core programs and libraries on a 
 ## Dependencies
 COSMOS depends on Git, CMake 2.8.12+ and Build Essential to function.
 - Git
-  - A version control manager used for most moderm software development 
+  - A version control manager used for most modern software development 
   - To learn more about Git see the [HSFL guide on getting started with Git](https://docs.google.com/document/d/1wMfGmQrrwGb9nrq0Mgbzm1sq9-XTwk3qJ2S1dyUw480/edit?usp=sharing) and the [Git Handbook](https://guides.github.com/introduction/git-handbook/) 
 - CMake  2.8.12+
   - A cross-platform tool to manage building source code.

@@ -8,7 +8,7 @@ keywords: beaglebone
 
 ---
 
-The Beagle Bone is a widely used embeeded computer. This tutorila will show you how to install and run COSMOS core on the Beagle Bone and run COSMOS Web from a laptop collecting data from the Beagle Bone.
+The Beagle Bone is a widely used embedded computer. This tutorial will show you how to install and run COSMOS core on the Beagle Bone and run COSMOS Web from a laptop collecting data from the Beagle Bone.
 
 # Steps
 1. Computer with Ubuntu 18.04 or higher (could be WSL on Win10, VirtualBox, or an actual computer with Ubuntu)

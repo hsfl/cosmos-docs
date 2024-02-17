@@ -21,15 +21,15 @@ keywords: software
 
 ## Developer Code Contributions
 
-We encourage any developer to contribute to the COSMOS repositories. The following steps show how anyone can sucessfully push their code to the main COSMOS repositories
+We encourage any developer to contribute to the COSMOS repositories. The following steps show how anyone can successfully push their code to the main COSMOS repositories
 
 configure
-git config --global pull.ff only (to set fast forward merges globaly) 
+git config --global pull.ff only (to set fast forward merges globally) 
 
 1. git fork the code repository you are interested in
 3. git clone (you now have permissions to edit your fork)
 4. create a new feature branch 'ex: feature-save-agent007'
-5. build your amazing feature code and make sure it compiles successuly 
+5. build your amazing feature code and make sure it compiles successfully 
 6. git add
 8. git commit
 9. git pull --rebase
