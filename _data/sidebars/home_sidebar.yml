@@ -27,7 +27,7 @@ entries:
       url: /pages/2-getting_started/development-environment.html
       output: web
     - title: "COSMOS Core Install"
-      url: /pages/2-getting_started/install/index.html
+      #url: /pages/2-getting_started/install/index.html
       output: web
       subfolderitems:
       - title: "Install Qt"
