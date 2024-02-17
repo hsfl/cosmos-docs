@@ -239,3 +239,11 @@ entries:
   - title: Resources
     output: web
     url: /pages/9-resources/index.html
+# =================================================================================
+  - title: FAQ
+    output: web
+    url: /pages/faq.html
+# =================================================================================
+  - title: Safety Procedures
+    output: web
+    url: /pages/safety-procedures.html
