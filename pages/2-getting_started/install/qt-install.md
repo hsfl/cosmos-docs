@@ -2,7 +2,8 @@
 title: Install Qt
 permalink: /pages/2-getting_started/install/qt-install.html
 layout: page
-
+index: 2.1
+sidebar: home_sidebar
 tags: [software]
 keywords: software
 
