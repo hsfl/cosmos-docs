@@ -2,6 +2,7 @@
 title: "2 Getting Started"
 permalink: /pages/2-getting_started/index.html
 layout: page
+index: 2
 
 tags: [software]
 keywords: software
