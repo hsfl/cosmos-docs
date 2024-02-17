@@ -64,91 +64,91 @@ entries:
         - title: "Error Messages"
           output: web
           url: /pages/4-tutorials/concepts/errors.html
-      - title: COSMOS Core Tutorials
+    - title: COSMOS Core Tutorials
+      output: web
+      url: /pages/4-tutorials/core/index.html
+    - title: Start a New COSMOS Project
+      output: web
+      url: /pages/4-tutorials/new-project/index.html
+    - title: Agents
+      output: web
+      subfolderitems:
+      - title:  Overview
         output: web
-        url: /pages/4-tutorials/core/index.html
-      - title: Start a New COSMOS Project
+        url: /pages/4-tutorials/agents/overview.html
+      - title:  Agent Program
         output: web
-        url: /pages/4-tutorials/new-project/index.html
-      - title: Agents
+        url: /pages/4-tutorials/agents/agent-program.html
+      - title: "Setup a New Agent"
         output: web
-        subfolderitems:
-        - title:  Overview
-          output: web
-          url: /pages/4-tutorials/agents/overview.html
-        - title:  Agent Program
-          output: web
-          url: /pages/4-tutorials/agents/agent-program.html
-        - title: "Setup a New Agent"
-          output: web
-          url: /pages/4-tutorials/agents/new-agent.html
-        - title: "Agent 001 and 002"
-          output: web
-          url: /pages/4-tutorials/agents/agents001-002.html
-        - title: "Agent talk free"
-          output: web
-          url: /pages/4-tutorials/agents/talkfree.html
-        - title: "Agent Calc"
-          output: web
-          url: /pages/4-tutorials/agents/agentcalc.html
-        - title: "Agent Forward"
-          output: web
-          url: /pages/4-tutorials/agents/agent_forward.html
-        - title: "Agent File: Remote File Transfers"
-          output: web
-          url: /pages/4-tutorials/agents/agent_file.html
-      - title: Commands
+        url: /pages/4-tutorials/agents/new-agent.html
+      - title: "Agent 001 and 002"
         output: web
-        subfolderitems:
-        - title: "Direct Commanding"
-          url: /pages/4-tutorials/commands/commanding.html
-          output: web
-        - title: "Executive Command Queue"
-          url: /pages/4-tutorials/commands/command-queue.html
-          output: web
-      - title: Namespace
+        url: /pages/4-tutorials/agents/agents001-002.html
+      - title: "Agent talk free"
         output: web
-        subfolderitems:
-        - title: "Namespace Overview"
-          url: /pages/4-tutorials/namespace/index.html
-          output: web
-        - title: "SOH Messages"
-          url: /pages/4-tutorials/namespace/soh.html
-          output: web
-        - title: "Create a Node"
-          url: /pages/4-tutorials/namespace/create-node.html
-          output: web
-        - title: "Add a New Device"
-          url: /pages/4-tutorials/namespace/new-device.html
-          output: web
-        - title: "Aliases"
-          url: /pages/4-tutorials/namespace/alias.html
-          output: web
-      - title: "Agents with Hardware"
+        url: /pages/4-tutorials/agents/talkfree.html
+      - title: "Agent Calc"
         output: web
-        subfolderitems:
-        - title: Arduino Agent
-          url: /pages/4-tutorials/agents-with-hardware/arduino.html
-          output: web
-        - title: Teensy Agent
-          url: /pages/4-tutorials/agents-with-hardware/teensy.html
-          output: web
-        - title: Raspberry Pi Agent
-          url: /pages/4-tutorials/agents-with-hardware/raspi.html
-          output: web
-        - title: Agent GPS
-          url: /pages/4-tutorials/agents-with-hardware/agent_gps.html
-          output: web
-      - title: "Simulating a Satellite Orbit & Attitude"
+        url: /pages/4-tutorials/agents/agentcalc.html
+      - title: "Agent Forward"
         output: web
-        url: /pages/4-tutorials/simulation/orbit.html
-      - title: Build Options
+        url: /pages/4-tutorials/agents/agent_forward.html
+      - title: "Agent File: Remote File Transfers"
         output: web
-        subfolderitems:
-        - title: "Cross-Compiling"
-          url: /pages/4-tutorials/build/cross-compile.html
-          output: web
-      - title: Hardware
+        url: /pages/4-tutorials/agents/agent_file.html
+    - title: Commands
+      output: web
+      subfolderitems:
+      - title: "Direct Commanding"
+        url: /pages/4-tutorials/commands/commanding.html
+        output: web
+      - title: "Executive Command Queue"
+        url: /pages/4-tutorials/commands/command-queue.html
+        output: web
+    - title: Namespace
+      output: web
+      subfolderitems:
+      - title: "Namespace Overview"
+        url: /pages/4-tutorials/namespace/index.html
+        output: web
+      - title: "SOH Messages"
+        url: /pages/4-tutorials/namespace/soh.html
+        output: web
+      - title: "Create a Node"
+        url: /pages/4-tutorials/namespace/create-node.html
+        output: web
+      - title: "Add a New Device"
+        url: /pages/4-tutorials/namespace/new-device.html
+        output: web
+      - title: "Aliases"
+        url: /pages/4-tutorials/namespace/alias.html
+        output: web
+    - title: "Agents with Hardware"
+      output: web
+      subfolderitems:
+      - title: Arduino Agent
+        url: /pages/4-tutorials/agents-with-hardware/arduino.html
+        output: web
+      - title: Teensy Agent
+        url: /pages/4-tutorials/agents-with-hardware/teensy.html
+        output: web
+      - title: Raspberry Pi Agent
+        url: /pages/4-tutorials/agents-with-hardware/raspi.html
+        output: web
+      - title: Agent GPS
+        url: /pages/4-tutorials/agents-with-hardware/agent_gps.html
+        output: web
+    - title: "Simulating a Satellite Orbit & Attitude"
+      output: web
+      url: /pages/4-tutorials/simulation/orbit.html
+    - title: Build Options
+      output: web
+      subfolderitems:
+      - title: "Cross-Compiling"
+        url: /pages/4-tutorials/build/cross-compile.html
+        output: web
+    - title: Hardware
         output: web
         subfolderitems:
         - title: "Gumstix"
