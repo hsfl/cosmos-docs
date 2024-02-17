@@ -26,12 +26,22 @@ entries:
     - title: "Development Environment"
       url: /pages/2-getting_started/development-environment.html
       output: web
-    - title: "COSMOS Core"
+    - title: "Install"
       url: /pages/2-getting_started/install/index.html
       output: web
-    - title: "COSMOS Web"
-      url: /pages/2-getting_started/install/cosmos-web.html
-      output: web
+      subfolderitems:
+      - title: "Install Qt"
+        url: /pages/2-getting_started/install/qt-install.html
+        output: web
+      - title: "Install COSMOS Core on Ubuntu"
+        url: /pages/2-getting_started/install/ubuntu-install.html
+        output: web
+      - title: "Install COSMOS Core on Docker"
+        url: /pages/2-getting_started/install/docker-install.html
+        output: web
+      - title: "COSMOS Web Installation"
+        url: /pages/2-getting_started/install/cosmos-web.html
+        output: web
 
 # =================================================================================
   - title: Features
