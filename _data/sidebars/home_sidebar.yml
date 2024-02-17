@@ -36,10 +36,7 @@ entries:
 # =================================================================================
   - title: Features
     output: web
-    folderitems:
-    - title: COSMOS Features
-      url: /pages/3-features/index.html
-      output: web
+    url: /pages/3-features/index.html
 # =================================================================================
   - title: Tutorials
     output: web
