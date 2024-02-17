@@ -28,6 +28,7 @@ entries:
       output: web
       subfolders:
       - title: "COSMOS Core Install"
+        url: /pages/2-getting_started/install/index.html
         output: web
         subfolderitems:
         - title: "Install Qt"
