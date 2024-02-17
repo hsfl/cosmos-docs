@@ -30,6 +30,9 @@ entries:
       - title: "COSMOS Core Install"
         output: web
         subfolderitems:
+        - title: "COSMOS Core Install"
+          url: /pages/2-getting_started/install/index.html
+          output: web
         - title: "Install Qt"
           url: /pages/2-getting_started/install/qt-install.html
           output: web
@@ -51,6 +54,9 @@ entries:
   - title: Tutorials
     output: web
     folderitems:
+      - title: Tutorials
+        output: web
+        url: /pages/4-tutorials/index.html
       - title: Concepts
         output: web
         subfolderitems:
