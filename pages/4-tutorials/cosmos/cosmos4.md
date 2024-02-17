@@ -11,6 +11,7 @@ toc: false
 series:
     language: "JavaScript"
     prev: /pages/4-tutorials/cosmos/cosmos3.html
+    prev: /pages/4-tutorials/cosmos/cosmos5.html
 ---
 
 
