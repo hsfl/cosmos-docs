@@ -70,6 +70,7 @@ entries:
       - title: Start a New COSMOS Project
         output: web
         url: /pages/4-tutorials/new-project/index.html
+      subfolders:
       - title: Agents
         output: web
         subfolderitems:
@@ -97,6 +98,7 @@ entries:
         - title: "Agent File: Remote File Transfers"
           output: web
           url: /pages/4-tutorials/agents/agent_file.html
+      subfolders:
       - title: Commands
         output: web
         subfolderitems:
@@ -106,6 +108,7 @@ entries:
         - title: "Executive Command Queue"
           url: /pages/4-tutorials/commands/command-queue.html
           output: web
+      subfolders:
       - title: Namespace
         output: web
         subfolderitems:
@@ -124,6 +127,7 @@ entries:
         - title: "Aliases"
           url: /pages/4-tutorials/namespace/alias.html
           output: web
+      subfolders:
       - title: "Agents with Hardware"
         output: web
         subfolderitems:
@@ -142,14 +146,14 @@ entries:
       - title: "Simulating a Satellite Orbit & Attitude"
         output: web
         url: /pages/4-tutorials/simulation/orbit.html
-
+      subfolders:
       - title: Build Options
         output: web
         subfolderitems:
         - title: "Cross-Compiling"
           url: /pages/4-tutorials/build/cross-compile.html
           output: web
-
+      subfolders:
       - title: Hardware
         output: web
         subfolderitems:
