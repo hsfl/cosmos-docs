@@ -247,3 +247,17 @@ entries:
   - title: Safety Procedures
     output: web
     url: /pages/safety-procedures.html
+# =================================================================================
+  - title: Install on Windows
+    output: web
+    url: /pages/install/windows.html
+# =================================================================================
+  - title: Other
+    output: web
+    folderitems:
+      - title: "Programming Tutorials"
+        url: /pages/8-help/troubleshooting.html
+        output: web
+      - title: "Useful Tools"
+        url: /pages/other/useful-tools.html
+        output: web
