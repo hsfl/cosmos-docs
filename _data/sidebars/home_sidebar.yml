@@ -256,7 +256,7 @@ entries:
     output: web
     folderitems:
       - title: "Programming Tutorials"
-        url: /pages/8-help/troubleshooting.html
+        url: /pages/other/programming-tutorials.html
         output: web
       - title: "Useful Tools"
         url: /pages/other/useful-tools.html
