@@ -1,14 +1,13 @@
 ---
 title: "COSMOS Web Installation"
 layout: series
-permalink: /pages/2-getting_started/install/cosmos-web.html
 index: 2.2.4
+permalink: /pages/2-getting_started/install/cosmos-web.html
+toc: false
 
 tags: [software]
 keywords: software
 sidebar: home_sidebar
-toc: false
-
 
 series:
   prev: /pages/2-getting_started/install/ubuntu-install.html

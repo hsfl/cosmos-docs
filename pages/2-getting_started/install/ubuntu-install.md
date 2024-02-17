@@ -1,16 +1,16 @@
 ---
-title: Install COSMOS Core on Ubuntu
+title: "Install COSMOS Core on Ubuntu"
 layout: series
-permalink: /pages/2-getting_started/install/ubuntu-install.html
 index: 2.2.3
+permalink: /pages/2-getting_started/install/ubuntu-install.html
+toc: false
+
 tags: [software]
 keywords: software
 sidebar: home_sidebar
-toc: false
-
 
 series:
-  prev: /pages/2-getting_started/development-environment.html
+  prev: /pages/2-getting_started/install/docker-install.html
   next: /pages/2-getting_started/install/cosmos-web.html
 ---
 

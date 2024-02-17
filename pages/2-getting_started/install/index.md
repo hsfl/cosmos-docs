@@ -1,12 +1,16 @@
 ---
 title: "COSMOS Core Install"
-permalink: /pages/2-getting_started/install/index.html
-layout: page
+layout: series
 index: 2.2
+permalink: /pages/2-getting_started/install/index.html
+toc: false
 
-#sidebar: home_sidebar
 tags: [software]
 keywords: software
+sidebar: home_sidebar
+
+series:
+    next: /pages/2-getting_started/install/qt-install.html
 ---
 
 ## Overview

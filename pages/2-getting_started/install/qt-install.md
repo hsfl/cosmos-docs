@@ -1,12 +1,16 @@
 ---
-title: Install Qt
-permalink: /pages/2-getting_started/install/qt-install.html
-layout: page
+title: "Install Qt"
+layout: series
 index: 2.2.1
-sidebar: home_sidebar
+permalink: /pages/2-getting_started/install/qt-install.html
+
 tags: [software]
 keywords: software
+sidebar: home_sidebar
 
+series:
+    prev: /pages/2-getting_started/install/index.html
+    next: /pages/2-getting_started/install/docker-install.html
 ---
 
 

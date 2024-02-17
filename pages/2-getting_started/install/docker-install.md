@@ -1,12 +1,17 @@
 ---
-title: Install COSMOS Core on Docker
+title: "Install COSMOS Core on Docker"
 layout: series
-permalink: /pages/2-getting_started/install/docker-install.html
 index: 2.2.2
+permalink: /pages/2-getting_started/install/docker-install.html
+toc: false
+
 tags: [software]
 keywords: software
 sidebar: home_sidebar
-toc: false
+
+series:
+    prev: /pages/2-getting_started/install/qt-install.html
+    next: /pages/2-getting_started/install/cosmos-web.html
 ---
 
 
