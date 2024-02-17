@@ -182,6 +182,21 @@ entries:
         - title: "COSMOS Tutorial Part 5"
           url: /pages/4-tutorials/cosmos/cosmos5.html
           output: web
+      - title: Install
+        output: web
+        subfolderitems:
+        - title: "Installation Overview"
+          url: /pages/4-tutorials/install/index.html
+          output: web
+        - title: "Install Qt"
+          url: /pages/4-tutorials/install/qt-install.html
+          output: web
+        - title: "Installing COSMOS From Scratch"
+          url: /pages/4-tutorials/install/ubuntu-install.html
+          output: web
+        - title: "Installing COSMOS From Scratch"
+          url: /pages/4-tutorials/install/user-install.html
+          output: web
           
 # =================================================================================
   - title: Projects
