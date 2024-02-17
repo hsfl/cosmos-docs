@@ -197,6 +197,18 @@ entries:
         - title: "Installing COSMOS From Scratch"
           url: /pages/4-tutorials/install/user-install.html
           output: web
+      - title: Setup
+        output: web
+        subfolderitems:
+        - title: "Setup"
+          url: /pages/4-tutorials/setup/index.html
+          output: web
+        - title: "Getting Started Part 2"
+          url: /pages/4-tutorials/setup/development-environment.html
+          output: web
+        - title: "Getting Started Part 3"
+          url: /pages/4-tutorials/setup/cosmos-web.html
+          output: web
           
 # =================================================================================
   - title: Projects

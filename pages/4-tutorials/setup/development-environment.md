@@ -10,7 +10,7 @@ toc: false
 
 
 series:
-  next: /pages/4-tutorials/install/ubuntu-install.html
+  next: /pages/4-tutorials/setup/cosmos-web.html
 ---
 
 ## Introduction

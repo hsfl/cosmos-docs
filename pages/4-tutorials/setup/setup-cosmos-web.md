@@ -9,8 +9,7 @@ sidebar: home_sidebar
 toc: false
 
 series:
-  prev: /pages/4-tutorials/setup/setup2.html
-  next: /pages/4-tutorials/setup/setup4.html
+  prev: /pages/4-tutorials/setup/development-environment.html
 ---
 
 <div id="toc"></div>
