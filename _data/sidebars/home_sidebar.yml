@@ -400,16 +400,13 @@ entries:
           url: /pages/documentation/utility-classes/timer.html
         - title: "includes"
           output: web
-          subsubfolderitems:
-          - title: "includes"
-            output: web
-            url: /pages/documentation/site/includes/index.html
-          - title: "COSMOS Device Table"
-            output: web
-            url: /pages/documentation/site/includes/agents/device-table.html
-          - title: "Quick Details Table"
-            output: web
-            url: /pages/documentation/site/includes/agents/quick-details.html
-          - title: "Agent Request Table"
-            output: web
-            url: /pages/documentation/site/includes/agents/request-table.html
+          url: /pages/documentation/site/includes/index.html
+        - title: "COSMOS Device Table"
+          output: web
+          url: /pages/documentation/site/includes/agents/device-table.html
+        - title: "Quick Details Table"
+          output: web
+          url: /pages/documentation/site/includes/agents/quick-details.html
+        - title: "Agent Request Table"
+          output: web
+          url: /pages/documentation/site/includes/agents/request-table.html
