@@ -3,7 +3,6 @@ title: Site Structure
 layout: page
 permalink: /pages/documentation/site/structure.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 

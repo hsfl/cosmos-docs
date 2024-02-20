@@ -3,7 +3,6 @@ title: Front Matter
 layout: page
 permalink: /pages/documentation/site/pages/contents.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 

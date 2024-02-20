@@ -3,7 +3,6 @@ title: Quick Details Table
 layout: page
 permalink: /pages/documentation/site/includes/agents/quick-details.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 

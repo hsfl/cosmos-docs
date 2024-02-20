@@ -3,7 +3,6 @@ title: Includes
 layout: page
 permalink: /pages/documentation/site/includes/index.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 

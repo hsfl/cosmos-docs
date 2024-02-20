@@ -3,7 +3,6 @@ title: Agent Layout
 layout: page
 permalink: /pages/documentation/site/layouts/agent.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 

@@ -374,3 +374,42 @@ entries:
         - title: "Timer Class"
           output: web
           url: /pages/documentation/utility-classes/timer.html
+      - title: "Site"
+        output: web
+        subfolderitems:
+        - title: "Site Documentation for Developers"
+          output: web
+          url: /pages/documentation/site/index.html
+        - title: "Getting Started"
+          output: web
+          url: /pages/documentation/site/2-getting_started.html
+        - title: "Structure"
+          output: web
+          url: /pages/documentation/site/structure.html
+        - title: "Front Matter"
+          output: web
+          url: /pages/documentation/site/pages/contents.html
+        - title: "FAQ Layout"
+          output: web
+          url: /pages/documentation/site/layouts/faq.html
+        - title: "Agent Layout"
+          output: web
+          url: /pages/documentation/site/layouts/agent.html
+        - title: "Timer Class"
+          output: web
+          url: /pages/documentation/utility-classes/timer.html
+        - title: "includes"
+          output: web
+          subsubfolderitems:
+          - title: "includes"
+            output: web
+            url: /pages/documentation/site/includes/index.html
+          - title: "COSMOS Device Table"
+            output: web
+            url: /pages/documentation/site/includes/agents/device-table.html
+          - title: "Quick Details Table"
+            output: web
+            url: /pages/documentation/site/includes/agents/quick-details.html
+          - title: "Agent Request Table"
+            output: web
+            url: /pages/documentation/site/includes/agents/request-table.html

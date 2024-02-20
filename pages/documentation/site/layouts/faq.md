@@ -3,7 +3,6 @@ title: FAQ Layout
 layout: page
 permalink: /pages/documentation/site/layouts/faq.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 

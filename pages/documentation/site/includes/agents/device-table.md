@@ -3,7 +3,6 @@ title: COSMOS Device Table
 layout: page
 permalink: /pages/documentation/site/includes/agents/device-table.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 
