@@ -3,7 +3,6 @@ title: Agent Request Table
 layout: page
 permalink: /pages/documentation/site/includes/agents/request-table.html
 
-sidebar: dev_sidebar
 search: exclude
 ---
 
