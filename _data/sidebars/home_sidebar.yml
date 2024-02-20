@@ -395,9 +395,6 @@ entries:
         - title: "Agent Layout"
           output: web
           url: /pages/documentation/site/layouts/agent.html
-        - title: "Timer Class"
-          output: web
-          url: /pages/documentation/utility-classes/timer.html
         - title: "includes"
           output: web
           url: /pages/documentation/site/includes/index.html
