@@ -362,9 +362,6 @@ entries:
         - title: "Raspberry Pi Class"
           output: web
           url: /pages/documentation/utility-classes/raspi.html
-        - title: "Cubesat Class"
-          output: web
-          url: /pages/documentation/utility-classes/cubesat-class.html
         - title: "Simple Agent Devices Class"
           output: web
           url: /pages/documentation/utility-classes/simpleagent-devices.html
