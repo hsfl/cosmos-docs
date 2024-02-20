@@ -267,3 +267,113 @@ entries:
       - title: "Useful Tools"
         url: /pages/other/useful-tools.html
         output: web
+# =================================================================================
+  - title: Documentation
+    output: web
+    url: /pages/documentation/index.html
+    folderitems:
+      - title: "Agents"
+        output: web
+        subfolderitems:
+        - title: "Agents"
+          output: web
+          url: /pages/documentation/agents/index.html
+        - title: "Heater Agent"
+          output: web
+          url: /pages/documentation/agents/heater-agent.html
+        - title: "PyCubed Agent"
+          output: web
+          url: /pages/documentation/agents/pycubed-agent.html
+        - title: "Raspberry Pi Agent"
+          output: web
+          url: /pages/documentation/agents/raspberry-pi-agent.html
+        - title: "Sun Sensor Agent"
+          output: web
+          url: /pages/documentation/agents/sun-sensor-agent.html
+        - title: "Switch Agent"
+          output: web
+          url: /pages/documentation/agents/switch-agent.html
+        - title: "Temperature Sensor Agent"
+          output: web
+          url: /pages/documentation/agents/temperature-sensor-agent.html
+      - title: "COSMOS"
+        output: web
+        subfolderitems:
+        - title: "COSMOS"
+          output: web
+          url: /pages/documentation/cosmos/cosmos.html
+        - title: "COSMOS Web"
+          output: web
+          url: /pages/documentation/cosmos/cosmos-web.html
+      - title: "Other"
+        output: web
+        subfolderitems:
+        - title: "Development Enviornment"
+          output: web
+          url: /pages/documentation/other/development-environment.html
+        - title: "Doxygen"
+          output: web
+          url: /pages/documentation/other/doxygen.html
+        - title: "PyCubed Communication Protocol"
+          output: web
+          url: /pages/documentation/other/pycubed-communication.html
+        - title: "Development Enviornment"
+          output: web
+          url: /pages/documentation/other/scripts.html
+      - title: "Raspberry Pi Library"
+        output: web
+        subfolderitems:
+        - title: "Raspberry Pi Library"
+          output: web
+          url: /pages/documentation/raspi-library/index.html
+        - title: "Agent Class"
+          output: web
+          url: /pages/documentation/raspi-library/agent-class.html
+        - title: "Beaglebone Class"
+          output: web
+          url: /pages/documentation/raspi-library/beaglebone-class.html
+        - title: "Cubesat Class"
+          output: web
+          url: /pages/documentation/raspi-library/cubesat-class.html
+        - title: "GPS Class"
+          output: web
+          url: /pages/documentation/raspi-library/gps-class.html
+        - title: "Heater Class"
+          output: web
+          url: /pages/documentation/raspi-library/heater-class.html
+        - title: "IMU Class"
+          output: web
+          url: /pages/documentation/raspi-library/imu-class.html
+        - title: "Sun Sensor Class"
+          output: web
+          url: /pages/documentation/raspi-library/sunsensor-class.html
+        - title: "Temperature Sensor Class"
+          output: web
+          url: /pages/documentation/raspi-library/tempsensor-class.html
+      - title: "Utility Classes"
+        output: web
+        subfolderitems:
+        - title: "GPIO Class"
+          output: web
+          url: /pages/documentation/utility-classes/gpio.html
+        - title: "PyCubed Class"
+          output: web
+          url: /pages/documentation/utility-classes/pycubed.html
+        - title: "Raspberry Pi Class"
+          output: web
+          url: /pages/documentation/utility-classes/raspi.html
+        - title: "Cubesat Class"
+          output: web
+          url: /pages/documentation/utility-classes/cubesat-class.html
+        - title: "Simple Agent Devices Class"
+          output: web
+          url: /pages/documentation/utility-classes/simpleagent-devices.html
+        - title: "Simple Agent Class"
+          output: web
+          url: /pages/documentation/utility-classes/simpleagent.html
+        - title: "Time Class"
+          output: web
+          url: /pages/documentation/utility-classes/time.html
+        - title: "Timer Class"
+          output: web
+          url: /pages/documentation/utility-classes/timer.html
