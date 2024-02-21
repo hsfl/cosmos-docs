@@ -130,6 +130,8 @@ When VSCode finishes connecting to the container, press the "Open Folder" button
 
 You will now be within the `~/cosmos/` directory.
 
+{% include note.html content="If, after connecting to the container, you find that the plugins you installed are not functioning, open the Extensions tab on the left navigation menu. You will see that there are multiple dropdown menus. On the top "LOCAL - INSTALLED" menu, you might find that some extensions are greyed out, with a blue button saying "Install in Container". Press this button to install a copy of this extension in the container, which will enable its features." %}
+
 ## Manual Installation
 It is also possible to manually install and work with COSMOS on your computer.
 
