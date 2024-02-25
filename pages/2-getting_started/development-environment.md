@@ -190,7 +190,7 @@ COSMOS submodules.
 ```
 cd ~/cosmos
 git submodule update --init --recursive   # Initialize the COSMOS submodules
-got submodule update --remote --merge     # Ensure the submodules are up-to-date
+git submodule update --remote --merge     # Ensure the submodules are up-to-date
 ```
 
 ### Step 3: Open the COSMOS directory
